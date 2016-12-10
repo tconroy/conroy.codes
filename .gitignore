@@ -1,0 +1,9 @@
+# node / npm
+node_modules
+*.log
+
+# phenomic build
+dist
+
+# Mac OS
+.DS_Store
