@@ -1,9 +1,17 @@
 #!/bin/bash
 set -x
+echo $(whoami);
 
-if [ -z `ssh-keygen -F $IP` ]; then
-  ssh-keyscan -H $IP >> ~/.ssh/known_hosts
-fi
+ADDRESSES=('thomasconroy.net' 'conroy.codes' 'tomconroy.io' 'tomconroy.me');
+
+for address in $ADDRESSES; do
+  ssh-keygen -F $address 2>/dev/null 1>/dev/null
+  if [ $? -eq 0 ]; then
+    echo “$address is already known”
+    continue
+   fi
+   ssh-keyscan -t rsa -T 10 $address >> ~/.ssh/known_hosts
+done
 
 if [ $TRAVIS_BRANCH == 'master' ] ; then
 		# Initialize a new git repo in dist, and push it to our server.
