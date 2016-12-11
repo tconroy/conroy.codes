@@ -14,6 +14,11 @@ addons:
       - g++-4.8
 before_install:
 - bash _scripts/install.sh
+before_script:
+    - ssh-keyscan -H 104.236.225.208 >> ~/.ssh/known_hosts
+    - ssh-keyscan -H thomasconroy.net >> ~/.ssh/known_hosts
+    - echo -e "Host thomasconroy.net\nPort 1337\nUser deploy\nStrictHostKeyChecking no\n" >> ~/.ssh/config
+    - echo -e "Host github.com\nUser deploy\nStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
   - bash _scripts/build.sh
   - bash _scripts/test.sh
