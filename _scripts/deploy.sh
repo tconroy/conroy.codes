@@ -2,6 +2,10 @@
 set -x
 
 if [ $TRAVIS_BRANCH == 'master' ] ; then
+		# load our SSH scripts
+		eval `ssh-agent -s` #start shh agent
+		ssh-add ~/.ssh/id_rsa
+
 		# Initialize a new git repo in dist, and push it to our deploy repo on the webserver.
 		cd dist
 		git init
