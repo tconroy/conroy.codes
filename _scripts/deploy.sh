@@ -6,8 +6,8 @@ if [ $TRAVIS_BRANCH == 'master' ] ; then
 		git init
 
 		git remote add deploy "deploy@thomasconroy.net:/var/www/thomasconroy.net"
-		git config user.name "Travis CI"
-		git config user.emal "tom+travisCI@thomasconroy.net"
+		git config --global user.name "Travis CI"
+		git config --global user.email "tom+travisCI@thomasconroy.net"
 
 		git add .
 		git commit -m "Deploy"
