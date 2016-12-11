@@ -12,7 +12,7 @@ if [ $TRAVIS_BRANCH == 'master' ] ; then
 
 		# git remote add deploy "ssh://deploy@thomasconroy.net:/var/www/thomasconroy.net"
 		#git remote add deploy "deploy@thomasconroy.net:1337/var/www/thomasconroy.net"
-		git remote add deploy "ssh://deploy@thomasconroy.net:1337/var/www/thomasconroy.net"
+		git remote add deploy "deploy@thomasconroy.net/var/www/thomasconroy.net"
 		git config user.name "Travis CI"
 		git config user.email "tom+travisCI@thomasconroy.net"
 

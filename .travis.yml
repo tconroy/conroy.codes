@@ -20,6 +20,9 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - g++-4.8
+before_script:
+    - ssh-keyscan -H thomasconroy.net >> ~/.ssh/known_hosts
+    - echo -e "Host thomasconroy.net\nPort 1337\nUser deploy\nStrictHostKeyChecking no\n" >> ~/.ssh/config
 before_install:
 - bash _scripts/install.sh
 script:
