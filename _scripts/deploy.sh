@@ -2,17 +2,11 @@
 set -x
 
 if [ $TRAVIS_BRANCH == 'master' ] ; then
-		# load our SSH scripts
-		eval `ssh-agent -s` #start shh agent
-		ssh-add ~/.ssh/id_rsa
-
 		# Initialize a new git repo in dist, and push it to our deploy repo on the webserver.
 		cd dist
 		git init
 
-		# git remote add deploy "ssh://deploy@thomasconroy.net:/var/www/thomasconroy.net"
-		#git remote add deploy "deploy@thomasconroy.net:1337/var/www/thomasconroy.net"
-		git remote add deploy "deploy@thomasconroy.net/var/www/thomasconroy.net"
+		git remote add deploy "ssh://deploy@thomasconroy.net:1337/var/www/thomasconroy.net"
 		git config user.name "Travis CI"
 		git config user.email "tom+travisCI@thomasconroy.net"
 
