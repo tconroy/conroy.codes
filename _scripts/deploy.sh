@@ -1,5 +1,10 @@
 #!/bin/bash
 set -x
+
+if [ -z `ssh-keygen -F $IP` ]; then
+  ssh-keyscan -H $IP >> ~/.ssh/known_hosts
+fi
+
 if [ $TRAVIS_BRANCH == 'master' ] ; then
 		# Initialize a new git repo in dist, and push it to our server.
 		cd dist
