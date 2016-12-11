@@ -2,9 +2,9 @@ language: node_js
 node_js:
   - 6.9.2
 env:
-  - CXX=g++-4.8
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - CXX=g++-4.8
 addons:
   ssh_known_hosts: thomasconroy.net
   apt:
