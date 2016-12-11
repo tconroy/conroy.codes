@@ -7,7 +7,8 @@ if [ $TRAVIS_BRANCH == 'master' ] ; then
 		git init
 
 		# git remote add deploy "ssh://deploy@thomasconroy.net:/var/www/thomasconroy.net"
-		git remote add deploy "ssh://$DEPLOY_USER:$DEPLOY_PASS@$DEPLOY_HOST:$DEPLOY_PATH"
+		# git remote add deploy "ssh://$DEPLOY_USER:$DEPLOY_PASS@thomasconroy.net:$DEPLOY_PATH"
+		git remote add deploy "https://${DEPLOY_USER}:${DEPLOY_PASS}@thomasconroy.net/var/www/thomasconroy.net/.git"
 		git config --global user.name "Travis CI"
 		git config --global user.email "tom+travisCI@thomasconroy.net"
 
