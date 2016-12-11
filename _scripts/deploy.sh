@@ -2,7 +2,7 @@
 set -x
 echo $(whoami);
 
-ADDRESSES=('thomasconroy.net' 'conroy.codes' 'tomconroy.io' 'tomconroy.me');
+ADDRESSES=('thomasconroy.net:1337');
 
 for address in $ADDRESSES; do
   ssh-keygen -F $address 2>/dev/null 1>/dev/null
