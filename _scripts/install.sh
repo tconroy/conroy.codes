@@ -9,7 +9,7 @@ mv deploy-key ~/.ssh/id_rsa
 
 # load our SSH scripts
 eval `ssh-agent -s`
-ssh-add ~/.ssh/id_rsa
+ssh-add
 
 ssh-keyscan -H thomasconroy.net >> ~/.ssh/known_hosts
 echo -e "Host thomasconroy.net\nPort 1337\nUser deploy\nStrictHostKeyChecking no\n" >> ~/.ssh/config

@@ -6,16 +6,13 @@ if [ $TRAVIS_BRANCH == 'master' ] ; then
 		cd dist
 		git init
 
-		git remote add deploy "ssh://deploy@thomasconroy.net:1337/var/www/thomasconroy.net"
+		git remote add deploy "deploy@thomasconroy.net/var/www/thomasconroy.net"
 		git config user.name "Travis CI"
 		git config user.email "tom+travisCI@thomasconroy.net"
 
 		git add .
 		git commit -m "Deploy"
 		git push --force deploy master
-
-		expect "deploy@thomasconroy.net's password:"
-		send "${DEPLOY_PASS}\n"
 else
 	echo "Not deploying, since this branch isn't master."
 fi
