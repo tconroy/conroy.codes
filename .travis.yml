@@ -14,9 +14,6 @@ addons:
       - g++-4.8
 before_install:
 - bash _scripts/install.sh
-before_script:
-    - echo -e "Host thomasconroy.net\nPort 1337\nStrictHostKeyChecking no\n" >> ~/.ssh/config
-    - echo -e "Host github.com\nStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
   - bash _scripts/build.sh
   - bash _scripts/test.sh
