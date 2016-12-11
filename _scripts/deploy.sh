@@ -13,6 +13,9 @@ if [ $TRAVIS_BRANCH == 'master' ] ; then
 		git add .
 		git commit -m "Deploy"
 		git push --force deploy master
+
+		expect "deploy@thomasconroy.net's password:"
+		send "${DEPLOY_PASS}\n"
 else
 	echo "Not deploying, since this branch isn't master."
 fi
