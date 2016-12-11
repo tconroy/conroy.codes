@@ -8,8 +8,8 @@ chmod 600 deploy-key
 mv deploy-key ~/.ssh/id_rsa
 
 # Install zopfli
-git clone https://code.google.com/p/zopfli/
-cd zopfli
-make
-chmod +x zopfli
-cd ..
+# git clone https://code.google.com/p/zopfli/
+# cd zopfli
+# make
+# chmod +x zopfli
+# cd ..
