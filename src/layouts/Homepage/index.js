@@ -17,6 +17,9 @@ class Homepage extends React.Component {
 	render() {
 	  return (
 			<section className={styles.intro}>
+				<div className={[styles.banner, 'animated slideInDown'].join(' ')}>
+					<p>Sit tight! I'm currently re-developing my portfolio. Please check back later! 🚀</p>
+				</div>
 				<div className={styles.columnWrapper}>
 					<div className={[styles.halfColumn].join(' ')}>
 						<div className={styles.box}>

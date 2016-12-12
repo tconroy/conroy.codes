@@ -22,6 +22,17 @@ $brand-blue: #617BAF;
 
  /***********/
 
+.banner {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	color: black;
+	text-shadow: 1px 1px 1px white;
+	background: whitesmoke;
+}
+
 .intro {
 	composes: fullScreen vcenter;
 	background-image: linear-gradient(to bottom, #FFFFFF 0%, #F6F9FC 100%);
