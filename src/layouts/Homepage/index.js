@@ -15,7 +15,7 @@ import 'animate.css/animate.css';
 
 class Homepage extends React.Component {
 	render() {
-	  return (
+		return (
 			<section className={styles.intro}>
 				<div className={[styles.banner, 'animated slideInDown'].join(' ')}>
 					<p>Sit tight! I'm currently re-developing my portfolio. Please check back later! 🚀</p>
