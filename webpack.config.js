@@ -73,7 +73,7 @@ export default (config = {}) => {
 
         // *.css => CSS Modules
         {
-          test: /\.css$/,
+          test: /\.(css|scss)$/,
           exclude: /\.global\.css$/,
           include: path.resolve(__dirname, "src"),
           // webpack 1
@@ -85,6 +85,7 @@ export default (config = {}) => {
               : "[path][name]--[local]--[hash:base64:5]"
               }`,
               "postcss-loader",
+              "sass-loader",
             ].join("!"),
           ),
           // webpack 2
@@ -146,13 +147,13 @@ export default (config = {}) => {
         // ! \\ If you want global CSS for node_modules only, just uncomment
         // this section and the `include` part
         // // webpack 1
-        /*
+
         {
           test: /\.css$/,
           // depending on your need, you might need to scope node_modules
           // for global CSS if you want to keep CSS Modules by default
           // for your own CSS. If so, uncomment the line below
-          // include: path.resolve(__dirname, "node_modules"),
+          include: path.resolve(__dirname, "node_modules"),
           loader: ExtractTextPlugin.extract(
             "style-loader",
             [
@@ -161,7 +162,7 @@ export default (config = {}) => {
             ].join("!")
           ),
         },
-        */
+
         // // webpack 2
         /*
         {

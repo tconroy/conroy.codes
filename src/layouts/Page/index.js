@@ -27,7 +27,6 @@ const Page = (
     typeof head.title === "string",
     `Your page '${ __filename }' needs a title`
   )
-
   const metaTitle = head.metaTitle ? head.metaTitle : head.title
 
   const meta = [
