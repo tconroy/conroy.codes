@@ -1,4 +1,49 @@
 $brand-blue: #617BAF;
+$intro-banner: whitesmoke;
+$intro-white: #F6F9FC;
+$bp-mobile: 800px;
+
+///
+/// Viewport sized typography with minimum and maximum values
+///
+/// @author Eduardo Boucas (@eduardoboucas)
+///
+/// @param {Number}   $responsive  - Viewport-based size
+/// @param {Number}   $min         - Minimum font size (px)
+/// @param {Number}   $max         - Maximum font size (px)
+///                                  (optional)
+/// @param {Number}   $fallback    - Fallback for viewport-
+///                                  based units (optional)
+///
+/// @example scss - 5vw font size (with 50px fallback),
+///                 minumum of 35px and maximum of 150px
+///  @include responsive-font(5vw, 35px, 150px, 50px);
+///
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+
+  @if $fallback {
+    font-size: $fallback;
+  }
+
+  font-size: $responsive;
+}
+
+@import './animations';
 
  .fullScreen {
  	width: 100vw;
@@ -18,24 +63,28 @@ $brand-blue: #617BAF;
  	text-transform: uppercase;
  	line-height: 1;
  	font-family: 'Julius Sans One', sans-serif;
+ 	@media screen and (max-width: $bp-mobile) {
+ 		line-height: 1.25;
+ 		> div {
+			display: inline;
+ 		}
+ 	}
  }
 
- /***********/
-
 .banner {
-	position: fixed;
-	top: 0;
-	left: 0;
 	width: 100%;
 	text-align: center;
 	color: black;
 	text-shadow: 1px 1px 1px white;
-	background: whitesmoke;
+	background: $intro-banner;
+	padding: 1rem 0;
 }
 
 .intro {
+	margin-top: -3.5rem;
 	composes: fullScreen vcenter;
-	background-image: linear-gradient(to bottom, #FFFFFF 0%, #F6F9FC 100%);
+	min-height: 600px;
+	background-color: $intro-white;
 }
 
 .columnWrapper {
@@ -43,24 +92,40 @@ $brand-blue: #617BAF;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media screen and (max-width: $bp-mobile) {
+		flex-direction: column;
+		width: 95%;
+	}
 }
 
  .halfColumn {
 	max-width: 45%;
 	margin: 0 2.5%;
+	@media screen and (max-width: $bp-mobile) {
+		max-width: 100%;
+		margin: 0 0 2.5% 0;
+		text-align: center;
+	}
  }
 
  .name {
  	text-transform: none;
  	font-weight: 600;
 	composes: text;
-	font-size: 6vh;
+	@include responsive-font(6vh, 35px, false, 50px);
+	@media screen and (max-width: $bp-mobile) {
+		> div:nth-child(2) {
+			margin-left: 1rem;
+		}
+	}
  }
 
  .roles {
  	font-weight: 200;
 	composes: text;
-	font-size: 3vh;
+	@include responsive-font(3vh, 18px, false, 25px);
+	margin-top: .5rem;
+	line-height: 1.35;
  }
 
  .roles span {
@@ -68,32 +133,87 @@ $brand-blue: #617BAF;
  }
 
  .box {
+ 	user-select: none;
+ 	cursor: default;
  	width: 30vh;
  	height: 30vh;
- 	background-color: $brand-blue;
+ 	min-width: 200px;
+ 	min-height: 200px;
  	font-weight: 600;
+ 	background-color: transparent;
+ 	display: block;
+ 	position: relative;
+ 	overflow: hidden;
+ 	animation-name: color-fadein;
+ 	animation-delay: 0;
+ 	animation-duration: 1.33s;
+ 	animation-iteration-count:1;
+ 	animation-timing-function: ease-in-out;
+ 	animation-fill-mode: forwards;
  }
 
  .boxText {
-	font-size: 20vh;
-	line-height: 30vh;
+ 	font-family: 'Work Sans', sans-serif;
+ 	@include responsive-font(15vh, 100px, false, 100px);
 	text-align: center;
-	color: #F6F9FC;
+	color: $intro-white;
+	animation-delay: 2.4s;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	transform: translateY(-50%);
+	>span {
+		display: inline-block;
+		animation-delay: .33s;
+		animation-duration: 1.66s;
+	}
  }
 
- @media screen and (max-width: 800px) {
- 	.columnWrapper {
- 		flex-direction: column;
- 	}
-	.halfColumn {
-		max-width: 100%;
-		margin: 0 0 2.5% 0;
-		text-align: center;
-	}
-	.text {
-		line-height: 1.25;
-	}
-	.text div {
-		display: inline;
-	}
+ .l1, .l2, .l3, .l4 {
+   position: absolute;
+   background: transparent;
+   width: 0px;
+   height: 0px;
+
+   animation-duration: .6s;
+   animation-iteration-count:1;
+   animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+   animation-fill-mode: forwards;
+ }
+
+ .l1 {
+   left: 0;
+   bottom: 0;
+   height: 30vh;
+   width: 4px;
+   animation-name: l1;
+   animation-delay: 0s;
+ }
+
+ .l2 {
+   top: 0;
+   left: 0;
+   width: 30vh;
+   height: 4px;
+   animation-name: l2;
+   animation-delay: .6s;
+ }
+
+ .l3 {
+   right: 0;
+   top: 0;
+   height: 30vh;
+   width: 4px;
+   animation-name: l3;
+   animation-delay: 1.2s;
+ }
+
+ .l4 {
+   bottom: 0;
+   right: 0;
+   width: 30vh;
+   height: 4px;
+   animation-name: l4;
+   animation-delay: 1.8s;
  }

@@ -5,38 +5,39 @@ import React from "react"
 import styles from './index.scss';
 import 'animate.css/animate.css';
 
-// const titleAnim = ((w) => {
-// 	const isMobile = w && w <= 800 || window.innerWidth <= 800;
-// 	return {
-// 		leftCol: `animated ${!isMobile ? 'fadeInLeft' : 'fadeInDown'}`,
-// 		rightCol: `animated ${!isMobile ? 'fadeInRight' : 'fadeInUp'}`,
-// 	}
-// })(window.innerWidth);
-
 class Homepage extends React.Component {
 	render() {
 		return (
-			<section className={styles.intro}>
-				<div className={[styles.banner, 'animated slideInDown'].join(' ')}>
-					<p>Sit tight! I'm currently re-developing my portfolio. Please check back later! 🚀</p>
-				</div>
-				<div className={styles.columnWrapper}>
-					<div className={[styles.halfColumn].join(' ')}>
-						<div className={styles.box}>
-							<div className={styles.boxText}>TC</div>
+			<div>
+				<section className={[styles.banner, 'animated slideInDown'].join(' ')}>
+					Sit tight! I'm currently re-developing my portfolio. Please check back later! 🚀
+				</section>
+				<section className={styles.intro}>
+					<div className={styles.columnWrapper}>
+						<div className={[styles.halfColumn].join(' ')}>
+							<div className={styles.box}>
+								<div className={styles.boxText}>
+									<span className="animated fadeInDown">T</span>
+									<span className="animated fadeInUp">C</span>
+								</div>
+									<span className={styles.l1}></span>
+									<span className={styles.l2}></span>
+									<span className={styles.l3}></span>
+									<span className={styles.l4}></span>
+							</div>
+						</div>
+						<div className={[styles.halfColumn].join(' ')}>
+							<div className={styles.name}>
+								<div>Tom</div>
+								<div>Conroy</div>
+							</div>
+							<div className={styles.roles}>
+								<span>UX Designer</span> & <span>Front-End Developer</span>
+							</div>
 						</div>
 					</div>
-					<div className={[styles.halfColumn].join(' ')}>
-						<div className={styles.name}>
-							<div>Tom</div>
-							<div>Conroy</div>
-						</div>
-						<div className={styles.roles}>
-							<span>UX Designer</span> & <span>Front-End Developer</span>
-						</div>
-					</div>
-				</div>
-			</section>
+				</section>
+			</div>
 		);
 	}
 }
