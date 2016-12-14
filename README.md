@@ -1,4 +1,7 @@
-# [Phenomic](https://github.com/MoOx/phenomic) phenomic-theme-base
+# [conroy.codes](https://conroy.codes) [![Build Status](https://travis-ci.org/tconroy/conroy.codes.svg?branch=master)](https://travis-ci.org/tconroy/conroy.codes)
+
+
+Repo for my personal homepage / portfolio.
 
 ## Install dependencies
 
