@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react"
 
-import "./index.global.css"
+import "./index.global.scss"
 import "./highlight.global.css"
 
 import Container from "./components/Container"

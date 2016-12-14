@@ -1,7 +1,5 @@
 /* Using global sytles is not recommended, prefer local styles via CSS Modules */
-@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One');
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,700');
-
+@import 'fonts';
 
 /*
  * box model like it should be
