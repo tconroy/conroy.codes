@@ -3,6 +3,8 @@
   "name": "conroy-codes",
   "homepage": "https://conroy.codes",
   "twitter": "T_Conroy",
+  "linkedin": "thomasconroy",
+  "github": "tconroy",
   "repository": "https://github.com/tconroy/conroy.codes.git",
   "scripts": {
     "lint:js": "eslint --ignore-path .gitignore --fix .",

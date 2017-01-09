@@ -74,7 +74,7 @@ export default (config = {}) => {
         // *.css => CSS Modules
         {
           test: /\.(css|scss)$/,
-          exclude: /\.global\.css$/,
+          exclude: /\.global\.(css|scss)$/,
           include: path.resolve(__dirname, "src"),
           // webpack 1
           loader: ExtractTextPlugin.extract(
@@ -117,12 +117,12 @@ export default (config = {}) => {
         },
         // *.global.css => global (normal) css
         {
-          test: /\.global\.css$/,
+          test: /\.global\.(css|scss)$/,
           include: path.resolve(__dirname, "src"),
           // webpack 1
           loader: ExtractTextPlugin.extract(
             "style-loader",
-            [ "css-loader", "postcss-loader" ].join("!"),
+            [ "css-loader", "postcss-loader", "sass-loader" ].join("!"),
           ),
           // webpack 2
           /*
@@ -159,6 +159,7 @@ export default (config = {}) => {
             [
               "css-loader",
               "postcss-loader",
+              "sass-loader",
             ].join("!")
           ),
         },
