@@ -155,19 +155,19 @@ line-height: 1.35;
 .boxText {
 	font-family: 'Work Sans', sans-serif;
 	@include responsive-font(15vh, 100px, false, 100px);
-text-align: center;
-color: $intro-white;
-animation-delay: 2.4s;
-position: absolute;
-top: 50%;
-left: 0;
-right: 0;
-transform: translateY(-50%);
->span {
-	display: inline-block;
-	animation-delay: .33s;
-	animation-duration: 1.66s;
-}
+	text-align: center;
+	color: $intro-white;
+	animation-delay: 2.4s;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	transform: translateY(-50%);
+	>	span {
+		display: inline-block;
+		animation-delay: .33s;
+		animation-duration: 1.66s;
+	}
 }
 
 .l1, .l2, .l3, .l4 {
@@ -230,32 +230,63 @@ transform: translateY(-50%);
 
 .socialList li {
 	display: inline-block;
-	opacity: .5;
 	color: black;
 	transition: all .33s ease-in-out;
+	> a {
+		position: relative;
+		&::after {
+			transition: all 0.5s ease-out;
+			transform: translateY(-25%);
+			opacity: 0;
+			content: attr(title);
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			width: 100%;
+			font-size: 30%;
+			margin: 0 auto;
+			text-align: center;
+			@media all and (max-width: $bp-mobile) {
+				opacity: 1;
+				transform: none;
+			}
+		}
+	}
+}
+
+.socialList > li {
+	opacity: 0.5;
+}
+
+.socialList:hover > li {
+	opacity: 0.25;
+}
+
+.socialList:hover > li:hover {
+	opacity: 1;
+	> a::after {
+		opacity: 1;
+		transform: translateY(0%);
+	}
 }
 
 .resume:hover {
 	color: #ea4c89;
-	opacity: 1;
 }
 
 .twitter:hover {
 	color: #00aced;
-	opacity: 1;
 }
 
 .linkedin:hover {
 	color: #007bb6;
-	opacity: 1;
 }
 
 .github:hover {
 	color: #171516;
-	opacity: 1;
 }
 
 .email:hover {
 	color: #64D448;
-	opacity: 1;
 }

@@ -35,10 +35,10 @@ class Homepage extends React.Component {
 							<div className={styles.roles}>
 								<span>UX Designer</span> & <span>Front-End Developer</span>
 								<ul className={styles.socialList}>
-									<li className={styles.resume}><a title="View Resume" target="_blank" href="../assets/docs/tomconroy_webdeveloper_resume_2017.pdf"><i className="icon-resume" /></a></li>
-									<li className={styles.twitter}><a title="Follow on Twitter" href={`//www.twitter.com/${meta.pkg.twitter}`}><i className="icon-twitter" /></a></li>
-									<li className={styles.linkedin}><a title="Connect on LinkedIn" href={`//www.linkedin.com/in/${meta.pkg.linkedin}`}><i className="icon-linkedin" /></a></li>
-									<li className={styles.github}><a title="View GitHub" href={`//www.github.com/${meta.pkg.github}`}><i className="icon-github" /></a></li>
+									<li className={styles.resume}><a title="Resume" target="_blank" href="../assets/docs/tomconroy_webdeveloper_resume_2017.pdf"><i className="icon-resume" /></a></li>
+									<li className={styles.twitter}><a title="Twitter" href={`//www.twitter.com/${meta.pkg.twitter}`}><i className="icon-twitter" /></a></li>
+									<li className={styles.linkedin}><a title="LinkedIn" href={`//www.linkedin.com/in/${meta.pkg.linkedin}`}><i className="icon-linkedin" /></a></li>
+									<li className={styles.github}><a title="GitHub" href={`//www.github.com/${meta.pkg.github}`}><i className="icon-github" /></a></li>
 									<li className={styles.email}><a title="Email" href={`mailto:tom@thomasconroy.net`}><i className="icon-paper-plane" /></a></li>
 								</ul>
 							</div>
