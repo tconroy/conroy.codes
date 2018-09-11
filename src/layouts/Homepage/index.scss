@@ -140,6 +140,7 @@ h2 {
   padding: 0;
   margin: 0.25em 0;
   font-size: 2rem;
+  max-width: 710px;
   @media all and (max-width: $bp-mobile) {
     justify-content: space-between;
   }

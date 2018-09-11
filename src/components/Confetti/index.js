@@ -1,12 +1,7 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import styles from "./style.scss";
 
 let timer;
-let frame;
-let pointer;
-let confetti = [];
-let particles = 150;
-let spread = 40;
 let sizeMin = 3;
 let sizeMax = 12 - sizeMin;
 let eccentricity = 10;
@@ -23,7 +18,7 @@ let radius2 = radius + radius;
 const color = (r, g, b) => `rgb(${r},${g},${b})`;
 
 const interpolation = (a, b, t) =>
-  (1 - Math.cos(Math.PI * t)) / 2 * (b - a) + a;
+  ((1 - Math.cos(Math.PI * t)) / 2) * (b - a) + a;
 
 const colorThemes = [
   () =>
@@ -91,13 +86,14 @@ const createPoisson = () => {
       //         c--d          Split interval
       //       a------b
       if (a >= c && a < d)
-        if (b > d)
-          domain[l] = d; // Move interior (Left case)
+        if (b > d) domain[l] = d;
+        // Move interior (Left case)
         else domain.splice(l, 2);
       else if (a < c && b > c)
         if (b <= d)
           // Delete interval
-          domain[i] = c; // Move interior (Right case)
+          domain[i] = c;
+        // Move interior (Right case)
         else domain.splice(i, 0, c, d); // Split interval
     }
 
@@ -176,6 +172,9 @@ function Confetto(theme) {
 }
 
 export default class Confetti extends React.Component {
+  static propTypes = {
+    children: PropTypes.any
+  };
   constructor(props) {
     super(props);
     this.show = this.show.bind(this);
@@ -197,7 +196,6 @@ export default class Confetti extends React.Component {
       let delta = prev ? timestamp - prev : 0;
       prev = timestamp;
       for (var i = confetti.length; i >= 0; i--) {
-        console.log("?", confetti[i]);
         if (confetti[i].update(height, delta)) {
           container.removeChild(confetti[i].outer);
           this.setState({ confetti: confetti.splice(i, 1) });
@@ -205,11 +203,11 @@ export default class Confetti extends React.Component {
         }
       }
       if (timer || confetti.length) {
-        return (frame = requestAnimationFrame(loop));
+        return (this.frame = requestAnimationFrame(loop));
       }
 
       document.body.removeChild(container);
-      frame = undefined;
+      this.frame = undefined;
     });
   }
 

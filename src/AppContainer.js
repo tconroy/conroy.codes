@@ -64,7 +64,10 @@ const AppContainer = props => (
 );
 
 AppContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
+  location: {
+    pathname: PropTypes.string
+  }
 };
 
 export default AppContainer;
