@@ -124,7 +124,7 @@ class Homepage extends React.Component {
                 tabIndex="-1"
                 title="Resume"
                 target="_blank"
-                href="../assets/docs/resume-tomconroy-frontend-engineer-2018.pdf"
+                href="../assets/docs/resume-tomconroy-frontend-engineer-2019.pdf"
               >
                 <i className="icon-resume" />
                 <div className={styles.title}>Resume</div>
