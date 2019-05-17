@@ -1,35 +1,33 @@
-import path from "path"
+import path from "path";
 
-import webpack from "webpack"
-import ExtractTextPlugin from "extract-text-webpack-plugin"
-import { phenomicLoader } from "phenomic"
-import PhenomicLoaderFeedWebpackPlugin
-  from "phenomic/lib/loader-feed-webpack-plugin"
+import webpack from "webpack";
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+import { phenomicLoader } from "phenomic";
+import PhenomicLoaderFeedWebpackPlugin from "phenomic/lib/loader-feed-webpack-plugin";
 
-import pkg from "./package.json"
+import pkg from "./package.json";
 
 export default (config = {}) => {
-
   // hot loading for postcss config
   // until this is officially supported
   // https://github.com/postcss/postcss-loader/issues/66
-  const postcssPluginFile = require.resolve("./postcss.config.js")
-  const postcssPlugins = (webpackInstance) => {
-    webpackInstance.addDependency(postcssPluginFile)
-    delete require.cache[postcssPluginFile]
-    return require(postcssPluginFile)(config)
-  }
+  const postcssPluginFile = require.resolve("./postcss.config.js");
+  const postcssPlugins = webpackInstance => {
+    webpackInstance.addDependency(postcssPluginFile);
+    delete require.cache[postcssPluginFile];
+    return require(postcssPluginFile)(config);
+  };
 
   return {
-    ...config.dev && {
-      devtool: "#cheap-module-eval-source-map",
-    },
+    ...(config.dev && {
+      devtool: "#cheap-module-eval-source-map"
+    }),
     module: {
       noParse: /\.min\.js/,
       // webpack 1
       loaders: [
-      // webpack 2
-      /*
+        // webpack 2
+        /*
       rules: [
       */
         // *.md => consumed via phenomic special webpack loader
@@ -39,19 +37,19 @@ export default (config = {}) => {
           test: /\.(md|markdown)$/,
           loader: phenomicLoader,
           query: {
-            context: path.join(__dirname, config.source),
+            context: path.join(__dirname, config.source)
             // plugins: [
             //   ...require("phenomic/lib/loader-preset-markdown").default
             // ]
             // see https://phenomic.io/docs/usage/plugins/
-          },
+          }
         },
 
         // *.json => like in node, return json
         // (not handled by webpack by default)
         {
           test: /\.json$/,
-          loader: "json-loader",
+          loader: "json-loader"
         },
 
         // *.js => babel + eslint
@@ -60,11 +58,12 @@ export default (config = {}) => {
           include: [
             path.resolve(__dirname, "scripts"),
             path.resolve(__dirname, "src"),
+            path.resolve(__dirname, "node_modules/punycode")
           ],
           loaders: [
             "babel-loader?cacheDirectory",
-            "eslint-loader" + (config.dev ? "?emitWarning" : ""),
-          ],
+            "eslint-loader" + (config.dev ? "?emitWarning" : "")
+          ]
         },
 
         // ! \\
@@ -79,15 +78,16 @@ export default (config = {}) => {
           // webpack 1
           loader: ExtractTextPlugin.extract(
             "style-loader",
-            [ `css-loader?modules&localIdentName=${
-              config.production
-              ? "[hash:base64:5]"
-              : "[path][name]--[local]--[hash:base64:5]"
+            [
+              `css-loader?modules&localIdentName=${
+                config.production
+                  ? "[hash:base64:5]"
+                  : "[path][name]--[local]--[hash:base64:5]"
               }`,
               "postcss-loader",
-              "sass-loader",
-            ].join("!"),
-          ),
+              "sass-loader"
+            ].join("!")
+          )
           // webpack 2
           /*
           loader: ExtractTextPlugin.extract({
@@ -122,8 +122,8 @@ export default (config = {}) => {
           // webpack 1
           loader: ExtractTextPlugin.extract(
             "style-loader",
-            [ "css-loader", "postcss-loader", "sass-loader" ].join("!"),
-          ),
+            ["css-loader", "postcss-loader", "sass-loader"].join("!")
+          )
           // webpack 2
           /*
           loader: ExtractTextPlugin.extract({
@@ -156,12 +156,8 @@ export default (config = {}) => {
           include: path.resolve(__dirname, "node_modules"),
           loader: ExtractTextPlugin.extract(
             "style-loader",
-            [
-              "css-loader",
-              "postcss-loader",
-              "sass-loader",
-            ].join("!")
-          ),
+            ["css-loader", "postcss-loader", "sass-loader"].join("!")
+          )
         },
 
         // // webpack 2
@@ -201,16 +197,16 @@ export default (config = {}) => {
           loader: "file-loader",
           query: {
             name: "[path][name].[hash].[ext]",
-            context: path.join(__dirname, config.source),
-          },
+            context: path.join(__dirname, config.source)
+          }
         },
 
         // svg as raw string to be inlined
         {
           test: /\.svg$/,
-          loader: "raw-loader",
-        },
-      ],
+          loader: "raw-loader"
+        }
+      ]
     },
 
     // webpack 1
@@ -240,7 +236,7 @@ export default (config = {}) => {
         // here you define generic metadata for your feed
         feedsOptions: {
           title: pkg.name,
-          site_url: pkg.homepage,
+          site_url: pkg.homepage
         },
         feeds: {
           // here we define one feed, but you can generate multiple, based
@@ -250,10 +246,10 @@ export default (config = {}) => {
               filter: { layout: "Post" },
               sort: "date",
               reverse: true,
-              limit: 20,
-            },
-          },
-        },
+              limit: 20
+            }
+          }
+        }
       }),
 
       // webpack 1
@@ -266,32 +262,30 @@ export default (config = {}) => {
       }),
       */
 
-      ...config.production && [
+      ...(config.production && [
         // webpack 2
         // DedupePlugin does not work correctly with Webpack 2, yet ;)
         // https://github.com/webpack/webpack/issues/2644
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.UglifyJsPlugin(
-          { compress: { warnings: false } }
-        ),
-      ],
+        new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+      ])
     ],
 
     output: {
       path: path.join(__dirname, config.destination),
       publicPath: config.baseUrl.pathname,
-      filename: "[name].[hash].js",
+      filename: "[name].[hash].js"
     },
 
     // webpack 1
     resolve: {
-      extensions: [ ".js", ".json", "" ],
-      root: [ path.join(__dirname, "node_modules") ],
+      extensions: [".js", ".json", ""],
+      root: [path.join(__dirname, "node_modules")]
     },
-    resolveLoader: { root: [ path.join(__dirname, "node_modules") ] },
+    resolveLoader: { root: [path.join(__dirname, "node_modules")] }
     // webpack 2
     /*
     resolve: { extensions: [ ".js", ".json" ] },
     */
-  }
-}
+  };
+};
