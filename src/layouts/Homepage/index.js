@@ -20,9 +20,9 @@ class HomepageContent extends React.Component {
         "experiences",
         "your",
         "users",
-        "will"
+        "will",
       ],
-      index: 0
+      index: 0,
     };
   }
   componentDidMount() {
@@ -39,7 +39,7 @@ class HomepageContent extends React.Component {
       }
       this.setState({
         ...this.state,
-        index: this.state.index + 1
+        index: this.state.index + 1,
       });
     }, 275);
   }
@@ -67,7 +67,7 @@ class HomepageContent extends React.Component {
         })}
         <span
           className={styles.heart}
-          ref={el => (this.heartEl = el)}
+          ref={(el) => (this.heartEl = el)}
           onClick={() => {
             if (!this.state.showConfetti) {
               this.setState({ showConfetti: true }, () => {
@@ -85,7 +85,7 @@ class HomepageContent extends React.Component {
               spread: 120,
               startVelocity: 30,
               elementCount: 200,
-              decay: 0.95
+              decay: 0.95,
             }}
           />
           <img
@@ -102,7 +102,7 @@ class Homepage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showConfetti: false
+      showConfetti: false,
     };
   }
   render() {
@@ -124,7 +124,7 @@ class Homepage extends React.Component {
                 tabIndex="-1"
                 title="Resume"
                 target="_blank"
-                href="../assets/docs/resume-tomconroy-frontend-engineer-2019.pdf"
+                href="../assets/docs/tomconroy-resume-2020.pdf"
               >
                 <i className="icon-resume" />
                 <div className={styles.title}>Resume</div>
