@@ -10,6 +10,7 @@
     "export": "next export -o dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "start": "next start",
+    "stylelint": "stylelint src/**",
     "test": "jest --passWithNoTests",
     "type-check": "tsc --pretty --noEmit"
   },
