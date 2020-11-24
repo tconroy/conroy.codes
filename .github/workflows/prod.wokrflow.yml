@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-    - name: Cache node modules
+    - name: Deploy (using cached modules)
       uses: actions/cache@v2
       env:
         cache-name: cache-node-modules
@@ -30,8 +30,6 @@ jobs:
     - name: Install Node.js dependencies
       if: steps.cache-step.outputs.cache-hit != 'true'
       run: npm ci
-
-    - name: Build
     - run: npm run build-prod --if-present
     - run: pm2 reload next-js
       env:
