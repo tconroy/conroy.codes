@@ -6,7 +6,7 @@ const baseUrl = '';
 
 module.exports = withBundleAnalyzer({
   poweredByHeader: false,
-  trailingSlash: true,
+  trailingSlash: false,
   basePath: baseUrl,
   env: {
     baseUrl: baseUrl,
