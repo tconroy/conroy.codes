@@ -9,6 +9,7 @@
     "dev": "next",
     "export": "next export -o dist",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
+    "lint:fix": "npm run lint -- --fix",
     "start": "next start",
     "stylelint": "stylelint src/**",
     "test": "jest --passWithNoTests",
