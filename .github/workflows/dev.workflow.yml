@@ -3,26 +3,14 @@ name: Development Wokflow - test, linting, QA
 on: push
 
 jobs:
-  install-job:
+  install:
     name: Configure Environment
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
-        test-command:
-          - test
-          - lint
-          - stylelint
-          - type-check
-
     steps:
       - uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-
+          node-version: '14.x'
       - name: Cache node modules
         uses: actions/@cache@v2
         env:
@@ -38,10 +26,51 @@ jobs:
       - name: Install Node.js dependencies
         if: steps.cache-step.outputs.cache-hit != 'true'
         run: npm ci
+  
+  lint:
+    runs-on: ubuntu-latest
+    name: Run linters
+    needs: [install]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - uses: actions/@cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - run: |
+          npm run type-check
+          npm run lint
+          npm run stylelint
 
-      - name: Run tests
-        run: npm run ${{ matrtix['test-command'] }}
-
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    needs: [install]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - uses: actions/@cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - run: npm test
 
   # run-linters-job:
   #   name: Lint
