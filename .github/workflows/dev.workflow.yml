@@ -46,8 +46,8 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
+      - run: npm ci
       - run: |
-          npm ci
           npm run type-check
           npm run lint
           npm run stylelint
@@ -71,55 +71,5 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - run: |
-          npm ci
-          npm test
-
-  # run-linters-job:
-  #   name: Lint
-  #   runs-on: ubuntu-latest
-  #   needs: [install-job]
-
-  #   steps:
-  #     - uses: actions/checkout@v2
-
-  #     - name: Retrieve Node Modules cache
-  #       uses: actions/cache@v2
-  #       env:
-  #         cache-name: cache-node-modules
-  #       with:
-  #         path: ~/.npm
-  #         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-build-${{ env.cache-name }}-
-  #           ${{ runner.os }}-build-
-  #           ${{ runner.os }}-
-
-  #     - name: Lint TS, JS and Styles
-  #       run: |
-  #         npm run type-check
-  #         npm run lint
-  #         npm run stylelint
-
-  # run-tests-job:
-  #   name: Test
-  #   runs-on: ubuntu-latest
-  #   needs: [install-job]
-
-  #   steps:
-  #     - uses: actions/checkout@v2
-
-  #     - name: Retrieve Node Modules cache
-  #       uses: actions/cache@v2
-  #       env:
-  #         cache-name: cache-node-modules
-  #       with:
-  #         path: ~/.npm
-  #         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-build-${{ env.cache-name }}-
-  #           ${{ runner.os }}-build-
-  #           ${{ runner.os }}-
-
-  #     - name: Run unit tests
-  #       run: npm test
+      - run: npm ci
+      - run: npm test
