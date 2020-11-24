@@ -1,9 +1,23 @@
-# node / npm
-node_modules
-*.log
+# dependencies
+/node_modules
 
-# phenomic build
-dist
+# testing
+/coverage
 
-# Mac OS
+# export
+/dist
+
+# production
+/build
+/dist
+/.next
+/bundles
+
+# misc
 .DS_Store
+Thumbs.db
+.env
+next-env.d.ts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
