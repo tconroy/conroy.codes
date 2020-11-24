@@ -1,0 +1,27 @@
+name: Production Workflow - Build and Deploy
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm ci
+    - run: npm run build-prod --if-present
+    - run: pm2 reload next-js
+      env:
+        CI: true
+        NEXT_TELEMETRY_DISABLED: true

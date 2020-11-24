@@ -1,0 +1,42 @@
+name: Development Wokflow - test, linting, QA
+
+on: push
+
+jobs:
+  install-job:
+    name: Configure Environment
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
+  run-linters-job:
+    name: Lint
+    runs-on: ubuntu-latest
+    needs: install-job
+
+    steps:
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          eslint: true
+          prettier: true
+
+  run-tests-job:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: install-job
+
+    steps:
+      - name: Run unit tests
+        run: npm test
