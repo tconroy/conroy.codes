@@ -47,6 +47,7 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: |
+          npm ci
           npm run type-check
           npm run lint
           npm run stylelint
@@ -70,7 +71,9 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - run: npm test
+      - run: |
+          npm ci
+          npm test
 
   # run-linters-job:
   #   name: Lint
