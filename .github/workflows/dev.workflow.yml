@@ -6,6 +6,9 @@ jobs:
   install-job:
     name: Configure Environment
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x]
 
     steps:
       - name: Check out Git repository
@@ -14,7 +17,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: ${{ matrix.node-version }}
 
       - name: Cache Node Modules
         uses: actions/cache@v2
@@ -54,9 +57,11 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Run Linters
+      - name: Run type checker
         run: npm run type-check
+      - name: Run script linting
         run: npm run lint
+      - name: Run style linting
         run: npm run stylelint
 
   run-tests-job:
