@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import { Config } from '../../utils/Config';
 import { ArticleMeta } from './ArticleMeta';
@@ -11,6 +12,8 @@ import { TwitterMeta } from './TwitterMeta';
 import { MetaProps } from './types';
 
 export function Meta(props: MetaProps) {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -41,7 +44,12 @@ export function Meta(props: MetaProps) {
               image={props.post.image}
             />
             <ArticleMeta publishedDate={props.post.date} modifiedDate={props.post.modified_date} />
-            <LDJson title={props.title} description={props.description} post={props.post} />
+            <LDJson
+              path={router.asPath}
+              title={props.title}
+              description={props.description}
+              post={props.post}
+            />
           </>
         )}
       </Head>
