@@ -3,15 +3,15 @@ import React from 'react';
 import { format } from 'date-fns';
 import Link from 'next/link';
 
-import { Pagination, IPaginationProps } from '../pagination/Pagination';
+import { Pagination, PaginationProps } from '../pagination/Pagination';
 import { PostItems } from '../utils/Content';
 
-export type IBlogGalleryProps = {
+export type BlogGalleryProps = {
   posts: PostItems[];
-  pagination: IPaginationProps;
+  pagination: PaginationProps;
 };
 
-const BlogGallery = (props: IBlogGalleryProps) => (
+const BlogGallery = (props: BlogGalleryProps) => (
   <>
     <ul>
       {props.posts.map((elt) => (

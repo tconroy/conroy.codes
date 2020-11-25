@@ -5,12 +5,12 @@ import Link from 'next/link';
 import { Navbar } from '../navigation/Navbar';
 import { Config } from '../utils/Config';
 
-type IMainProps = {
+type MainProps = {
   meta: ReactNode;
   children: ReactNode;
 };
 
-const Main = (props: IMainProps) => (
+const Main = (props: MainProps) => (
   <div className="antialiased w-full text-gray-700">
     {props.meta}
 

@@ -2,14 +2,14 @@ import React from 'react';
 
 import { GetStaticProps } from 'next';
 
-import { BlogGallery, IBlogGalleryProps } from '../blog/BlogGallery';
+import { BlogGallery, BlogGalleryProps } from '../blog/BlogGallery';
 import { Meta } from '../layout/Meta';
-import { IPaginationProps } from '../pagination/Pagination';
+import { PaginationProps } from '../pagination/Pagination';
 import { Main } from '../templates/Main';
 import { Config } from '../utils/Config';
 import { getAllPosts } from '../utils/Content';
 
-const Index = (props: IBlogGalleryProps) => (
+const Index = (props: BlogGalleryProps) => (
   <Main
     meta={(
       <Meta
@@ -22,9 +22,9 @@ const Index = (props: IBlogGalleryProps) => (
   </Main>
 );
 
-export const getStaticProps: GetStaticProps<IBlogGalleryProps> = async () => {
+export const getStaticProps: GetStaticProps<BlogGalleryProps> = async () => {
   const posts = getAllPosts(['title', 'date', 'slug']);
-  const pagination: IPaginationProps = {};
+  const pagination: PaginationProps = {};
 
   if (posts.length > Config.pagination_size) {
     pagination.next = '/page2';
