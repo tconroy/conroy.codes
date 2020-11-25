@@ -8,7 +8,8 @@ on:
 jobs:
   install:
     name: Configure Environment
-    runs-on: ubuntu-latest
+    # should match production server.
+    runs-on: ubuntu-16.04
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
