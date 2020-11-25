@@ -11,11 +11,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
         node-version: '14.x'
-    - name: Deploy (using cached modules)
+
+    - name: Use NextJS Build cache
+      uses: actions/cache@v2
+      env:
+        cache-name: cache-nextjs-build
+      with:
+          path: ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Use node_modules cache
       uses: actions/cache@v2
       env:
         cache-name: cache-node-modules
@@ -30,6 +38,7 @@ jobs:
     - name: Install Node.js dependencies
       if: steps.cache-step.outputs.cache-hit != 'true'
       run: npm ci
+
     - name: Build
       env:
         NEXT_TELEMETRY_DISABLED: true
