@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { useRouter } from 'next/router';
-
 import { Config } from '../../utils/Config';
 import { addTrailingSlash } from '../../utils/Url';
 import { MetaProps } from './types';
@@ -44,16 +42,19 @@ type LDJsonProps = {
   title: string;
   description: string;
   post?: MetaProps['post'];
+  path: string;
 };
 
-export function LDJson({ title, description, post }: LDJsonProps) {
+export function LDJson({
+  title, description, post, path,
+}: LDJsonProps) {
   return (
     <script
       type="application/ld+json"
       key="ldjson"
       // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(makeSchema(useRouter().asPath, title, description, post)),
+        __html: JSON.stringify(makeSchema(path, title, description, post)),
       }}
     />
   );

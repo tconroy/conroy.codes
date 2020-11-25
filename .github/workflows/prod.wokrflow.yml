@@ -30,8 +30,9 @@ jobs:
     - name: Install Node.js dependencies
       if: steps.cache-step.outputs.cache-hit != 'true'
       run: npm ci
-    - run: npm run build-prod --if-present
-    - run: pm2 reload next-js
+    - name: Build
       env:
-        CI: true
         NEXT_TELEMETRY_DISABLED: true
+      run: npm run build-prod --if-present
+    - name: Reload PM2
+      run: pm2 reload next-js
