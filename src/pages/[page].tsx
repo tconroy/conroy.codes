@@ -2,25 +2,25 @@ import React from 'react';
 
 import { GetStaticPaths, GetStaticProps } from 'next';
 
-import { BlogGallery, IBlogGalleryProps } from '../blog/BlogGallery';
+import { BlogGallery, BlogGalleryProps } from '../blog/BlogGallery';
 import { Meta } from '../layout/Meta';
-import { IPaginationProps } from '../pagination/Pagination';
+import { PaginationProps } from '../pagination/Pagination';
 import { Main } from '../templates/Main';
 import { Config } from '../utils/Config';
 import { getAllPosts } from '../utils/Content';
 import { convertTo2D } from '../utils/Pagination';
 
-type IPageUrl = {
+type PageUrl = {
   page: string;
 };
 
-const PaginatePosts = (props: IBlogGalleryProps) => (
+const PaginatePosts = (props: BlogGalleryProps) => (
   <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
     <BlogGallery posts={props.posts} pagination={props.pagination} />
   </Main>
 );
 
-export const getStaticPaths: GetStaticPaths<IPageUrl> = async () => {
+export const getStaticPaths: GetStaticPaths<PageUrl> = async () => {
   const posts = getAllPosts(['slug']);
 
   const pages = convertTo2D(posts, Config.pagination_size);
@@ -38,14 +38,14 @@ export const getStaticPaths: GetStaticPaths<IPageUrl> = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<IBlogGalleryProps, IPageUrl> = async ({ params }) => {
+export const getStaticProps: GetStaticProps<BlogGalleryProps, PageUrl> = async ({ params }) => {
   const posts = getAllPosts(['title', 'date', 'slug']);
 
   const pages = convertTo2D(posts, Config.pagination_size);
   const currentPage = Number(params!.page.replace('page', ''));
   const currentInd = currentPage - 1;
 
-  const pagination: IPaginationProps = {};
+  const pagination: PaginationProps = {};
 
   if (currentPage < pages.length) {
     pagination.next = `page${currentPage + 1}`;

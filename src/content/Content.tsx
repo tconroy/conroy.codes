@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 
-type IContentProps = {
+type ContentProps = {
   children: ReactNode;
 };
 
-const Content = (props: IContentProps) => (
+const Content = (props: ContentProps) => (
   <div className="content">
     {props.children}
 

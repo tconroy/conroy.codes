@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
 
-type INavbarProps = {
+type NavbarProps = {
   children: ReactNode;
 };
 
-const Navbar = (props: INavbarProps) => (
+const Navbar = (props: NavbarProps) => (
   <ul className="navbar flex flex-wrap text-xl">
     {props.children}
 

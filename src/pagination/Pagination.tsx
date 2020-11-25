@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 import { convertUrlToLinkHref } from '../utils/Pagination';
 
-export type IPaginationProps = {
+export type PaginationProps = {
   previous?: string;
   next?: string;
 };
 
-const Pagination = (props: IPaginationProps) => (
+const Pagination = (props: PaginationProps) => (
   <div className="text-sm flex justify-between">
     {props.previous && (
       <div>
