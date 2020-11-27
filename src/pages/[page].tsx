@@ -3,11 +3,11 @@ import React from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 
 import { BlogGallery, BlogGalleryProps } from '../blog/BlogGallery';
+import getAllPostPreviews from '../getAllPostPreviews';
 import { Meta } from '../layout/Meta';
 import { PaginationProps } from '../pagination/Pagination';
 import { Main } from '../templates/Main';
 import { Config } from '../utils/Config';
-import { getAllPosts } from '../utils/Content';
 import { convertTo2D } from '../utils/Pagination';
 
 type PageUrl = {
@@ -21,7 +21,7 @@ const PaginatePosts = (props: BlogGalleryProps) => (
 );
 
 export const getStaticPaths: GetStaticPaths<PageUrl> = async () => {
-  const posts = getAllPosts(['slug']);
+  const posts = getAllPostPreviews();
 
   const pages = convertTo2D(posts, Config.pagination_size);
 
@@ -39,7 +39,7 @@ export const getStaticPaths: GetStaticPaths<PageUrl> = async () => {
 };
 
 export const getStaticProps: GetStaticProps<BlogGalleryProps, PageUrl> = async ({ params }) => {
-  const posts = getAllPosts(['title', 'date', 'slug']);
+  const posts = getAllPostPreviews();
 
   const pages = convertTo2D(posts, Config.pagination_size);
   const currentPage = Number(params!.page.replace('page', ''));

@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { GetStaticProps } from 'next';
-
-import { BlogGallery, BlogGalleryProps } from '../blog/BlogGallery';
+import { BlogGallery } from '../blog/BlogGallery';
+import getAllPostPreviews from '../getAllPostPreviews';
 import { Meta } from '../layout/Meta';
-import { PaginationProps } from '../pagination/Pagination';
 import { Main } from '../templates/Main';
 import { Config } from '../utils/Config';
-import { getAllPosts } from '../utils/Content';
 
-const Index = (props: BlogGalleryProps) => (
+const posts = getAllPostPreviews();
+
+const Index = () => (
   <Main
     meta={(
       <Meta
@@ -18,24 +17,8 @@ const Index = (props: BlogGalleryProps) => (
       />
     )}
   >
-    <BlogGallery posts={props.posts} pagination={props.pagination} />
+    <BlogGallery posts={posts} />
   </Main>
 );
-
-export const getStaticProps: GetStaticProps<BlogGalleryProps> = async () => {
-  const posts = getAllPosts(['title', 'date', 'slug']);
-  const pagination: PaginationProps = {};
-
-  if (posts.length > Config.pagination_size) {
-    pagination.next = '/page2';
-  }
-
-  return {
-    props: {
-      posts: posts.slice(0, Config.pagination_size),
-      pagination,
-    },
-  };
-};
 
 export default Index;

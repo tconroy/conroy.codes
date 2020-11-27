@@ -10,4 +10,10 @@
   ],
   "css.validate": false,
   "stylelint.enable": true,
+  "cSpell.words": [
+    "mapbox",
+    "rehype",
+    "tinytime",
+    "unist"
+  ],
 }
