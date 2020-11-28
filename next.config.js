@@ -1,9 +1,9 @@
-const { createLoader } = require('simple-functional-loader')
-const rehypePrism = require('@mapbox/rehype-prism')
-const visit = require('unist-util-visit')
+const { createLoader } = require('simple-functional-loader');
+const rehypePrism = require('@mapbox/rehype-prism');
+const visit = require('unist-util-visit');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
-})
+});
 
 const tokenClassNames = {
   tag: 'text-code-red',
@@ -17,7 +17,7 @@ const tokenClassNames = {
   function: 'text-code-blue',
   boolean: 'text-code-red',
   comment: 'text-gray-400 italic',
-}
+};
 
 module.exports = withBundleAnalyzer({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
@@ -36,7 +36,7 @@ module.exports = withBundleAnalyzer({
           },
         },
       ],
-    })
+    });
 
     const mdx = [
       options.defaultLoaders.babel,
@@ -48,17 +48,17 @@ module.exports = withBundleAnalyzer({
             () => {
               return (tree) => {
                 visit(tree, 'element', (node, index, parent) => {
-                  let [token, type] = node.properties.className || []
+                  let [token, type] = node.properties.className || [];
                   if (token === 'token') {
-                    node.properties.className = [tokenClassNames[type]]
+                    node.properties.className = [tokenClassNames[type]];
                   }
-                })
-              }
+                });
+              };
             },
           ],
         },
       },
-    ]
+    ];
 
     config.module.rules.push({
       test: /\.mdx$/,
@@ -69,12 +69,12 @@ module.exports = withBundleAnalyzer({
             ...mdx,
             createLoader(function (src) {
               if (src.includes('<!--more-->')) {
-                const [preview] = src.split('<!--more-->')
-                return this.callback(null, preview)
+                const [preview] = src.split('<!--more-->');
+                return this.callback(null, preview);
               }
 
-              const [preview] = src.split('<!--/excerpt-->')
-              return this.callback(null, preview.replace('<!--excerpt-->', ''))
+              const [preview] = src.split('<!--/excerpt-->');
+              return this.callback(null, preview.replace('<!--excerpt-->', ''));
             }),
           ],
         },
@@ -87,29 +87,29 @@ module.exports = withBundleAnalyzer({
                 'export { getStaticProps } from "@/getStaticProps"',
                 src,
                 'export default (props) => <Post meta={meta} {...props} />',
-              ].join('\n')
+              ].join('\n');
 
               if (content.includes('<!--more-->')) {
-                return this.callback(null, content.split('<!--more-->').join('\n'))
+                return this.callback(null, content.split('<!--more-->').join('\n'));
               }
 
-              return this.callback(null, content.replace(/<!--excerpt-->.*<!--\/excerpt-->/s, ''))
+              return this.callback(null, content.replace(/<!--excerpt-->.*<!--\/excerpt-->/s, ''));
             }),
           ],
         },
       ],
-    })
+    });
 
     if (!options.dev && options.isServer) {
-      const originalEntry = config.entry
+      const originalEntry = config.entry;
 
       config.entry = async () => {
-        const entries = { ...(await originalEntry()) }
-        entries['./scripts/build-rss.js'] = './scripts/build-rss.js'
-        return entries
-      }
+        const entries = { ...(await originalEntry()) };
+        entries['./scripts/build-rss.js'] = './scripts/build-rss.ts';
+        return entries;
+      };
     }
 
-    return config
+    return config;
   },
-})
+});

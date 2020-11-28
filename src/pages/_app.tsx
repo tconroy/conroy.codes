@@ -1,11 +1,23 @@
 import React from 'react';
 
-import { AppProps } from 'next/app';
+import { DefaultSeo } from 'next-seo';
+import App from 'next/app';
+
+import SEO from '../utils/SEODefaults';
 
 import '../styles/main.css';
 import '../styles/prism-a11y-dark.css';
 
-// eslint-disable-next-line react/jsx-props-no-spreading
-const MyApp = ({ Component, pageProps }: AppProps) => <Component {...pageProps} />;
-
-export default MyApp;
+export default class MyApp extends App {
+  render() {
+    const { Component, pageProps } = this.props;
+    return (
+      <>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <DefaultSeo {...SEO} />
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <Component {...pageProps} />
+      </>
+    );
+  }
+}

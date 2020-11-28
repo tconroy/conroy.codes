@@ -11,29 +11,29 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []) {
-  const realSlug = slug.replace(/\.mdx$/, '');
-  const fullPath = join(postsDirectory, realSlug, 'index.mdx');
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
-  const items: PostItems = {};
+// export function getPostBySlug(slug: string, fields: string[] = []) {
+//   const realSlug = slug.replace(/\.mdx$/, '');
+//   const fullPath = join(postsDirectory, realSlug, 'index.mdx');
+//   const fileContents = fs.readFileSync(fullPath, 'utf8');
+//   const { data, content } = matter(fileContents);
+//   const items: PostItems = {};
 
-  // Ensure only the minimal needed data is exposed
-  fields.forEach((field) => {
-    if (field === 'slug') {
-      items[field] = realSlug;
-    }
-    if (field === 'content') {
-      items[field] = content;
-    }
+//   // Ensure only the minimal needed data is exposed
+//   fields.forEach((field) => {
+//     if (field === 'slug') {
+//       items[field] = realSlug;
+//     }
+//     if (field === 'content') {
+//       items[field] = content;
+//     }
 
-    if (data[field]) {
-      items[field] = data[field];
-    }
-  });
+//     if (data[field]) {
+//       items[field] = data[field];
+//     }
+//   });
 
-  return items;
-}
+//   return items;
+// }
 
 // export function getAllPosts(fields: string[] = []) {
 //   const slugs = getPostSlugs();

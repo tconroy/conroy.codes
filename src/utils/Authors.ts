@@ -1,9 +1,4 @@
-export type Author = {
-  fullName: string;
-  firstName: string;
-  twitter: string;
-  email: string;
-};
+import { Author } from '@/@types/common/types';
 
 const tconroy: Author = {
   fullName: 'Tom Conroy',
@@ -12,6 +7,4 @@ const tconroy: Author = {
   email: 'tom@thomasconroy.net',
 };
 
-export {
-  tconroy,
-};
+export { tconroy };

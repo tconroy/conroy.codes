@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "node_modules",
-    "paths": {
-      "@/*": ["../src/*"]
-    },
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "allowUnreachableCode": false,
+    "baseUrl": "node_modules",
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -22,6 +19,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "dist",
+    "paths": {
+      "@/*": ["./../src/*"]
+    },
     "preserveConstEnums": true,
     "removeComments": true,
     "resolveJsonModule": true,
@@ -32,10 +32,12 @@
   },
   "exclude": ["./dist/**/*", "./node_modules/**/*"],
   "include": [
-    "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "jest.config.js",
+    "next-env.d.ts",
+    "next.config.js",
+    "tailwind.config.js",
     "tests/__mocks__/fileMock.js"
   ]
 }

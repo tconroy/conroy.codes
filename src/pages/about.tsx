@@ -7,15 +7,17 @@ import { Main } from '../templates/Main';
 const About = () => (
   <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
     <Content>
+      <p>Tom Conroy is a Software Engineer located in New York City.</p>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga recusandae quidem.
-        Quaerat molestiae blanditiis doloremque possimus labore voluptatibus distinctio recusandae
-        autem esse explicabo molestias officia placeat, accusamus aut saepe.
+        He primarily works with JavaScript (TypeScript in particular) on frontend projects, as well
+        as on the backend with NodeJS.
       </p>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione fuga recusandae quidem.
-        Quaerat molestiae blanditiis doloremque possimus labore voluptatibus distinctio recusandae
-        autem esse explicabo molestias officia placeat, accusamus aut saepe.
+        He currently is employed full time as a Software Engineer at
+        {' '}
+        <a href="https://www.squarespace.com">Squarespace</a>
+        , helping to empower creatives to share
+        their voice and grow their online presence.
       </p>
     </Content>
   </Main>
