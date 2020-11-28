@@ -20,7 +20,7 @@
     "noUnusedParameters": true,
     "outDir": "dist",
     "paths": {
-      "@/*": ["./../src/*"]
+      "~/*": ["./../src/*"]
     },
     "preserveConstEnums": true,
     "removeComments": true,

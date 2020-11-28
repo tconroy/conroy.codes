@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Post } from '@/@types/common/types';
 import Link from 'next/link';
 import tinytime from 'tinytime';
+
+import { Post } from '~/@types/common/types';
 
 const postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}');
 

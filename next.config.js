@@ -83,8 +83,8 @@ module.exports = withBundleAnalyzer({
             ...mdx,
             createLoader(function (src) {
               const content = [
-                'import Post from "@/components/Post"',
-                'export { getStaticProps } from "@/getStaticProps"',
+                'import Post from "~/components/Post"',
+                'export { getStaticProps } from "~/getStaticProps"',
                 src,
                 'export default (props) => <Post meta={meta} {...props} />',
               ].join('\n');

@@ -1,20 +1,19 @@
-// import { format } from 'path';
 import React, { PropsWithChildren } from 'react';
 
-import { Post } from '@/@types/common/types';
 import tinytime from 'tinytime';
 
 import { Content } from '../content/Content';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
+import { Post as PostType } from '~/@types/common/types';
 
 const postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}');
 
 type DisplayPostProps = PropsWithChildren<{
-  meta: Post['module']['meta'];
+  meta: PostType['module']['meta'];
 }>;
 
-export default function DisplayPost({ meta, children }: DisplayPostProps) {
+export default function Post({ meta, children }: DisplayPostProps) {
   return (
     <Main
       meta={(
