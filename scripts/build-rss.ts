@@ -1,9 +1,10 @@
 import fs from 'fs';
 
-import { Author } from '@/@types/common/types';
-import getAllPostPreviews from '@/getAllPostPreviews';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import RSS from 'rss';
+
+import { Author } from '~/@types/common/types';
+import getAllPostPreviews from '~/getAllPostPreviews';
 
 const feed = new RSS({
   title: 'Tom Conroy',

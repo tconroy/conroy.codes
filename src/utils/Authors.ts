@@ -1,4 +1,4 @@
-import { Author } from '@/@types/common/types';
+import { Author } from '~/@types/common/types';
 
 const tconroy: Author = {
   fullName: 'Tom Conroy',
