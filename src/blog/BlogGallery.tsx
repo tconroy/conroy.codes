@@ -1,33 +1,34 @@
 import React from 'react';
 
-import { format } from 'date-fns';
+import { Post } from '@/@types/common/types';
 import Link from 'next/link';
+import tinytime from 'tinytime';
 
-import { Pagination, PaginationProps } from '../pagination/Pagination';
-import { PostItems } from '../utils/Content';
+const postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}');
 
 export type BlogGalleryProps = {
-  posts: PostItems[];
-  pagination: PaginationProps;
+  posts: Array<Post>;
 };
 
-const BlogGallery = (props: BlogGalleryProps) => (
+const BlogGallery = ({ posts }: BlogGalleryProps) => (
   <>
     <ul>
-      {props.posts.map((elt) => (
-        <li key={elt.slug} className="mb-3 flex justify-between">
-          <Link href="/posts/[slug]" as={`/posts/${elt.slug}`}>
+      {posts.map(({ link, module: { meta, default: PreviewTextComponent } }) => (
+        <li key={link} className="mb-3 flex justify-between">
+          <Link href={link}>
             <a>
-              <h2>{elt.title}</h2>
+              <h2>{meta.title}</h2>
             </a>
           </Link>
 
-          <div>{format(new Date(elt.date), 'LLL d, yyyy')}</div>
+          <div>
+            <time dateTime={meta.date}>{postDateTemplate.render(new Date(meta.date))}</time>
+          </div>
+
+          <PreviewTextComponent />
         </li>
       ))}
     </ul>
-
-    <Pagination previous={props.pagination.previous} next={props.pagination.next} />
   </>
 );
 

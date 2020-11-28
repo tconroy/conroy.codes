@@ -1,32 +1,26 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { ReactNode } from 'react';
+
+import { MDXProvider } from '@mdx-js/react';
+import Image from 'next/image';
+
+const mdxComponents = {
+  pre: ({ className, ...props }: { className: string }) => (
+    <pre className={`${className} rounded-md bg-gray-800 py-3 px-4 overflow-x-auto`} {...props} />
+  ),
+  'pre.code': ({ className, ...props }: { className: string }) => (
+    <code className={`${className} text-gray-200`} {...props} />
+  ),
+  Image,
+};
 
 type ContentProps = {
   children: ReactNode;
 };
 
-const Content = (props: ContentProps) => (
+const Content = ({ children }: ContentProps) => (
   <div className="content">
-    {props.children}
-
-    <style jsx>
-      {`
-        .content :global(p) {
-          @apply my-6;
-        }
-
-        .content :global(ul) {
-          @apply my-6;
-        }
-
-        .content :global(h2) {
-          @apply text-2xl font-semibold text-gray-700 my-4;
-        }
-
-        .content :global(h3) {
-          @apply text-xl font-semibold text-gray-700 my-4;
-        }
-      `}
-    </style>
+    <MDXProvider components={mdxComponents}>{children}</MDXProvider>
   </div>
 );
 

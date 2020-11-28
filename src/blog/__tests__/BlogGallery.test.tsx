@@ -6,6 +6,6 @@ import { BlogGallery } from '../BlogGallery';
 
 describe('BlogGallery', () => {
   it('should render the expected results', () => {
-    expect(render(<BlogGallery posts={[]} pagination={{}} />).container).toMatchSnapshot();
+    expect(render(<BlogGallery posts={[]} />).container).toMatchSnapshot();
   });
 });

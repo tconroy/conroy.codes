@@ -3,8 +3,5 @@
 exports[`BlogGallery should render the expected results 1`] = `
 <div>
   <ul />
-  <div
-    class="text-sm flex justify-between"
-  />
 </div>
 `;

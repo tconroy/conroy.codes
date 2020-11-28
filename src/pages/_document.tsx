@@ -1,14 +1,21 @@
 import React from 'react';
 
 import Document, {
-  Html, Head, Main, NextScript,
+  Html, Head, Main, NextScript, DocumentContext,
 } from 'next/document';
 
 class MyDocument extends Document {
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
+  }
+
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        </Head>
         <body>
           <Main />
           <NextScript />

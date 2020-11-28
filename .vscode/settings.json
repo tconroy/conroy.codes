@@ -10,4 +10,14 @@
   ],
   "css.validate": false,
   "stylelint.enable": true,
+  "cSpell.words": [
+    "Squarespace",
+    "mapbox",
+    "rehype",
+    "stylelint",
+    "tailwindcss",
+    "tinytime",
+    "typeahead",
+    "unist"
+  ]
 }

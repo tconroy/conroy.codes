@@ -33,7 +33,10 @@ const Main = (props: MainProps) => (
               </Link>
             </li>
             <li className="mr-6">
-              <a href="https://github.com/ixartz/Next-js-Blog-Boilerplate">GitHub</a>
+              <a href="https://github.com/tconroy">GitHub</a>
+            </li>
+            <li className="mr-6">
+              <a href="/assets/documents/tomconroy-resume-2020.pdf">resumé</a>
             </li>
           </Navbar>
         </div>
@@ -50,7 +53,7 @@ const Main = (props: MainProps) => (
         {' '}
         by
         {' '}
-        <a href="https://creativedesignsguru.com">CreativeDesignsGuru</a>
+        <a href="/">Tom Conroy</a>
       </div>
     </div>
   </div>
