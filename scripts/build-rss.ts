@@ -3,9 +3,11 @@ import fs from 'fs';
 
 import RSS from 'rss';
 
-import { Post, Author } from '~/@types/common/types';
+import { Post } from '~/@types/common/types';
 import getAllPostPreviews from '~/getAllPostPreviews';
 import SEODefaults from '~/utils/SEODefaults';
+
+type AuthorMeta = { author: string };
 
 (async () => {
   const feed = new RSS({
@@ -22,13 +24,9 @@ import SEODefaults from '~/utils/SEODefaults';
       url: `https://conroy.codes${link}`,
       date: meta.date,
       description: meta.description,
-      custom_elements: meta.authors.map((a: Author) => ({
-        author: [
-          {
-            name: a.fullName,
-          },
-        ],
-      })),
+      custom_elements: ([] as AuthorMeta[]).concat(
+        meta.authors.map((author) => ({ author: `${author.email} (${author.fullName})` })),
+      ),
     });
   });
 
