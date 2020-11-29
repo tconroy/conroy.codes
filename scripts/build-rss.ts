@@ -1,29 +1,36 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import fs from 'fs';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import RSS from 'rss';
 
-import { Author } from '~/@types/common/types';
+import { Post, Author } from '~/@types/common/types';
 import getAllPostPreviews from '~/getAllPostPreviews';
+import SEODefaults from '~/utils/SEODefaults';
 
-const feed = new RSS({
-  title: 'Tom Conroy',
-  site_url: 'https://conroy.codes',
-  feed_url: 'https://conroy.codes/feed.xml',
-});
-
-getAllPostPreviews().forEach(({ link, module: { meta } }) => {
-  feed.item({
-    title: meta.title,
-    guid: link,
-    url: `https://conroy.codes${link}`,
-    date: meta.date,
-    description: meta.description,
-    custom_elements: [].concat(
-      meta.authors.map((author: Author) => ({ author: [{ name: author.fullName }] })),
-    ),
+(async () => {
+  const feed = new RSS({
+    feed_url: `${SEODefaults.openGraph!.url!}feed.xml`,
+    generator: '',
+    site_url: SEODefaults.openGraph!.url!,
+    title: SEODefaults.title!,
   });
-});
 
-fs.mkdirSync('./public', { recursive: true });
-fs.writeFileSync('./public/feed.xml', feed.xml({ indent: true }));
+  getAllPostPreviews().forEach(({ link, module: { meta } }: Post) => {
+    feed.item({
+      title: meta.title,
+      guid: link,
+      url: `https://conroy.codes${link}`,
+      date: meta.date,
+      description: meta.description,
+      custom_elements: meta.authors.map((a: Author) => ({
+        author: [
+          {
+            name: a.fullName,
+          },
+        ],
+      })),
+    });
+  });
+
+  fs.writeFileSync('./public/feed.xml', feed.xml({ indent: true }));
+})();
