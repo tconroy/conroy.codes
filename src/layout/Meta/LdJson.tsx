@@ -17,22 +17,22 @@ function makeSchema(
       name: Config.author,
     },
     '@type': 'BlogPosting',
-    url: `${Config.url}${process.env.baseUrl}${addTrailingSlash(path)}`,
+    url: `${Config.url}${addTrailingSlash(path)}`,
     publisher: {
       '@type': 'Organization',
       logo: {
         '@type': 'ImageObject',
-        url: `${Config.url}${process.env.baseUrl}/assets/images/logo.png`,
+        url: `${Config.url}/assets/images/logo.png`,
       },
       name: `${Config.author}`,
     },
     headline: `${title} | ${Config.site_name}`,
-    image: [`${Config.url}${process.env.baseUrl}${post!.image}`],
+    image: [`${Config.url}${post!.image}`],
     datePublished: `${new Date(post!.date).toISOString()}`,
     dateModified: `${new Date(post!.modified_date).toISOString()}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${Config.url}${process.env.baseUrl}${addTrailingSlash(path)}`,
+      '@id': `${Config.url}${addTrailingSlash(path)}`,
     },
     '@context': 'http://schema.org',
   };
