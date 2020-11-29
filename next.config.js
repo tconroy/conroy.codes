@@ -100,20 +100,17 @@ module.exports = withBundleAnalyzer({
       ],
     });
 
-    // generate an RSS feed.
+    // convert build scripts from TS -> JS for execution.
     if (!options.dev && options.isServer) {
-      const originalEntry = config.entry;
+      ['build-rss', 'build-sitemap'].forEach((scriptName) => {
+        const originalEntry = config.entry;
 
-      config.entry = async () => {
-        const entries = { ...(await originalEntry()) };
-        entries['./scripts/build-rss.js'] = './scripts/build-rss.ts';
-        return entries;
-      };
-    }
-
-    // generate a sitemap.xml
-    if (!options.dev && options.isServer) {
-      require('./scripts/build-sitemap.js');
+        config.entry = async () => {
+          const entries = { ...(await originalEntry()) };
+          entries[`./scripts/${scriptName}.js`] = `./scripts/${scriptName}.ts`;
+          return entries;
+        };
+      });
     }
 
     return config;

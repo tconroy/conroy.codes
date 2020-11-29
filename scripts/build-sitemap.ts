@@ -1,8 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const fs = require('fs');
+import fs from 'fs';
 
-const globby = require('globby');
-const prettier = require('prettier');
+import globby from 'globby';
+import prettier from 'prettier';
+
+import SEODefaults from '~/utils/SEODefaults';
 
 (async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc');
@@ -21,11 +23,14 @@ const prettier = require('prettier');
     .map((page) => {
       const path = page.replace('src/pages', '').replace('.tsx', '').replace('.mdx', '');
 
-      const route = path.includes('/index') ? path.replace('/index', '') : path;
+      const route = (path.includes('/index') ? path.replace('/index', '') : path).replace(
+        /^\/+/,
+        '',
+      ); // remove leading slash
 
       return `
         <url>
-            <loc>${`https://conroy.codes${route}`}</loc>
+            <loc>${`${SEODefaults!.openGraph!.url}${route}`}</loc>
         </url>
       `;
     })
@@ -33,11 +38,11 @@ const prettier = require('prettier');
         </urlset>
     `;
 
-  // If you're not using Prettier, you can remove this.
-  const formatted = prettier.format(sitemap, {
-    ...prettierConfig,
-    parser: 'html',
-  });
-
-  fs.writeFileSync('public/sitemap.xml', formatted);
+  fs.writeFileSync(
+    './public/sitemap.xml',
+    prettier.format(sitemap, {
+      ...prettierConfig,
+      parser: 'html',
+    }),
+  );
 })();
