@@ -100,6 +100,7 @@ module.exports = withBundleAnalyzer({
       ],
     });
 
+    // generate an RSS feed.
     if (!options.dev && options.isServer) {
       const originalEntry = config.entry;
 
@@ -108,6 +109,11 @@ module.exports = withBundleAnalyzer({
         entries['./scripts/build-rss.js'] = './scripts/build-rss.ts';
         return entries;
       };
+    }
+
+    // generate a sitemap.xml
+    if (!options.dev && options.isServer) {
+      require('./scripts/build-sitemap.js');
     }
 
     return config;

@@ -37,6 +37,7 @@
     "jest.config.js",
     "next-env.d.ts",
     "next.config.js",
+    "scripts/*.{js,ts}",
     "tailwind.config.js",
     "tests/__mocks__/fileMock.js"
   ]
