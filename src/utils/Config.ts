@@ -5,7 +5,7 @@ export const Config = {
   locale: 'en',
   site_name: 'Tom Conroy',
   title: 'Tom Conroy - Software Engineer',
-  url: 'https://conroy.codes.com',
+  url: 'https://conroy.codes',
   twitter: {
     username: 'T_Conroy',
   },

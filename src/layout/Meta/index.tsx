@@ -32,11 +32,7 @@ export function Meta(props: MetaProps) {
         {props.post && (
           <>
             <meta property="og:type" content="article" key="og:type" />
-            <meta
-              property="og:image"
-              content={`${Config.url}${process.env.baseUrl}${props.post.image}`}
-              key="og:image"
-            />
+            <meta property="og:image" content={`${Config.url}${props.post.image}`} key="og:image" />
             <TwitterMeta
               description={props.post.description}
               title={props.title}
