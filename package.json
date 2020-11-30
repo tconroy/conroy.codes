@@ -6,6 +6,7 @@
     "build-rss": "node ./.next/server/scripts/build-rss.js",
     "build-sitemap": "node ./.next/server/scripts/build-sitemap.js",
     "build-stats": "ANALYZE=true npm run build",
+    "find-deadcode": "ts-prune",
     "build": "next build && run-p build-rss build-sitemap",
     "clean": "del-cli '.next/**/*' '!.next/cache{,/**}' 'dist'",
     "dev": "next",
@@ -70,6 +71,7 @@
     "simple-functional-loader": "^1.2.1",
     "stylelint": "^13.8.0",
     "stylelint-config-recommended": "^3.0.0",
+    "ts-prune": "^0.8.4",
     "typescript": "^4.1.2"
   },
   "husky": {
