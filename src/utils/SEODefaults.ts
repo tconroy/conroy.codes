@@ -1,7 +1,8 @@
 import { DefaultSeoProps } from 'next-seo';
 
-const title: string = 'Tom Conroy';
+export const title: string = 'Tom Conroy';
 const description: string = 'Helpful tips and tutorials for frontend developers. React, CSS, architecture and more!';
+export const url: string = 'https://conroy.codes/';
 
 const SEODefaults: DefaultSeoProps = {
   title,
@@ -10,7 +11,7 @@ const SEODefaults: DefaultSeoProps = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://conroy.codes/',
+    url,
     site_name: title,
     title,
     description,
