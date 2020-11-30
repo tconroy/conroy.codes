@@ -12,6 +12,7 @@ import { mdxComponents } from '~/content/Content';
 import { getAllPosts } from '~/getAllPostPreviews';
 import { tconroy } from '~/utils/Authors';
 import { url, title } from '~/utils/SEODefaults';
+import { removeTrailingSlash } from '~/utils/Url';
 
 (async () => {
   const feed = new Feed({
@@ -24,8 +25,8 @@ import { url, title } from '~/utils/SEODefaults';
     favicon: `${url}favicon.ico`,
     copyright: `All Rights Reserved ${new Date().getFullYear()} ${tconroy.fullName}`,
     feedLinks: {
-      json: `${url}json`,
-      atom: `${url}atom`,
+      json: `${removeTrailingSlash(url)}/json`,
+      atom: `${removeTrailingSlash(url)}/atom`,
     },
     author: {
       name: tconroy.fullName,
@@ -35,6 +36,8 @@ import { url, title } from '~/utils/SEODefaults';
   });
 
   getAllPosts().forEach(({ link, module: { meta, default: Content } }: Post) => {
+    const fullPostLink: string = removeTrailingSlash(url) + link;
+
     const mdx = (
       <MDXProvider components={mdxComponents}>
         <Content />
@@ -43,22 +46,20 @@ import { url, title } from '~/utils/SEODefaults';
 
     const html = ReactDOMServer.renderToStaticMarkup(mdx);
     const postText = `<div style="margin-top=55px; font-style: italic;">
-        (The post <a href="${url + link}">${
-    meta.title
-  }</a> appeared first on <a href="${url}">Tom Conroy's Blog</a>.)\
+        (The post <a href="${fullPostLink}">${meta.title}</a> appeared first on <a href="${url}">Tom Conroy's Blog</a>.)\
       </div>`;
 
     feed.addItem({
       title: meta.title,
       id: meta.title,
-      link,
+      link: fullPostLink,
       content: html + postText,
       author: meta.authors.map(({ fullName, twitter }) => ({
         name: fullName,
         link: `https://twitter.com/${twitter}`,
       })),
       date: new Date(meta.date),
-      image: `${url}${meta.image}`,
+      image: `${removeTrailingSlash(url)}${meta.image}`,
       extensions: [
         {
           name: '_comments',
