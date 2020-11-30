@@ -23,3 +23,7 @@ function dateSortDesc(a: string, b: string) {
 export default function getAllPostPreviews() {
   return importAll(require.context('./pages/?preview', true, /\.mdx$/)).sort((a, b) => dateSortDesc(a.module.meta.date, b.module.meta.date));
 }
+
+export function getAllPosts() {
+  return importAll(require.context('./pages/?rss', true, /\.mdx$/)).sort((a, b) => dateSortDesc(a.module.meta.date, b.module.meta.date));
+}

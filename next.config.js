@@ -79,6 +79,15 @@ module.exports = withBundleAnalyzer({
           ],
         },
         {
+          resourceQuery: /rss/,
+          use: [
+            ...mdx,
+            createLoader(function (src) {
+              return this.callback(null, src);
+            }),
+          ],
+        },
+        {
           use: [
             ...mdx,
             createLoader(function (src) {
@@ -86,7 +95,7 @@ module.exports = withBundleAnalyzer({
                 'import Post from "~/components/Post"',
                 'export { getStaticProps } from "~/getStaticProps"',
                 src,
-                'export default (props) => <Post meta={meta} {...props} />',
+                'export default Post',
               ].join('\n');
 
               if (content.includes('<!--more-->')) {
@@ -102,12 +111,21 @@ module.exports = withBundleAnalyzer({
 
     // convert build scripts from TS -> JS for execution.
     if (!options.dev && options.isServer) {
-      ['build-rss', 'build-sitemap'].forEach((scriptName) => {
+      [
+        {
+          scriptName: 'build-rss',
+          ext: 'tsx',
+        },
+        {
+          scriptName: 'build-sitemap',
+          ext: 'ts',
+        },
+      ].forEach(({ scriptName, ext }) => {
         const originalEntry = config.entry;
 
         config.entry = async () => {
           const entries = { ...(await originalEntry()) };
-          entries[`./scripts/${scriptName}.js`] = `./scripts/${scriptName}.ts`;
+          entries[`./scripts/${scriptName}.js`] = `./scripts/${scriptName}.${ext}`;
           return entries;
         };
       });
