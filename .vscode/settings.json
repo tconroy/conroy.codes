@@ -12,6 +12,7 @@
   "stylelint.enable": true,
   "cSpell.words": [
     "Squarespace",
+    "frontmatter",
     "mapbox",
     "rehype",
     "stylelint",

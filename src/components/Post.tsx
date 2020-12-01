@@ -2,9 +2,9 @@ import React, { PropsWithChildren } from 'react';
 
 import tinytime from 'tinytime';
 
-import { Content } from '../content/Content';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
+import { Content } from './Content';
 import { Post as PostType } from '~/@types/common/types';
 
 const postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}');

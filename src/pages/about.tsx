@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Content } from '../content/Content';
+import { Content } from '../components/Content';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 
 const About = () => (
-  <Main meta={<Meta title="Lorem ipsum" description="Lorem ipsum" />}>
+  <Main meta={<Meta title="About" description="About" />}>
     <Content>
       <p>Tom Conroy is a Software Engineer located in New York City.</p>
       <p>
