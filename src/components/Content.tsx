@@ -10,9 +10,9 @@ type ContentProps = {
 };
 
 const Content = ({ children }: ContentProps) => (
-  <div className="content">
+  <section className="max-w-screen-xl m-auto">
     <MDXProvider components={MDXComponents}>{children}</MDXProvider>
-  </div>
+  </section>
 );
 
 export { Content };

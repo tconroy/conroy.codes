@@ -11,6 +11,7 @@
   "css.validate": false,
   "stylelint.enable": true,
   "cSpell.words": [
+    "Entrypoints",
     "Squarespace",
     "frontmatter",
     "mapbox",

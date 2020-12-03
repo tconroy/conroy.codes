@@ -6,6 +6,7 @@ const createMDXLoader = require('./lib/mdx-loader');
 const createMDXPreviewLoader = require('./lib/mdx-preview-loader');
 const createPostLoader = require('./lib/post-loader');
 const createRSSLoader = require('./lib/rss-loader');
+const createScriptEntrypoints = require('./lib/script-entrypoints');
 
 module.exports = withBundleAnalyzer({
   pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'mdx'],
@@ -45,26 +46,8 @@ module.exports = withBundleAnalyzer({
       ],
     });
 
-    // convert build scripts from TS -> JS for execution.
     if (!options.dev && options.isServer) {
-      [
-        {
-          scriptName: 'build-rss',
-          ext: 'tsx',
-        },
-        {
-          scriptName: 'build-sitemap',
-          ext: 'ts',
-        },
-      ].forEach(({ scriptName, ext }) => {
-        const originalEntry = config.entry;
-
-        config.entry = async () => {
-          const entries = { ...(await originalEntry()) };
-          entries[`./scripts/${scriptName}.js`] = `./scripts/${scriptName}.${ext}`;
-          return entries;
-        };
-      });
+      config.entry = createScriptEntrypoints(config);
     }
 
     return config;
