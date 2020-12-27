@@ -9,14 +9,21 @@ type MainProps = {
 };
 
 const Main = (props: MainProps) => (
-  <div className="antialiased w-full text-gray-700 flex flex-col min-h-screen dark:bg-gray-800">
+  <div className={`
+    antialiased
+    dark:bg-darkmode-accent
+    duration-500
+    flex
+    flex-col
+    min-h-screen
+    text-gray-700
+    transition-colors
+    w-full
+  `}
+  >
     {props.meta}
-    <header className="border-b border-gray-300">
-      <Navbar />
-    </header>
-
+    <Navbar />
     <main className="text-xl py-5 flex-grow">{props.children}</main>
-
     <Footer />
   </div>
 );

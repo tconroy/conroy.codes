@@ -1,50 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import Link from 'next/link';
-
+import ControlledHamburger from './components/ControlledHamburger';
+import ControlledNav from './components/ControlledNav';
 import Logo from './components/Logo';
 import ToggleColorMode from './components/ToggleColorMode';
 
 export function Navbar() {
+  const [
+    isHamburgerOpen,
+    setIsHamburgerOpen,
+  ] = useState(false);
+
+  const toggleIsHamburgerOpen = () => {
+    setIsHamburgerOpen(!isHamburgerOpen);
+  };
+
   return (
-    <nav className="relative w-full max-w-screen-xl m-auto flex items-center">
-      <div className="nav-left flex flex-1">
-        <ul className="navbar flex flex-wrap text-xl">
-          <li className="mr-6 py-4">
-            <Link href="/">
-              <a>
-                <Logo />
-              </a>
-            </Link>
-          </li>
-          <li className="mr-6 py-4">
-            <Link href="/about">
-              <a>About</a>
-            </Link>
-          </li>
-          <li className="mr-6 py-4">
-            <a href="https://github.com/tconroy">GitHub</a>
-          </li>
-          <li className="mr-6 py-4">
-            <a href="/assets/documents/tomconroy-resume-2020.pdf">resumé</a>
-          </li>
-        </ul>
-      </div>
-      <div className="nav-right">
-        <ToggleColorMode />
-      </div>
-
-      <style jsx global>
-        {`
-          .navbar a {
-            @apply text-gray-700;
-          }
-
-          .navbar a:hover {
-            @apply no-underline text-gray-900;
-          }
+    <header className={`
+      bg-transparent
+      dark:text-gray-200
+      duration-500
+      text-gray-700
+      transition-colors
+      w-full
+  `}>
+      <div className={`
+        flex
+        flex-col
+        lg:px-8
+        max-w-screen-xl
+        md:flex-row
+        md:items-center
+        md:justify-between
+        md:px-6
+        mx-auto
+        px-4
+      `}
+      >
+        <div className={`
+          p-4
+          flex
+          flex-row
+          items-center
+          justify-between
         `}
-      </style>
-    </nav>
+        >
+          <Logo />
+          <ToggleColorMode className="md:hidden ml-auto py-2" />
+          <ControlledHamburger
+            isOpen={isHamburgerOpen}
+            toggleIsOpen={toggleIsHamburgerOpen}
+          />
+        </div>
+        <ControlledNav isHamburgerOpen={isHamburgerOpen} />
+      </div>
+    </header>
   );
 }

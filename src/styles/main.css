@@ -1,13 +1,47 @@
 @tailwind base;
-
-a {
-  @apply text-blue-700;
-}
-
-a:hover {
-  @apply underline;
-}
-
 @tailwind components;
-
 @tailwind utilities;
+
+@layer base {
+  a,
+  a:link {
+    box-shadow: inset 0 -0.25em 0 rgba(255, 215, 0, 0.90);
+    transition: box-shadow 500ms ease;
+  }
+  
+  a:hover,
+  a:focus,
+  a:active {
+    box-shadow: inset 0 -1.25em 0 rgba(255, 215, 0, 0.90);
+  }
+
+  .dark a:hover,
+  .dark a:focus,
+  .dark a:active {
+    @apply text-darkmode-accent;
+  }
+
+  p {
+    @apply font-light dark:text-white duration-500 text-gray-800 transition-colors;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+}

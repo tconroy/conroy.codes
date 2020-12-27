@@ -2,20 +2,102 @@ import React from 'react';
 
 import Link from 'next/link';
 
+import Emoji from '~/components/Emoji';
 import ExternalLink from '~/components/ExternalLink';
 import SEODefaults from '~/utils/SEODefaults';
 
+type LinkConfig = {
+  label: string;
+  href: string;
+  type: 'internal' | 'external';
+};
+
+const links: LinkConfig[] = [
+  {
+    href: `https://www.twitter.com/${SEODefaults.twitter?.handle}`,
+    label: 'Twitter',
+    type: 'external',
+  },
+  {
+    href: '/feed.xml',
+    label: 'RSS',
+    type: 'internal',
+  },
+  {
+    href: 'https://www.github.com/tconroy',
+    label: 'GitHub',
+    type: 'external',
+  },
+  {
+    href: 'mailto:tom@thomasconroy.net',
+    label: 'Contact',
+    type: 'internal',
+  },
+];
+
+function LinkItem({
+  type,
+  href,
+  label,
+}: LinkConfig) {
+  const Element = type === 'external' ? ExternalLink : Link;
+
+  return (
+    <li
+      key={label}
+      className={`
+        first:ml-0
+        inline-flex
+        md:block
+        md:ml-0
+        ml-4
+      `}
+    >
+      <Element href={href}>
+        {label}
+      </Element>
+    </li>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="w-full border-t border-gray-300">
-      <div className="w-full max-w-screen-xl m-auto flex py-8">
-        <div className="flex flex-grow self-start text-left flex-col flex-wrap">
+    <footer className={`
+      dark:text-white
+      duration-500
+      lg:pt-16
+      m-auto
+      max-w-screen-md
+      md:pt-12
+      px-8
+      transition-colors
+      w-full
+    `}
+    >
+      <div className={`
+        flex
+        py-8
+        m-auto
+        max-w-screen-lg
+        w-full
+        flex-col
+        md:flex-row
+      `}
+      >
+        <div className={`
+          block
+          md:flex
+          flex-col
+          flex-grow
+          flex-wrap
+          self-start
+          text-left
+        `}
+        >
           <div>
             Made with
             {' '}
-            <span role="img" aria-label="Love">
-              ♥
-            </span>
+            <Emoji label="love">♥</Emoji>
             {' '}
             by
             {' '}
@@ -24,31 +106,14 @@ export function Footer() {
             </Link>
           </div>
           <small>
-            <span role="img" aria-label="Copyright">
-              ©️
-            </span>
+            <Emoji label="Copyright">©️</Emoji>
             {' '}
             2020-present Tom Conroy. All Rights Reserved.
           </small>
         </div>
         <nav className="text-left">
           <ul>
-            <li>
-              <ExternalLink href={`https://www.twitter.com/${SEODefaults.twitter?.handle}`}>
-                Twitter
-              </ExternalLink>
-            </li>
-            <li>
-              <Link href="/feed.xml">
-                <a>RSS</a>
-              </Link>
-            </li>
-            <li>
-              <ExternalLink href="https://www.github.com/tconroy">GitHub</ExternalLink>
-            </li>
-            <li>
-              <a href="mailto:tom@thomasconroy.net">Contact</a>
-            </li>
+            {links.map(LinkItem)}
           </ul>
         </nav>
       </div>

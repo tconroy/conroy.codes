@@ -29,6 +29,18 @@ look, code block!
 
 ```jsx
 <MyComponent myProp={5} />
+
+function getColors(style) {
+  if (style === 'dark') {
+    // a comment
+    const darkColors = {};
+    Object.entries(colors).forEach(([name, val]) => {
+      if (name === 'black') {
+        darkColors.white = val;
+      }
+    })
+  }
+}
 ```
 
 test component:

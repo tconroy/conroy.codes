@@ -30,7 +30,7 @@ export default function Post({ meta, children }: DisplayPostProps) {
         />
       )}
     >
-      <article className="article dark:bg-black">
+      <article className="article">
         <h1 className="text-center font-bold text-3xl text-gray-900">{meta.title}</h1>
         <div className="text-center text-sm mb-8">
           <time dateTime={meta.date}>{postDateTemplate.render(new Date(meta.date))}</time>

@@ -1,34 +1,46 @@
 import React, { PropsWithChildren } from 'react';
 
-import { getInitialColorMode } from './InitialColorMode';
+import { useTheme } from 'next-themes';
+
 import { ColorMode } from './types';
 
 type ColorModeContextValue = {
-  colorMode: ColorMode;
+  colorMode?: ColorMode;
   setColorMode: (colorMode: ColorMode) => void;
 };
 
 export const ColorModeContext = React.createContext<ColorModeContextValue>({
-  colorMode: getInitialColorMode(),
+  colorMode: undefined,
   setColorMode: () => {},
 });
 
 export default function ColorModeProvider({ children }: PropsWithChildren<{}>) {
-  const [colorMode, rawSetColorMode] = React.useState<ColorMode>(() => getInitialColorMode());
+  const {
+    theme,
+    setTheme,
+  } = useTheme();
 
-  function setColorMode(mode: ColorMode) {
-    rawSetColorMode(mode);
-    localStorage.setItem('color-mode', mode);
-  }
+  const [
+    isMounted,
+    setIsMounted,
+  ] = React.useState(false);
 
   React.useEffect(() => {
-    const html: HTMLElement = window.document.getElementsByTagName('html')[0]!;
-    Object.values(ColorMode).forEach((mode) => html.classList.remove(mode));
-    html.classList.add(colorMode);
-  }, [colorMode]);
+    setIsMounted(true);
+  }, []);
+
+  const setColorMode = (colorMode: ColorMode) => {
+    if (isMounted) {
+      setTheme(colorMode);
+    }
+  };
 
   return (
-    <ColorModeContext.Provider value={{ colorMode, setColorMode }}>
+    <ColorModeContext.Provider value={{
+      colorMode: theme as ColorMode,
+      setColorMode,
+    }}
+    >
       {children}
     </ColorModeContext.Provider>
   );

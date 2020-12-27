@@ -1,20 +1,92 @@
-import React from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 
+import { usePlausible } from 'next-plausible';
+import { useTheme } from 'next-themes';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
-import { ColorModeContext } from '~/providers/ColorMode/ColorModeProvider';
 import { ColorMode } from '~/providers/ColorMode/types';
 
-export default function ToggleColorMode() {
-  const { setColorMode, colorMode } = React.useContext(ColorModeContext);
+type ToggleColorModeProps = {
+  className?: string;
+};
 
-  function toggleDarkMode() {
-    const newMode: ColorMode = colorMode === ColorMode.DARK ? ColorMode.LIGHT : ColorMode.DARK;
+export default function ToggleColorMode({
+  className = '',
+}: ToggleColorModeProps) {
+  const {
+    theme,
+    setTheme,
+  } = useTheme();
 
-    setColorMode(newMode);
-  }
+  const plausible = usePlausible();
+
+  const toggleDarkMode = useCallback(
+    () => {
+      const newMode: ColorMode = theme === ColorMode.DARK
+        ? ColorMode.LIGHT
+        : ColorMode.DARK;
+
+      plausible('toggle-color-mode', {
+        props: {
+          mode: newMode,
+        },
+      });
+
+      setTheme(newMode);
+    },
+    [
+      plausible,
+      theme,
+    ],
+  );
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    if (!isMounted) {
+      setIsMounted(true);
+    }
+  }, [isMounted]);
 
   return (
-    <DarkModeSwitch checked={colorMode === ColorMode.DARK} onChange={toggleDarkMode} size={26} />
+    <button
+      type="button"
+      className={`
+        ${className}
+        dark:bg-transparent 
+        dark:focus-within:bg-gray-600 
+        dark:focus-within:text-white 
+        dark:hover:bg-gray-600 
+        dark:hover:text-white 
+        flex
+        focus-within:bg-gray-200 
+        focus-within:outline-none 
+        focus-within:shadow-outline
+        md:ml-4 
+        md:mt-0 
+        px-4
+        rounded-lg 
+      `}
+      onClick={toggleDarkMode}
+      style={isMounted ? undefined : {
+        width: 26,
+        height: 26,
+      }}
+    >
+      {isMounted && (
+        <DarkModeSwitch
+          checked={theme === ColorMode.DARK}
+          onChange={toggleDarkMode}
+          size={26}
+          style={{
+            alignSelf: 'center',
+          }}
+        />
+      )}
+    </button>
   );
 }
