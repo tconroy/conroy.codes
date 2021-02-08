@@ -38,8 +38,9 @@
   "license": "ISC",
   "devDependencies": {
     "@next/bundle-analyzer": "^10.0.6",
-    "@testing-library/dom": "^7.29.1",
+    "@testing-library/dom": "^7.29.4",
     "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.2",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.20",
     "@types/node": "^14.14.25",
