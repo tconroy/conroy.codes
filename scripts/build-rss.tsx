@@ -8,7 +8,7 @@ import { Feed } from 'feed';
 import ReactDOMServer from 'react-dom/server';
 
 import { Post } from '~/@types/common/types';
-import { mdxComponents } from '~/content/Content';
+import MDXComponents from '~/components/MDX';
 import { getAllPosts } from '~/getAllPostPreviews';
 import { tconroy } from '~/utils/Authors';
 import { url, title } from '~/utils/SEODefaults';
@@ -39,7 +39,7 @@ import { removeTrailingSlash } from '~/utils/Url';
     const fullPostLink: string = removeTrailingSlash(url) + link;
 
     const mdx = (
-      <MDXProvider components={mdxComponents}>
+      <MDXProvider components={MDXComponents}>
         <Content />
       </MDXProvider>
     );

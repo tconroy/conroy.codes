@@ -1,25 +1,59 @@
-import React, { ReactNode } from 'react';
+import React, { useState } from 'react';
 
-type NavbarProps = {
-  children: ReactNode;
-};
+import ControlledHamburger from './components/ControlledHamburger';
+import ControlledNav from './components/ControlledNav';
+import Logo from './components/Logo';
+import ToggleColorMode from './components/ToggleColorMode';
 
-const Navbar = (props: NavbarProps) => (
-  <ul className="navbar flex flex-wrap text-xl">
-    {props.children}
+export function Navbar() {
+  const [
+    isHamburgerOpen,
+    setIsHamburgerOpen,
+  ] = useState(false);
 
-    <style jsx>
-      {`
-        .navbar :global(a) {
-          @apply text-gray-700;
-        }
+  const toggleIsHamburgerOpen = () => {
+    setIsHamburgerOpen(!isHamburgerOpen);
+  };
 
-        .navbar :global(a:hover) {
-          @apply no-underline text-gray-900;
-        }
+  return (
+    <header className={`
+      bg-transparent
+      dark:text-gray-200
+      duration-500
+      text-gray-700
+      transition-colors
+      w-full
+  `}>
+      <div className={`
+        flex
+        flex-col
+        lg:px-8
+        max-w-screen-xl
+        md:flex-row
+        md:items-center
+        md:justify-between
+        md:px-6
+        mx-auto
+        px-4
       `}
-    </style>
-  </ul>
-);
-
-export { Navbar };
+      >
+        <div className={`
+          p-4
+          flex
+          flex-row
+          items-center
+          justify-between
+        `}
+        >
+          <Logo />
+          <ToggleColorMode className="md:hidden ml-auto py-2" />
+          <ControlledHamburger
+            isOpen={isHamburgerOpen}
+            toggleIsOpen={toggleIsHamburgerOpen}
+          />
+        </div>
+        <ControlledNav isHamburgerOpen={isHamburgerOpen} />
+      </div>
+    </header>
+  );
+}

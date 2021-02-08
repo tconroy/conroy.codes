@@ -14,7 +14,9 @@ export type PostMeta = {
   discussion: string;
   image: string;
   modified_date: string;
+  link_text: string;
   title: string;
+  published: boolean;
 };
 
 export type Post = {
