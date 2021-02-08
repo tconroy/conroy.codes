@@ -15,7 +15,7 @@ export default function Logo() {
           key="logo"
         />
         {' '}
-        <span className="font-bold text-l md:text-xl ml-2">Conroy Codes</span>
+        <span className="font-bold text-l md:text-xl ml-2">Conroy &bull; Codes</span>
       </div>
     </Link>
   );

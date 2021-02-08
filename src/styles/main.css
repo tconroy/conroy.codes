@@ -4,21 +4,37 @@
 
 @layer base {
   a,
-  a:link {
-    box-shadow: inset 0 -0.25em 0 rgba(255, 215, 0, 0.90);
+  a:link,
+  .link {
+    box-shadow: inset 0 -0.25em 0 rgba(255, 215, 0, 0.9);
     transition: box-shadow 500ms ease;
   }
-  
+
   a:hover,
   a:focus,
-  a:active {
-    box-shadow: inset 0 -1.25em 0 rgba(255, 215, 0, 0.90);
+  a:active,
+  .link:hover,
+  .link:focus,
+  .link:active,
+  .link-active {
+    box-shadow: inset 0 -1.25em 0 rgba(255, 215, 0, 0.9);
   }
 
   .dark a:hover,
   .dark a:focus,
-  .dark a:active {
+  .dark a:active,
+  .dark .link:hover,
+  .dark .link:focus,
+  .dark .link:active {
     @apply text-darkmode-accent;
+  }
+
+  .light *::selection {
+    @apply text-white bg-darkmode-accent duration-500 transition-colors;
+  }
+
+  .dark *::selection {
+    @apply text-darkmode-accent bg-darkmode-white duration-500 transition-colors;
   }
 
   p {

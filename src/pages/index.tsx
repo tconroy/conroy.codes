@@ -7,17 +7,20 @@ import getAllPostPreviews from '../getAllPostPreviews';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 import { Config } from '../utils/Config';
+import ChevronLink from '~/components/ChevronLink';
 import { Content } from '~/components/Content';
 import Emoji from '~/components/Emoji';
 import ExternalLink from '~/components/ExternalLink';
 import MDXComponents from '~/components/MDX';
 import Footnote from '~/components/MDX/Footnote';
+// import NewsletterSubscribeBlock from '~/navigation/components/NewsletterSubscribeBlock';
 
 const posts = getAllPostPreviews();
 
-const Components = {
+export const Components = {
   H1: (props: PropsWithChildren<{}>) => (
-    <h1 className={`
+    <h1
+      className={`
       dark:text-white
       duration-500
       font-bold
@@ -32,12 +35,12 @@ const Components = {
     </h1>
   ),
   H2: (props: PropsWithChildren<{}>) => (
-    <h2 className={`
+    <h2
+      className={`
       dark:text-white
       duration-500
       font-bold
       leading-snug
-      mb-5
       text-4xl
       text-black
       transition-colors
@@ -47,7 +50,8 @@ const Components = {
     </h2>
   ),
   P: (props: PropsWithChildren<{}>) => (
-    <MDXComponents.P className={`
+    <MDXComponents.P
+      className={`
       leading-relaxed
       mb-6
       text-xl
@@ -62,41 +66,44 @@ export default function Index() {
   const { H1, H2, P } = Components;
 
   return (
-    <Main meta={(
-      <Meta
-        title="Home"
-        description={Config.description}
-      />
-    )}
-    >
+    <Main meta={<Meta title="Home" description={Config.description} />}>
       <Content>
         <H1>
           <span>
-            Hey,
-            I&apos;m
+            Hey, I&apos;m
             <br className="md:hidden" />
             {' '}
-            <span className="bg-gold text-darkmode-accent">
-              Tom Conroy.
-            </span>
+            <span className="bg-gold text-darkmode-accent">Tom Conroy.</span>
             {' '}
+            {/* eslint-disable-next-line jsx-a11y/accessible-emoji */}
             <Emoji label="waving hand emoji">👋</Emoji>
           </span>
         </H1>
+        {/* I&apos;m a software engineer, writer, and general internet mischief
+          maker. */}
         <P>
-          I&apos;m a software engineer, writer, and general internet mischief
-          maker.
-        </P>
-        <P>
-          Welcome to my humble digital zen garden — a place to catalog my
-          musings on topics of personal interest.
-        </P>
-        <P>
-          Expect to find letters on software development, coding,
-          design, startups, life, technology, video games, books, films,
-          and whatever insanity my
+          I&apos;m a software engineer, writer, and
           {' '}
-          <Footnote title={`
+          <Footnote
+            title={`
+            'digital native' is just a polite way of saying, 
+            'spends way too much time on the internet' 😅
+          `}
+          >
+            digital native
+          </Footnote>
+          .
+        </P>
+        <P>
+          Welcome to my modest digital zen garden — a place to catalog my thoughts on topics of
+          personal interest.
+        </P>
+        <P>
+          Expect to find letters on software development, coding, design, startups, life,
+          technology, video games, books, films, and whatever insanity my
+          {' '}
+          <Footnote
+            title={`
             Tortie is short for Tortoiseshell and is taken from the similar 
             colorings.
           `}
@@ -104,10 +111,9 @@ export default function Index() {
             Tortie
           </Footnote>
           {' '}
-          cat Cinnamon gets up to. Not all the thoughts shared here will be
-          complete — Some will be sparkly and polished, while others wll be
-          rough and unrefined. But I hope this site can bring you some sort of
-          value.
+          cat Cinnamon gets up to. Not all the thoughts shared here will be complete — Some will be
+          sparkly and polished, while others wll be raw and unrefined. Regardless, I hope this site
+          can bring you something of value.
         </P>
         <P>
           From here, you can learn more
@@ -118,12 +124,33 @@ export default function Index() {
           <Link href="/posts">my writings</Link>
           , or
           {' '}
-          <ExternalLink href="mailto:tom@thomasconroy.net">
-            get in touch!
-          </ExternalLink>
+          <ExternalLink href="mailto:tom@thomasconroy.net">get in touch!</ExternalLink>
         </P>
-        <H2>Recent Posts</H2>
-        <BlogGallery posts={posts} />
+
+        <hr className="my-14" />
+
+        <section>
+          <div
+            className={`
+            w-full
+            flex
+            items-center
+            mb-5
+          `}
+          >
+            <H2>Recently Posted</H2>
+            <span className="ml-auto flex items-center">
+              <ChevronLink href="/posts" className="text-sm" chevronClassName="w-3">
+                View All Posts
+              </ChevronLink>
+            </span>
+          </div>
+          <BlogGallery posts={posts} />
+        </section>
+
+        {/* <section className="my-14">
+          <NewsletterSubscribeBlock />
+        </section> */}
       </Content>
     </Main>
   );

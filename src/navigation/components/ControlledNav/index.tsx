@@ -5,7 +5,11 @@ import NavItem from './NavItem';
 
 // import ControlledDropdown from '../ControlledDropdown';
 
-export default function ControlledNav({ isHamburgerOpen }) {
+interface Props {
+  isHamburgerOpen: boolean;
+}
+
+export default function ControlledNav({ isHamburgerOpen }: Props) {
   // const [
   //   isDropdownOpen,
   //   setIsDropdownOpen,
@@ -18,7 +22,8 @@ export default function ControlledNav({ isHamburgerOpen }) {
   const openClass: string = isHamburgerOpen ? 'flex' : 'hidden';
 
   return (
-    <nav className={`
+    <nav
+      className={`
       ${openClass} 
       flex-col 
       flex-grow 
@@ -32,7 +37,7 @@ export default function ControlledNav({ isHamburgerOpen }) {
     >
       <NavItem label="Posts" />
       <NavItem label="About" />
-      <NavItem label="Contact" />
+      <NavItem label="Contact" href="mailto:tom@thomasconroy.net" />
       <ToggleColorMode className="hidden md:inline-flex" />
 
       {/* <div className="relative">

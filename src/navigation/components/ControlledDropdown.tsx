@@ -1,6 +1,11 @@
 import React from 'react';
 
-function DropdownItem({ href, label }) {
+interface Props {
+  href: string;
+  label: string;
+}
+
+function DropdownItem({ href, label }: Props) {
   return (
     <a
       className={`
@@ -33,7 +38,12 @@ function DropdownItem({ href, label }) {
   );
 }
 
-export default function ControlledDropdown({ isOpen, toggleIsOpen }) {
+interface ControlledDropdownProps {
+  isOpen: boolean;
+  toggleIsOpen: () => void;
+}
+
+export default function ControlledDropdown({ isOpen, toggleIsOpen }: ControlledDropdownProps) {
   return (
     <>
       <button

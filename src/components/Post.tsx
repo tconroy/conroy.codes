@@ -31,8 +31,32 @@ export default function Post({ meta, children }: DisplayPostProps) {
       )}
     >
       <article className="article">
-        <h1 className="text-center font-bold text-3xl text-gray-900">{meta.title}</h1>
-        <div className="text-center text-sm mb-8">
+        <h1
+          className={`
+          text-center
+          dark:text-white
+          duration-500
+          font-bold
+          leading-snug
+          mb-2
+          text-5xl
+          text-black
+          transition-colors
+        `}
+        >
+          {meta.title}
+        </h1>
+        <div
+          className={`
+          text-center
+          text-sm
+          mb-8
+          text-black
+          transition-colors
+          dark:text-white
+          duration-500
+        `}
+        >
           <time dateTime={meta.date}>{postDateTemplate.render(new Date(meta.date))}</time>
         </div>
 
@@ -54,8 +78,8 @@ export default function Post({ meta, children }: DisplayPostProps) {
           }
 
           :global(img.full-bleed) {
-            width: 100%;
             grid-column: 1 / 4;
+            width: 100%;
           }
         `}
       </style>

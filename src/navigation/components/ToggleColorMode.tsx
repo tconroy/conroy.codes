@@ -1,56 +1,34 @@
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, { useCallback } from 'react';
 
 import { usePlausible } from 'next-plausible';
 import { useTheme } from 'next-themes';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 
+import useIsFirstRender from '~/hooks/useIsFirstRender';
 import { ColorMode } from '~/providers/ColorMode/types';
 
 type ToggleColorModeProps = {
   className?: string;
 };
 
-export default function ToggleColorMode({
-  className = '',
-}: ToggleColorModeProps) {
-  const {
-    theme,
-    setTheme,
-  } = useTheme();
+export default function ToggleColorMode({ className = '' }: ToggleColorModeProps) {
+  const { theme, setTheme } = useTheme();
 
   const plausible = usePlausible();
 
-  const toggleDarkMode = useCallback(
-    () => {
-      const newMode: ColorMode = theme === ColorMode.DARK
-        ? ColorMode.LIGHT
-        : ColorMode.DARK;
+  const toggleDarkMode = useCallback(() => {
+    const newMode: ColorMode = theme === ColorMode.DARK ? ColorMode.LIGHT : ColorMode.DARK;
 
-      plausible('toggle-color-mode', {
-        props: {
-          mode: newMode,
-        },
-      });
+    plausible('toggle-color-mode', {
+      props: {
+        mode: newMode,
+      },
+    });
 
-      setTheme(newMode);
-    },
-    [
-      plausible,
-      theme,
-    ],
-  );
+    setTheme(newMode);
+  }, [plausible, theme]);
 
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    if (!isMounted) {
-      setIsMounted(true);
-    }
-  }, [isMounted]);
+  const isFirstRender = useIsFirstRender();
 
   return (
     <button
@@ -72,12 +50,16 @@ export default function ToggleColorMode({
         rounded-lg 
       `}
       onClick={toggleDarkMode}
-      style={isMounted ? undefined : {
-        width: 26,
-        height: 26,
-      }}
+      style={
+        !isFirstRender
+          ? undefined
+          : {
+            width: 26,
+            height: 26,
+          }
+      }
     >
-      {isMounted && (
+      {!isFirstRender && (
         <DarkModeSwitch
           checked={theme === ColorMode.DARK}
           onChange={toggleDarkMode}

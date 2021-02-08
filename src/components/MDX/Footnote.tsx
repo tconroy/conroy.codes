@@ -1,46 +1,54 @@
-import React, { PropsWithChildren, useEffect } from 'react';
+import React from 'react';
 
 import { Tooltip } from 'react-tippy';
 
-type FootnoteProps = PropsWithChildren<{
+import useIsFirstRender from '~/hooks/useIsFirstRender';
+
+type FootnoteProps = React.PropsWithChildren<{
   title: string;
 }>;
 
 export default function Footnote(props: FootnoteProps) {
-  const [
-    isFirstRender,
-    setIsFirstRender,
-  ] = React.useState(true);
+  const isFirstRender = useIsFirstRender();
 
-  useEffect(() => {
-    if (isFirstRender) {
-      setIsFirstRender(false);
-    }
-  }, [isFirstRender]);
+  const [isShown, setIsShown] = React.useState(false);
 
-  const content = (
-    <span className="text-pink-400">*</span>
+  const content = <span className="text-pink-400">*</span>;
+
+  const tooltipWithContent = (
+    <Tooltip
+      size="big"
+      tabIndex={0}
+      tag="span"
+      theme="dark"
+      touchHold
+      title={props.title}
+      onShow={() => {
+        setIsShown(true);
+      }}
+      onHide={() => {
+        setIsShown(false);
+      }}
+    >
+      {content}
+    </Tooltip>
   );
 
   return (
     <>
-      {props.children}
-      {
-        isFirstRender
-          ? content
-          : (
-            <Tooltip
-              size="big"
-              tabIndex={0}
-              tag="span"
-              theme="dark"
-              touchHold
-              title={props.title}
-            >
-              {content}
-            </Tooltip>
-          )
-      }
+      <span
+        className={isShown ? 'link' : ''}
+        style={
+          !isShown
+            ? undefined
+            : {
+              boxShadow: 'inset 0 -0.25em 0 pink',
+            }
+        }
+      >
+        {props.children}
+      </span>
+      {isFirstRender ? content : tooltipWithContent}
     </>
   );
 }

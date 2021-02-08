@@ -1,6 +1,11 @@
 import React from 'react';
 
-export default function ControlledHamburger({ isOpen, toggleIsOpen }) {
+interface ControlledHamburgerProps {
+  isOpen: boolean;
+  toggleIsOpen: () => void;
+}
+
+export default function ControlledHamburger({ isOpen, toggleIsOpen }: ControlledHamburgerProps) {
   return (
     <button
       type="button"
