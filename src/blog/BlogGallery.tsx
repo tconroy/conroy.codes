@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Post, PostMeta } from '~/@types/common/types';
 import ChevronLink from '~/components/ChevronLink';
 import ChevronDoubleRight from '~/components/icons/ChevronDoubleRight';
-import { Components } from '~/pages/index';
+import Components from '~/components/MDX/Type';
 
 export type BlogGalleryProps = {
   posts: Array<Post>;

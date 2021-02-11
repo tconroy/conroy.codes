@@ -6,7 +6,7 @@ import getAllPostPreviews from '../../getAllPostPreviews';
 import { Meta } from '../../layout/Meta';
 import { Main } from '../../templates/Main';
 import { Content } from '~/components/Content';
-import { Components } from '~/pages/index';
+import Components from '~/components/MDX/Type';
 
 const postPreviews = getAllPostPreviews();
 
