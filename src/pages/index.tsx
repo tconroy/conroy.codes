@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 
 import Link from 'next/link';
 
@@ -10,81 +10,11 @@ import { Config } from '../utils/Config';
 import { Content } from '~/components/Content';
 import Emoji from '~/components/Emoji';
 import ExternalLink from '~/components/ExternalLink';
-import MDXComponents from '~/components/MDX';
 import Footnote from '~/components/MDX/Footnote';
+import Components from '~/components/MDX/Type';
 // import NewsletterSubscribeBlock from '~/navigation/components/NewsletterSubscribeBlock';
 
 const posts = getAllPostPreviews();
-
-export const Components = {
-  H1: (props: PropsWithChildren<{}>) => (
-    <h1
-      className={`
-      dark:text-white
-      duration-500
-      font-bold
-      leading-snug
-      mb-5
-      text-5xl
-      text-black
-      transition-colors
-    `}
-    >
-      {props.children}
-    </h1>
-  ),
-  H2: (
-    props: PropsWithChildren<{
-      className?: string;
-    }>,
-  ) => (
-    <h2
-      className={`
-      ${props.className}
-      dark:text-white
-      duration-500
-      font-bold
-      leading-snug
-      text-4xl
-      text-black
-      transition-colors
-    `}
-    >
-      {props.children}
-    </h2>
-  ),
-  H3: (
-    props: PropsWithChildren<{
-      className?: string;
-    }>,
-  ) => (
-    <h3
-      className={`
-      ${props.className}
-      dark:text-white
-      duration-500
-      font-bold
-      leading-snug
-      text-2xl
-      text-black
-      transition-colors
-    `}
-    >
-      {props.children}
-    </h3>
-  ),
-  P: (props: PropsWithChildren<{}>) => (
-    <MDXComponents.P
-      className={`
-      leading-relaxed
-      mb-6
-      text-xl
-    `}
-    >
-      {props.children}
-    </MDXComponents.P>
-  ),
-};
 
 export default function Index() {
   const { H1, P } = Components;
