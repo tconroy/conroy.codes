@@ -16,10 +16,10 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <InlineColorModeScript />
           <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed.xml" />
           <link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="/atom.xml" />
           <link rel="alternate" type="application/json" title="JSON Feed" href="/feed.xml" />
-          <InlineColorModeScript />
         </Head>
         <body>
           <Main />
