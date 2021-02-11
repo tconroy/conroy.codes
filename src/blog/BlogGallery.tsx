@@ -3,7 +3,9 @@ import React from 'react';
 import Link from 'next/link';
 
 import { Post, PostMeta } from '~/@types/common/types';
+import ChevronLink from '~/components/ChevronLink';
 import ChevronDoubleRight from '~/components/icons/ChevronDoubleRight';
+import { Components } from '~/pages/index';
 
 export type BlogGalleryProps = {
   posts: Array<Post>;
@@ -67,16 +69,39 @@ function PostItem({ link, meta, PreviewTextComponent }: PostItemProps) {
   );
 }
 
-const BlogGallery = ({ posts }: BlogGalleryProps) => (
-  <>
-    <ul>
-      {posts.map(({ link, module: { meta, default: PreviewTextComponent } }) => (
-        <li key={link}>
-          <PostItem link={link} meta={meta} PreviewTextComponent={PreviewTextComponent} />
-        </li>
-      ))}
-    </ul>
-  </>
-);
+const BlogGallery = ({ posts }: BlogGalleryProps) => {
+  const hasPublishedPosts: boolean = !!posts.length;
+
+  return (
+    <section>
+      <div
+        className={`
+            w-full
+            flex
+            items-baseline
+            mb-5
+          `}
+      >
+        <Components.H2 className="inline-block">Recently Posted</Components.H2>
+        <span className="ml-auto items-center inline-block">
+          <ChevronLink href="/posts" className="text-sm" chevronClassName="w-3">
+            View All Posts
+          </ChevronLink>
+        </span>
+      </div>
+      <ul>
+        {hasPublishedPosts
+          && posts.map(({ link, module: { meta, default: PreviewTextComponent } }) => (
+            <li key={link}>
+              <PostItem link={link} meta={meta} PreviewTextComponent={PreviewTextComponent} />
+            </li>
+          ))}
+        {!hasPublishedPosts && (
+          <Components.H3>No published posts yet, check back soon!</Components.H3>
+        )}
+      </ul>
+    </section>
+  );
+};
 
 export { BlogGallery };

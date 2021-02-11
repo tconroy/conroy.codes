@@ -11,7 +11,7 @@ import { Components } from '~/pages/index';
 const postPreviews = getAllPostPreviews();
 
 const PostsIndex = () => (
-  <Main meta={<Meta title="Posts Index" description="Posts Index" />}>
+  <Main meta={<Meta title="Posts" description="Posts" />}>
     <Content>
       <Components.H1>Posts</Components.H1>
       <ol
@@ -20,13 +20,17 @@ const PostsIndex = () => (
           marginLeft: '2.25rem',
         }}
       >
-        {postPreviews.map((preview) => (
-          <li>
-            <h3>
-              <Link href={preview.link}>{preview.module.meta.title}</Link>
-            </h3>
-          </li>
-        ))}
+        {postPreviews.length > 0
+          && postPreviews.map((preview) => (
+            <li>
+              <h3>
+                <Link href={preview.link}>{preview.module.meta.title}</Link>
+              </h3>
+            </li>
+          ))}
+        {postPreviews.length === 0 && (
+          <Components.H3>No published posts yet. Check back soon!</Components.H3>
+        )}
       </ol>
     </Content>
   </Main>

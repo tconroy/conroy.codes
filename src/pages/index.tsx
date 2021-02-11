@@ -7,7 +7,6 @@ import getAllPostPreviews from '../getAllPostPreviews';
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 import { Config } from '../utils/Config';
-import ChevronLink from '~/components/ChevronLink';
 import { Content } from '~/components/Content';
 import Emoji from '~/components/Emoji';
 import ExternalLink from '~/components/ExternalLink';
@@ -34,9 +33,14 @@ export const Components = {
       {props.children}
     </h1>
   ),
-  H2: (props: PropsWithChildren<{}>) => (
+  H2: (
+    props: PropsWithChildren<{
+      className?: string;
+    }>,
+  ) => (
     <h2
       className={`
+      ${props.className}
       dark:text-white
       duration-500
       font-bold
@@ -48,6 +52,26 @@ export const Components = {
     >
       {props.children}
     </h2>
+  ),
+  H3: (
+    props: PropsWithChildren<{
+      className?: string;
+    }>,
+  ) => (
+    <h3
+      className={`
+      ${props.className}
+      dark:text-white
+      duration-500
+      font-bold
+      leading-snug
+      text-2xl
+      text-black
+      transition-colors
+    `}
+    >
+      {props.children}
+    </h3>
   ),
   P: (props: PropsWithChildren<{}>) => (
     <MDXComponents.P
@@ -63,7 +87,7 @@ export const Components = {
 };
 
 export default function Index() {
-  const { H1, H2, P } = Components;
+  const { H1, P } = Components;
 
   return (
     <Main meta={<Meta title="Home" description={Config.description} />}>
@@ -129,24 +153,7 @@ export default function Index() {
 
         <hr className="my-14" />
 
-        <section>
-          <div
-            className={`
-            w-full
-            flex
-            items-center
-            mb-5
-          `}
-          >
-            <H2>Recently Posted</H2>
-            <span className="ml-auto flex items-center">
-              <ChevronLink href="/posts" className="text-sm" chevronClassName="w-3">
-                View All Posts
-              </ChevronLink>
-            </span>
-          </div>
-          <BlogGallery posts={posts} />
-        </section>
+        <BlogGallery posts={posts} />
 
         {/* <section className="my-14">
           <NewsletterSubscribeBlock />
