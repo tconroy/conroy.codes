@@ -47,7 +47,7 @@
     "simple-functional-loader": "^1.2.1",
     "styled-jsx-plugin-postcss": "^4.0.1",
     "tailwindcss": "^2.0.3",
-    "terser": "^5.6.0",
+    "terser": "^5.6.1",
     "tinytime": "^0.2.6",
     "unist-util-visit": "^2.0.3"
   },
@@ -65,7 +65,7 @@
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "babel-jest": "^26.6.3",
     "del-cli": "^3.0.1",
-    "eslint": "^7.21.0",
+    "eslint": "^7.22.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
