@@ -89,7 +89,7 @@
     "simple-functional-loader": "^1.2.1",
     "stylelint": "^13.12.0",
     "stylelint-config-recommended": "^4.0.0",
-    "ts-prune": "^0.8.8",
+    "ts-prune": "^0.8.9",
     "typescript": "^4.2.3"
   },
   "lint-staged": {
