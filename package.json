@@ -33,7 +33,7 @@
     "github-vscode-theme": "github:primer/github-vscode-theme",
     "next": "^10.0.9",
     "next-inline-script": "0.0.1",
-    "next-plausible": "^1.6.0",
+    "next-plausible": "^1.6.1",
     "next-seo": "^4.23.0",
     "next-themes": "0.0.14",
     "react": "^17.0.2",
