@@ -49,7 +49,7 @@
     "tailwindcss": "^2.1.2",
     "terser": "^5.7.0",
     "tinytime": "^0.2.6",
-    "unist-util-visit": "^2.0.3"
+    "unist-util-visit": "^3.0.0"
   },
   "license": "ISC",
   "devDependencies": {
