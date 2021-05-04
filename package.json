@@ -31,7 +31,7 @@
     "@types/mdx-js__react": "^1.5.3",
     "@types/rss": "0.0.28",
     "github-vscode-theme": "github:primer/github-vscode-theme",
-    "next": "^10.1.3",
+    "next": "^10.2.0",
     "next-inline-script": "0.0.1",
     "next-plausible": "^1.6.1",
     "next-seo": "^4.24.0",
