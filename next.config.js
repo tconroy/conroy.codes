@@ -13,6 +13,7 @@ module.exports = withBundleAnalyzer({
   experimental: {
     modern: true,
   },
+  cssModules: true,
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.(svg|png|jpe?g|gif|mp4)$/i,

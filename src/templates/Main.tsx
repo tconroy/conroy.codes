@@ -9,10 +9,11 @@ type MainProps = {
 };
 
 const Main = (props: MainProps) => (
-  <div className={`
+  <div
+    className={`
     antialiased
     dark:bg-darkmode-accent
-    duration-500
+    duration-150
     flex
     flex-col
     min-h-screen

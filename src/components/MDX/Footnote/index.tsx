@@ -1,7 +1,7 @@
-import 'react-tippy/dist/tippy.css';
 import React from 'react';
 
 import { Tooltip } from 'react-tippy';
+import 'react-tippy/dist/tippy.css';
 
 import useIsFirstRender from '~/hooks/useIsFirstRender';
 
@@ -49,7 +49,7 @@ export default function Footnote(props: FootnoteProps) {
       >
         {props.children}
       </span>
-      {isFirstRender ? content : tooltipWithContent}
+      {isFirstRender || typeof window === 'undefined' ? content : tooltipWithContent}
     </>
   );
 }

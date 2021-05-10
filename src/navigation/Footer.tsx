@@ -35,11 +35,7 @@ const links: LinkConfig[] = [
   },
 ];
 
-function LinkItem({
-  type,
-  href,
-  label,
-}: LinkConfig) {
+function LinkItem({ type, href, label }: LinkConfig) {
   const Element = type === 'external' ? ExternalLink : Link;
 
   return (
@@ -53,18 +49,17 @@ function LinkItem({
         ml-4
       `}
     >
-      <Element href={href}>
-        {label}
-      </Element>
+      <Element href={href}>{label}</Element>
     </li>
   );
 }
 
 export function Footer() {
   return (
-    <footer className={`
+    <footer
+      className={`
       dark:text-white
-      duration-500
+      duration-150
       lg:pt-16
       m-auto
       max-w-screen-md
@@ -74,7 +69,8 @@ export function Footer() {
       w-full
     `}
     >
-      <div className={`
+      <div
+        className={`
         flex
         py-8
         m-auto
@@ -84,7 +80,8 @@ export function Footer() {
         md:flex-row
       `}
       >
-        <div className={`
+        <div
+          className={`
           block
           md:flex
           flex-col
@@ -112,9 +109,7 @@ export function Footer() {
           </small>
         </div>
         <nav className="text-left">
-          <ul>
-            {links.map(LinkItem)}
-          </ul>
+          <ul>{links.map(LinkItem)}</ul>
         </nav>
       </div>
     </footer>

@@ -40,8 +40,8 @@ export default function Index() {
           {' '}
           <Footnote
             title={`
-            'digital native' is just a polite way of saying, 
-            'spends way too much time on the internet' 😅
+            'In other words, I spend way too much time on the
+            internet 😅
           `}
           >
             digital native

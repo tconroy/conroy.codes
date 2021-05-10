@@ -93,8 +93,8 @@ export default function NewsletterSubscribeBlock() {
         I promise I will
         <strong>never</strong>
         {' '}
-        spam you, resell your email, or attempt to
-        generate a profit off of you in any way.
+        spam you, resell your email, or attempt to generate a profit off of
+        you in any way.
         <br />
         <br />
         <strong className="block text-center">
@@ -125,7 +125,7 @@ export default function NewsletterSubscribeBlock() {
         dark:border-gold
         border-2
         focus:bg-gold
-        duration-500
+        duration-150
         transition:colors
         hover:bg-gold
         hover:text-darkmode-accent

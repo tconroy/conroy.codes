@@ -27,7 +27,7 @@ function PostItem({ link, meta, PreviewTextComponent }: PostItemProps) {
               className={`
               inline
               dark:text-white
-              duration-500
+              duration-150
               font-semibold
               text-gray-800
             `}
@@ -44,7 +44,7 @@ function PostItem({ link, meta, PreviewTextComponent }: PostItemProps) {
                 className={`
                 link
                 dark:text-darkmode-white
-                duration-500
+                duration-150
                 transition-color
               `}
               >

@@ -6,25 +6,25 @@ import Logo from './components/Logo';
 import ToggleColorMode from './components/ToggleColorMode';
 
 export function Navbar() {
-  const [
-    isHamburgerOpen,
-    setIsHamburgerOpen,
-  ] = useState(false);
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
 
   const toggleIsHamburgerOpen = () => {
     setIsHamburgerOpen(!isHamburgerOpen);
   };
 
   return (
-    <header className={`
+    <header
+      className={`
       bg-transparent
       dark:text-gray-200
-      duration-500
+      duration-150
       text-gray-700
       transition-colors
       w-full
-  `}>
-      <div className={`
+  `}
+    >
+      <div
+        className={`
         flex
         flex-col
         lg:px-8
@@ -37,7 +37,8 @@ export function Navbar() {
         px-4
       `}
       >
-        <div className={`
+        <div
+          className={`
           p-4
           flex
           flex-row
@@ -47,10 +48,7 @@ export function Navbar() {
         >
           <Logo />
           <ToggleColorMode className="md:hidden ml-auto py-2" />
-          <ControlledHamburger
-            isOpen={isHamburgerOpen}
-            toggleIsOpen={toggleIsHamburgerOpen}
-          />
+          <ControlledHamburger isOpen={isHamburgerOpen} toggleIsOpen={toggleIsHamburgerOpen} />
         </div>
         <ControlledNav isHamburgerOpen={isHamburgerOpen} />
       </div>
