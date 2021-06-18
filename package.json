@@ -45,7 +45,7 @@
     "sass": "^1.32.12",
     "simple-functional-loader": "^1.2.1",
     "styled-jsx-plugin-postcss": "^4.0.1",
-    "tailwindcss": "^2.1.2",
+    "tailwindcss": "^2.2.0",
     "terser": "^5.7.0",
     "tinytime": "^0.2.6",
     "unist-util-visit": "^2.0.3"
