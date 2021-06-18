@@ -7,7 +7,7 @@ const Components = {
     <h1
       className={`
       dark:text-white
-      duration-500
+      duration-150
       font-bold
       leading-snug
       mb-5
@@ -28,7 +28,7 @@ const Components = {
       className={`
       ${props.className}
       dark:text-white
-      duration-500
+      duration-150
       font-bold
       leading-snug
       text-4xl
@@ -48,7 +48,7 @@ const Components = {
       className={`
       ${props.className}
       dark:text-white
-      duration-500
+      duration-150
       font-bold
       leading-snug
       text-2xl

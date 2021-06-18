@@ -16,7 +16,7 @@ export default function About() {
           <h1
             className={`
           dark:text-white
-          duration-500
+          duration-150
           font-bold
           leading-snug
           mb-5
@@ -74,8 +74,7 @@ export default function About() {
             page, or click
             <Link href="/now">here</Link>
             {' '}
-            to
-            see what I&apos;ve most recently been up to.
+            to see what I&apos;ve most recently been up to.
           </p>
         </div>
       </Content>

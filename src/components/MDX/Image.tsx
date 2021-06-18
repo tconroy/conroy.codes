@@ -12,7 +12,7 @@ export default function Image(props: ImageProps) {
   const caption = props.caption || props.alt;
 
   return (
-    <figure className={`opacity-${!isLoaded ? 0 : 100} transition-opacity duration-500`}>
+    <figure className={`opacity-${!isLoaded ? 0 : 100} transition-opacity duration-150`}>
       <NextImage
         onLoad={() => {
           setIsLoaded(true);

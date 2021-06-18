@@ -1,16 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const mdx = require('@mdx-js/mdx');
-const getGithubTheme = require('github-vscode-theme/src/theme');
-
-const lightTheme = getGithubTheme({
-  style: "light",
-  name: "GitHub Light",
-});
-
-const darkTheme = getGithubTheme({
-  style: "dark",
-  name: "GitHub Dark",
-});
 
 module.exports = {
   darkMode: 'class',
@@ -123,8 +112,8 @@ module.exports = {
   variants: {
     extend: {
       fontWeight: ['dark'],
-      margin: ['first']
-    }
+      margin: ['first'],
+    },
   },
   plugins: [
     function ({ addBase, addComponents, theme }) {

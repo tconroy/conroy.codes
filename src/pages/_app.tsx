@@ -8,8 +8,8 @@ import App from 'next/app';
 import ColorModeProvider from '~/providers/ColorMode/ColorModeProvider';
 import SEO from '~/utils/SEODefaults';
 
+import 'react-tippy/dist/tippy.css';
 import '../styles/main.css';
-// import 'react-tippy/dist/tippy.css';
 
 export default class MyApp extends App {
   render() {

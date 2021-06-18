@@ -30,15 +30,15 @@
   }
 
   .light *::selection {
-    @apply text-white bg-darkmode-accent duration-500 transition-colors;
+    @apply text-white bg-darkmode-accent duration-150 transition-colors;
   }
 
   .dark *::selection {
-    @apply text-darkmode-accent bg-darkmode-white duration-500 transition-colors;
+    @apply text-darkmode-accent bg-darkmode-white duration-150 transition-colors;
   }
 
   p {
-    @apply font-light dark:text-white duration-500 text-gray-800 transition-colors;
+    @apply font-light dark:text-white duration-150 text-gray-800 transition-colors;
   }
 
   h1 {

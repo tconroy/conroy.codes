@@ -35,7 +35,7 @@ export default function Post({ meta, children }: DisplayPostProps) {
           className={`
           text-center
           dark:text-white
-          duration-500
+          duration-150
           font-bold
           leading-snug
           mb-2
@@ -54,7 +54,7 @@ export default function Post({ meta, children }: DisplayPostProps) {
           text-black
           transition-colors
           dark:text-white
-          duration-500
+          duration-150
         `}
         >
           <time dateTime={meta.date}>{postDateTemplate.render(new Date(meta.date))}</time>
