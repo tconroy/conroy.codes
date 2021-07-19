@@ -32,7 +32,7 @@
     "@types/rss": "0.0.28",
     "next": "^11.0.0",
     "next-inline-script": "0.0.1",
-    "next-plausible": "^1.7.0",
+    "next-plausible": "^2.0.0",
     "next-seo": "^4.26.0",
     "next-themes": "0.0.15",
     "react": "^17.0.2",
