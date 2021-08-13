@@ -30,7 +30,7 @@
     "@tailwindcss/ui": "^0.7.2",
     "@types/mdx-js__react": "^1.5.3",
     "@types/rss": "0.0.28",
-    "next": "^11.0.1",
+    "next": "^11.1.0",
     "next-inline-script": "0.0.1",
     "next-plausible": "^2.0.0",
     "next-seo": "^4.26.0",
