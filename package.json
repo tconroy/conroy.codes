@@ -84,7 +84,7 @@
     "npm-run-all": "^4.1.5",
     "pinst": "^2.1.6",
     "postcss-preset-env": "^6.7.0",
-    "prettier": "^2.3.2",
+    "prettier": "^2.4.0",
     "rehype-add-classes": "^1.0.0",
     "simple-functional-loader": "^1.2.1",
     "stylelint": "^13.13.1",
