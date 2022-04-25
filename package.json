@@ -42,7 +42,7 @@
     "rehype-autolink-headings": "^5.1.0",
     "rehype-slug": "^4.0.1",
     "rehype-toc": "^3.0.2",
-    "sass": "^1.39.0",
+    "sass": "^1.50.1",
     "simple-functional-loader": "^1.2.1",
     "styled-jsx-plugin-postcss": "^4.0.1",
     "tailwindcss": "^2.2.7",
