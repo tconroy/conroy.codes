@@ -40,7 +40,7 @@
     "react-tippy": "^1.4.0",
     "react-toggle-dark-mode": "^1.0.4",
     "rehype-autolink-headings": "^5.1.0",
-    "rehype-slug": "^4.0.1",
+    "rehype-slug": "^5.1.0",
     "rehype-toc": "^3.0.2",
     "sass": "^1.39.0",
     "simple-functional-loader": "^1.2.1",
