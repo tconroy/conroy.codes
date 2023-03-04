@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<url>
+  <loc>https://conroy.codes/</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/about</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/guestbook</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/funding-open-source</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/backend</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/react-frameworks</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/javascript</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/nextjs-conf-2022-recap</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/dx</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/developer-experience-examples</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/heroku</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/devrel-at-vercel</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/image-gallery-supabase-tailwind-nextjs</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/fundamentals-of-video</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/hypergrowth</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/rust</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/mysql-planetscale</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/career</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/head-of-devrel</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/serverless-redis-nextjs</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/react-state-management</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/fonts</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/tailwind</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/css-with-react</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/spotify-api-nextjs</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/teach-online</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/mdx</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/nextjs-sitemap-robots</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/mailchimp-next-js</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/real-time-post-views</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/style-guides-component-libraries-design-systems</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/nextjs-firebase-serverless</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/how-to-print-in-react-using-iframes</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/turborepo-design-system-monorepo</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/technical-recruiting-is-broken</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/things-ive-learned-building-nextjs-apps</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/why-i-create-open-source-software</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/content-marketing-personal-brand</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/how-stripe-designs-beautiful-websites</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/loading-placeholder-with-sass</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/beginners-guide-to-the-programming-portfolio</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/blog/space-invaders-with-python</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://conroy.codes/uses</loc>
+  <lastmod>2023-01-30T23:59:14+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+</urlset>
