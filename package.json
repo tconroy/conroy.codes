@@ -34,7 +34,7 @@
     "next-inline-script": "0.0.1",
     "next-plausible": "^2.0.0",
     "next-seo": "^4.26.0",
-    "next-themes": "0.0.15",
+    "next-themes": "0.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-tippy": "^1.4.0",
