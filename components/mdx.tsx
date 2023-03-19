@@ -38,9 +38,9 @@ function Callout(props) {
 function Quote(props) {
   return (
     <blockquote className="no-prose relative border-l-4 pl-4 sm:pl-6 dark:border-gray-700">
-      <p className="text-gray-800 sm:text-xl dark:text-white">
-        <em>{props.children}</em>
-      </p>
+      <em className="text-gray-800 sm:text-xl dark:text-white">
+        {props.children}
+      </em>
       <footer className="mt-4">
         <div className="flex items-center">
           <div className="flex-shrink-0">

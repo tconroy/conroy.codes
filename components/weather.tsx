@@ -19,11 +19,14 @@ const path = (filename) => `/svg/weather/${filename}.svg`;
 function isDay(timestamp) {
   const date = new Date(timestamp);
   const hour = date.getHours();
-  console.log(hour);
   return hour >= 6 && hour < 19; // assuming day is from 6am to 7pm
 }
 
-export default function Weather({ data }: Props) {
+export default function Weather(props: Props) {
+  if (!props.data) {
+    return null;
+  }
+  const { data } = props;
   const { id, timestampMS } = data;
   let weather = "clear";
   const time = isDay(timestampMS) ? "day" : "night";
@@ -48,7 +51,6 @@ export default function Weather({ data }: Props) {
   } else if (id > 800 && id < 900) {
     weather = "cloudy";
   }
-  console.log(path(`${weather}-${time}`));
   return (
     <HoverCard.Root>
       <HoverCard.Trigger className="hidden md:block md:-ml-5">

@@ -1,4 +1,4 @@
-import { getTweetCount, getWeather } from "lib/metrics";
+import { getTweetCount } from "lib/metrics";
 import { ArrowIcon } from "components/icons";
 import { about, bio } from "lib/info";
 import ArticleCard from "components/article-card";
@@ -7,8 +7,26 @@ import Weather from "components/weather";
 import Balancer from "react-wrap-balancer";
 import NewsletterPopover from "./NewsletterPopover";
 import TwitterLink from "./TwitterLink";
+import { cache } from "react";
 
-export const revalidate = 60;
+// export const revalidate = 60;
+
+// const getWeather = cache(async () => {
+//   // const response = await fetch(`http://localhost:3000/api/weather`);
+//   const response = await fetch("http://localhost:3000/api/weather", {
+//     cache: "no-store",
+//   });
+//   const data = await response.json();
+//   return data;
+// });
+const getWeather = async () => {
+  // const response = await fetch(`http://localhost:3000/api/weather`);
+  const response = await fetch("http://localhost:3000/api/weather", {
+    next: { revalidate: 60 },
+  });
+  const data = await response.json();
+  return data;
+};
 
 export default async function HomePage() {
   let tweetCount, weather;
