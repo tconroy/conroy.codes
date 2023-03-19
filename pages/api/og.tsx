@@ -1,19 +1,17 @@
 import { ImageResponse } from "@vercel/og";
 import { NextRequest } from "next/server";
-import { Merriweather } from "@next/font/google";
 
 export const config = {
   runtime: "edge",
 };
 
-const merriweather = Merriweather({
-  subsets: ["latin"],
-  weight: ["700", "900"],
-  variable: "--font-merriweather",
-  display: "swap",
-});
+// Make sure the font exists in the specified path:
+const merriweather = fetch(
+  new URL("../../public/fonts/Merriweather-Bold.ttf", import.meta.url)
+).then((res) => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
+  const fontData = await merriweather;
   const { searchParams } = req.nextUrl;
   const postTitle = searchParams.get("title");
 
@@ -27,7 +25,8 @@ export default async function handler(req: NextRequest) {
           flexDirection: "column",
           alignItems: "flex-start",
           justifyContent: "center",
-          backgroundImage: "url(https://leerob.io/og-bg.png)",
+          backgroundImage: "url(https://conroy.codes/og-bg.png)",
+          fontFamily: "Merriweather",
         }}
       >
         <div
@@ -36,12 +35,12 @@ export default async function handler(req: NextRequest) {
             marginRight: 190,
             display: "flex",
             fontSize: 130,
-            fontFamily: merriweather.style.fontFamily,
             letterSpacing: "-0.05em",
             fontStyle: "normal",
             color: "white",
             lineHeight: "120px",
             whiteSpace: "pre-wrap",
+            fontFamily: "Merriweather",
           }}
         >
           {postTitle}
@@ -51,6 +50,13 @@ export default async function handler(req: NextRequest) {
     {
       width: 1920,
       height: 1080,
+      fonts: [
+        {
+          name: "Merriweather",
+          data: fontData,
+          style: "normal",
+        },
+      ],
     }
   );
 }
