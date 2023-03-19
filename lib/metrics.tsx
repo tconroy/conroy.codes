@@ -1,5 +1,7 @@
 import "server-only";
 
+import { headers } from "next/headers";
+
 import { Octokit } from "@octokit/rest";
 import { queryBuilder } from "lib/planetscale";
 import { cache } from "react";
@@ -19,7 +21,9 @@ export const getBlogViews = cache(async () => {
 });
 
 export const getWeather = cache(async () => {
-  const response = await fetch(`${process.env.HOST}/api/weather`);
+  const headersInstance = headers();
+  const hostname = headersInstance.get("host");
+  const response = await fetch(`http://${hostname}/api/weather`);
   const data = await response.json();
   return data;
 });
