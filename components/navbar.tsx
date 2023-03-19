@@ -35,7 +35,6 @@ function Logo() {
         })}
         src={sticker}
         width={48}
-        priority
       />
     </Link>
   );

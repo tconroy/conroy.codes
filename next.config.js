@@ -84,4 +84,6 @@ const securityHeaders = [
   },
 ];
 
-module.exports = withPlausibleProxy(withContentlayer(nextConfig));
+const configWithPlausible = withPlausibleProxy()(nextConfig);
+module.exports = withContentlayer(configWithPlausible);
+// module.exports = withContentlayer(nextConfig);

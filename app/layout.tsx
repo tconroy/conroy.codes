@@ -72,24 +72,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={clsx(
-        "text-black bg-white dark:text-white dark:bg-[#13141c]",
-        merriweather.variable,
-        montserrat.variable
-      )}
-    >
-      <head>
-        <PlausibleProvider domain="conroy.codes" />
-      </head>
-      <body className="antialiased max-w-4xl pb-28 flex flex-col px-4 mt-16 md:mt-32 mx-auto scrollbar-thin scrollbar-thumb-neutral-600 scrollbar-track-[#212330]">
-        <Navbar />
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 m-auto w-full max-w-[700px]">
-          {children}
-          {/* <AnalyticsWrapper /> */}
-        </main>
-      </body>
-    </html>
+    <PlausibleProvider domain="conroy.codes" trackOutboundLinks={true}>
+      <html
+        lang="en"
+        className={clsx(
+          "text-black bg-white dark:text-white dark:bg-[#13141c]",
+          merriweather.variable,
+          montserrat.variable
+        )}
+      >
+        <body className="antialiased max-w-4xl pb-28 flex flex-col px-4 mt-16 md:mt-32 mx-auto scrollbar-thin scrollbar-thumb-neutral-600 scrollbar-track-[#212330]">
+          <Navbar />
+          <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 m-auto w-full max-w-[700px]">
+            {children}
+            {/* <AnalyticsWrapper /> */}
+          </main>
+        </body>
+      </html>
+    </PlausibleProvider>
   );
 }

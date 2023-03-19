@@ -19,7 +19,7 @@ export const getBlogViews = cache(async () => {
 });
 
 export const getWeather = cache(async () => {
-  const response = await fetch(`http://localhost:3001/api/weather`);
+  const response = await fetch(`${process.env.HOST}/api/weather`);
   const data = await response.json();
   return data;
 });
@@ -49,8 +49,8 @@ export const getStarCount = cache(async () => {
   // });
 
   // const req = await octokit.request("GET /repos/{owner}/{repo}", {
-  //   owner: "leerob",
-  //   repo: "leerob.io",
+  //   owner: "tconroy",
+  //   repo: "conroy.codes",
   // });
 
   // return req.data.stargazers_count;

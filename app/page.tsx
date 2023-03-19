@@ -1,9 +1,4 @@
-import {
-  getBlogViews,
-  getTweetCount,
-  getStarCount,
-  getWeather,
-} from "lib/metrics";
+import { getTweetCount, getWeather } from "lib/metrics";
 import { ArrowIcon } from "components/icons";
 import { about, bio } from "lib/info";
 import ArticleCard from "components/article-card";
@@ -11,30 +6,15 @@ import { allBlogs } from "contentlayer/generated";
 import Weather from "components/weather";
 import Balancer from "react-wrap-balancer";
 import NewsletterPopover from "./NewsletterPopover";
-import { usePlausible } from "next-plausible";
+import TwitterLink from "./TwitterLink";
 
 export const revalidate = 60;
 
-const links = {
-  attrs: {
-    rel: "noopener noreferrer",
-    target: "_blank",
-  },
-  github: "https://github.com/tconroy",
-  twitter: "https://twitter.com/tconroy",
-};
-
 export default async function HomePage() {
-  let starCount, views, tweetCount, weather;
-  const plausible = usePlausible();
+  let tweetCount, weather;
 
   try {
-    [starCount, views, tweetCount, weather] = await Promise.all([
-      getStarCount(),
-      getBlogViews(),
-      getTweetCount(),
-      getWeather(),
-    ]);
+    [tweetCount, weather] = await Promise.all([getTweetCount(), getWeather()]);
   } catch (error) {
     console.error(error);
   }
@@ -55,32 +35,10 @@ export default async function HomePage() {
         </Balancer>
         <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-500 dark:text-neutral-400">
           <li>
-            <a
-              className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"
-              {...links.attrs}
-              onClick={() => {
-                plausible("click", {
-                  props: {
-                    destination: links.twitter,
-                  },
-                });
-              }}
-              href={links.twitter}
-            >
-              <ArrowIcon />
-              <p className="h-7">follow me on twitter</p>
-            </a>
+            <TwitterLink />
           </li>
           <li>
             <NewsletterPopover />
-            {/* <a
-              className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"
-              {...links.attrs}
-              href="https://tconroy.substack.com"
-            >
-              <ArrowIcon />
-              <p className="h-7">get notified for new posts</p>
-            </a> */}
           </li>
         </ul>
       </section>
