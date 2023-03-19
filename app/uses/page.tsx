@@ -13,66 +13,55 @@ export default function UsesPage() {
         {metadata.description}
       </p>
       <div className="prose prose-neutral dark:prose-invert">
-        <h3 id="computer-office">Computer / Office</h3>
+        <h3>Hardware & Office</h3>
         <ul>
           <li>16&quot; Macbook Pro M1 Max (2021)</li>
-          <li>31.5&quot; LG UltraFine 32UN880</li>
-          <li>Logitech MX Master 3 Mouse</li>
-          <li>Apple Magic Keyboard</li>
-          <li>Focal XS 2.1 w/ Subwoofer</li>
-          <li>Autonomous SmartDesk 2</li>
-          <li>Autonomous ErgoChair 2</li>
+          <li>34&quot; Alienware AW3418DW</li>
+          <li>Logitech G Pro X Superlight</li>
+          <li>Wooting 60HE Keyboard</li>
+          <li>Ikea Bekant standing desk</li>
+          <li>Steelcase leap v2 chair</li>
         </ul>
-        <h3 id="coding">Coding</h3>
+        <h3>Development</h3>
         <ul>
+          <li>Editor: VSCode</li>
+          <li>Theme: GitHub Dark</li>
+          <li>Terminal: iTerm 2 + zsh</li>
           <li>
-            Editor: VSCode (
-            <a href="https://gist.github.com/leerob/e7883ab35d900b8cbb684ac77e7c4703">
-              Settings / Extensions
-            </a>
-            )
+            <a href="https://github.com/tconroy/dotfiles">custom dotfiles</a>
           </li>
-          <li>Theme: One Dark Pro</li>
-          <li>Terminal: Hyper / zsh</li>
+          <li>ColorSlurp</li>
+          <li>Figma</li>
+          <li>Insomnia</li>
+          <li>PixelSnap 2</li>
         </ul>
-        <h3 id="audio-video">Audio / Video</h3>
+        <h3>Audio / Video</h3>
         <ul>
-          <li>Sony A7III (28-50mm, 35mm f1.8)</li>
-          <li>Shure SM7B + Elgato Wave XLR + Boom</li>
+          <li>Fujifilm XT3 (35mm f1.8)</li>
+          <li>Shure SM7B</li>
+          <li>Sennheiser HD6xx Headphones</li>
+          <li>Audient EVO 4 audio interface</li>
           <li>Elgato Camlink</li>
-          <li>Logitech C920</li>
           <li>Elgato Key Light (x2)</li>
-          <li>Elgato Master Mount</li>
-          <li>Aputure Mark 2 120D II</li>
-          <li>Aputure Light Dome II</li>
         </ul>
-        <h3 id="software">Software</h3>
+        <h3>Software</h3>
         <ul>
           <li>1Password</li>
           <li>Spotify</li>
           <li>CleanShot X</li>
-          <li>RetroClip</li>
-          <li>Grammarly</li>
-          <li>Texts</li>
-          <li>Raycast</li>
-          <li>Screenflow</li>
-        </ul>
-        <h3 id="music">Music</h3>
-        <ul>
-          <li>Yamaha P-105 Piano</li>
-          <li>Roland TD-20 V-Drums</li>
-          <li>Roland AC-60</li>
-          <li>Shure SM58</li>
-          <li>Martin Acoustic Guitar (X-Series)</li>
-        </ul>
-        <h3 id="other-tech">Other Tech</h3>
-        <ul>
-          <li>Apple Airpods Pro</li>
-          <li>Apple Watch</li>
-          <li>Apple iPhone</li>
-          <li>Lacie USB-C External HDD</li>
-          <li>Kindle</li>
-          <li>Tesla Model 3</li>
+          <li>Affinity Suite (Designer, Photo, Publisher)</li>
+          <li>Alfred 5</li>
+          <li>Chrome</li>
+          <li>Bear</li>
+          <li>Contexts (macOS)</li>
+          <li>Hyperkey</li>
+          <li>Irvue</li>
+          <li>Keka</li>
+          <li>Maestral</li>
+          <li>Magnet</li>
+          <li>NightEye</li>
+          <li>Spark</li>
+          <li>Things</li>
         </ul>
       </div>
     </section>

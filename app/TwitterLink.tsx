@@ -3,9 +3,9 @@
 import { ArrowIcon } from "components/icons";
 import { usePlausible } from "next-plausible";
 
-export default function TwitterLink() {
+export default function TwitterLink({ count }: { count: number }) {
   const plausible = usePlausible();
-
+  console.log(count);
   return (
     <a
       className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"
@@ -21,7 +21,7 @@ export default function TwitterLink() {
       href="https://twitter.com/tconroy"
     >
       <ArrowIcon />
-      <p className="h-7">follow me on twitter</p>
+      <p className="h-7">{`${count || 0} tweets`}</p>
     </a>
   );
 }

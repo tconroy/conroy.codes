@@ -26,8 +26,7 @@ export default function Weather(props: Props) {
   if (!props.data) {
     return null;
   }
-  const { data } = props;
-  const { id, timestampMS } = data;
+  const { id, timestampMS } = props.data;
   let weather = "clear";
   const time = isDay(timestampMS) ? "day" : "night";
 
@@ -51,12 +50,13 @@ export default function Weather(props: Props) {
   } else if (id > 800 && id < 900) {
     weather = "cloudy";
   }
+
   return (
     <HoverCard.Root>
       <HoverCard.Trigger className="hidden md:block md:-ml-5">
         <Image
           src={path(`${weather}-${time}`)}
-          alt={data.description}
+          alt={props.data.description}
           height={96}
           width={96}
           style={{
@@ -70,10 +70,10 @@ export default function Weather(props: Props) {
         <HoverCard.Content className="shadow-lg">
           <div className="flex items-center w-full h-full text-center bg-neutral-100 dark:bg-[#212330] p-3 rounded-lg flex-col">
             <HoverCard.Arrow className="fill-neutral-100 dark:fill-[#212330]" />
-            <p className="block">{`The weather near me right now is: ${data.description}`}</p>
+            <p className="block">{`The weather near me right now is: ${props.data.description}`}</p>
             <p className="block text-sm font-light">
               {`(last updated: ${new Date(
-                data.timestampMS
+                props.data.timestampMS
               ).toLocaleTimeString()})`}
             </p>
           </div>

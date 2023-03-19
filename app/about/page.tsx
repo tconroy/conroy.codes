@@ -1,10 +1,33 @@
+import {
+  ArrowIcon,
+  GitHubIcon,
+  TwitterIcon,
+  YoutubeIcon,
+} from "components/icons";
 import { components } from "components/mdx";
 import { Metadata } from "next";
 import Image from "next/image";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "About",
-  // description: "Read my thoughts on software development, design, and more.",
+};
+
+const Button: React.FC<{ href: string; children: ReactNode }> = ({
+  href,
+  children,
+}) => {
+  return (
+    <a
+      rel="noopener noreferrer"
+      target="_blank"
+      href={href}
+      className="flex w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 dark:bg-[#212330] hover:bg-neutral-100 hover:dark:bg-transparent transition-all justify-between"
+    >
+      <div className="flex items-center">{children}</div>
+      <ArrowIcon />
+    </a>
+  );
 };
 
 export default function AboutPage() {
@@ -39,16 +62,35 @@ export default function AboutPage() {
         <strong>variety of industries</strong>, from large legacy media
         companies to tiny scrappy startups. I've participated in successful
         exits, most recently having had the pleasure of helping to bring
-        Squarespace public in 2021. If you're interested in my professional
-        timeline, you can find it{" "}
-        <components.a href="/timeline">here</components.a>.
+        Squarespace public in 2021.
       </p>
       <p className={cn}>
         I'm really interested in working with thoughtful and talented teams,
         building products that improve the lives and livelihoods of regular
         people in meaningful ways. If that sounds like you, I'm always open to
-        hearing about new opportunitties.
+        hearing about new opportunities.
       </p>
+      <div className={cn}>
+        <ul>
+          <li>
+            <components.a href="/timeline">Professional timeline</components.a>
+          </li>
+          <li>
+            <components.a href="/uses">Software I use</components.a>
+          </li>
+        </ul>
+      </div>
+      <div className="flex flex-col gap-2 md:flex-row md:gap-2">
+        <Button href="https://twitter.com/tconroy">
+          <TwitterIcon />
+          <div className="ml-3">Twitter</div>
+        </Button>
+
+        <Button href="https://github.com/tconroy">
+          <GitHubIcon />
+          <div className="ml-3">GitHub</div>
+        </Button>
+      </div>
     </section>
   );
 }

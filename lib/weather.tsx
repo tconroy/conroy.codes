@@ -39,23 +39,19 @@ const getDiffInHours = (currentWeather) => {
   }
 };
 
-export async function GET(req: Request) {
-  try {
-    // check redis for the last hour
-    let currentWeather = await redis.get("currentWeather");
-    const shouldRefetch = getDiffInHours(currentWeather) > 1;
+export const getWeather = async () => {
+  // check redis for the last hour
+  let currentWeather = await redis.get("currentWeather");
+  const shouldRefetch = getDiffInHours(currentWeather) > 1;
 
-    if (!shouldRefetch) {
-      return NextResponse.json(JSON.parse(currentWeather!));
-    }
-
-    // otherwise, refetch
-    const weatherData = await fetchCurrentWeather();
-    const now = Date.now();
-    const data = { ...weatherData, timestampMS: now };
-    await redis.set("currentWeather", JSON.stringify(data));
-    return NextResponse.json(data);
-  } catch (e) {
-    console.error("here: ", e);
+  if (!shouldRefetch) {
+    return JSON.parse(currentWeather!);
   }
-}
+
+  // otherwise, refetch
+  const weatherData = await fetchCurrentWeather();
+  const now = Date.now();
+  const data = { ...weatherData, timestampMS: now };
+  await redis.set("currentWeather", JSON.stringify(data));
+  return data;
+};

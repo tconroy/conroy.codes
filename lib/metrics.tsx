@@ -1,9 +1,4 @@
 import "server-only";
-
-import { headers } from "next/headers";
-
-import { Octokit } from "@octokit/rest";
-import { queryBuilder } from "lib/planetscale";
 import { cache } from "react";
 
 export const getBlogViews = cache(async () => {
@@ -18,14 +13,6 @@ export const getBlogViews = cache(async () => {
   //   .execute();
 
   // return data.reduce((acc, curr) => acc + Number(curr.count), 0);
-});
-
-export const getWeather = cache(async () => {
-  const headersInstance = headers();
-  const hostname = headersInstance.get("host");
-  const response = await fetch(`http://${hostname}/api/weather`);
-  const data = await response.json();
-  return data;
 });
 
 export async function getTweetCount() {
@@ -45,17 +32,3 @@ export async function getTweetCount() {
   const { data } = await response.json();
   return Number(data.public_metrics.tweet_count);
 }
-
-export const getStarCount = cache(async () => {
-  return 0;
-  // const octokit = new Octokit({
-  //   auth: process.env.GITHUB_TOKEN,
-  // });
-
-  // const req = await octokit.request("GET /repos/{owner}/{repo}", {
-  //   owner: "tconroy",
-  //   repo: "conroy.codes",
-  // });
-
-  // return req.data.stargazers_count;
-});
