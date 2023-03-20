@@ -56,6 +56,14 @@ export const metadata: Metadata = {
   twitter: {
     title: "Tom Conroy",
     card: "summary_large_image",
+    description,
+    images: [
+      {
+        url: "https://conroy.codes/og.jpg",
+        width: 1920,
+        height: 1080,
+      },
+    ],
   },
   icons: {
     shortcut: "/favicon.ico",
