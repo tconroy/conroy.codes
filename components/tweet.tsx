@@ -16,11 +16,11 @@ export default function Tweet({
   public_metrics,
   referenced_tweets,
 }) {
-  const authorUrl = `https://twitter.com/${author.username}`;
+  const authorUrl = `https://twitter.com/${author?.username}`;
   const likeUrl = `https://twitter.com/intent/like?tweet_id=${id}`;
   const retweetUrl = `https://twitter.com/intent/retweet?tweet_id=${id}`;
   const replyUrl = `https://twitter.com/intent/tweet?in_reply_to=${id}`;
-  const tweetUrl = `https://twitter.com/${author.username}/status/${id}`;
+  const tweetUrl = `https://twitter.com/${author?.username}/status/${id}`;
   const createdAt = new Date(created_at);
 
   const formattedText = text
@@ -39,7 +39,7 @@ export default function Tweet({
           rel="noopener noreferrer"
         >
           <Image
-            alt={author.username}
+            alt={author?.username}
             height={36}
             width={36}
             src={author.profile_image_url}
@@ -72,9 +72,9 @@ export default function Tweet({
           </span>
           <span
             className="text-sm !text-neutral-500 dark:!text-neutral-400 leading-4"
-            title={`@${author.username}`}
+            title={`@${author?.username}`}
           >
-            @{author.username}
+            @{author?.username}
           </span>
         </a>
         <a

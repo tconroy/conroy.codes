@@ -10,14 +10,14 @@ export const getTweets = async (ids) => {
   }
 
   const queryParams = new URLSearchParams({
-    ids: ids.join(','),
+    ids: ids.join(","),
     expansions:
-      'author_id,attachments.media_keys,referenced_tweets.id,referenced_tweets.id.author_id',
-    'tweet.fields':
-      'attachments,author_id,public_metrics,created_at,id,in_reply_to_user_id,referenced_tweets,text',
-    'user.fields': 'id,name,profile_image_url,protected,url,username,verified',
-    'media.fields':
-      'duration_ms,height,media_key,preview_image_url,type,url,width,public_metrics',
+      "author_id,attachments.media_keys,referenced_tweets.id,referenced_tweets.id.author_id",
+    "tweet.fields":
+      "attachments,author_id,public_metrics,created_at,id,in_reply_to_user_id,referenced_tweets,text",
+    "user.fields": "id,name,profile_image_url,protected,url,username,verified",
+    "media.fields":
+      "duration_ms,height,media_key,preview_image_url,type,url,width,public_metrics",
   });
 
   const response = await fetch(
@@ -52,7 +52,7 @@ export const getTweets = async (ids) => {
   };
 
   return (
-    tweets.data.reduce((allTweets, tweet) => {
+    tweets?.data?.reduce((allTweets, tweet) => {
       const tweetWithAuthor = {
         ...tweet,
         media:
@@ -70,7 +70,7 @@ export const getTweets = async (ids) => {
 
 export const getTweetCount = async () => {
   const response = await fetch(
-    `https://api.twitter.com/2/users/by/username/leeerob?user.fields=public_metrics`,
+    `https://api.twitter.com/2/users/by/username/tconroy?user.fields=public_metrics`,
     {
       headers: {
         Authorization: `Bearer ${process.env.TWITTER_API_TOKEN}`,

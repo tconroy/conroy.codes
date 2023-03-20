@@ -5,7 +5,7 @@ import { usePlausible } from "next-plausible";
 
 export default function TwitterLink({ count }: { count: number }) {
   const plausible = usePlausible();
-  console.log(count);
+
   return (
     <a
       className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"

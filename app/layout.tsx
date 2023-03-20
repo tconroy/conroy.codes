@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tom Conroy",
     description,
-    url: "https://conroy.codes",
+    url: "https://www.conroy.codes",
     siteName: "Tom Conroy",
     images: [
       {
@@ -60,10 +60,6 @@ export const metadata: Metadata = {
   icons: {
     shortcut: "/favicon.ico",
   },
-  // verification: {
-  //   google: "eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw",
-  //   yandex: "14d2e73487fa6c71",
-  // },
 };
 
 export default function RootLayout({
