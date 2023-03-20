@@ -1,6 +1,7 @@
 import {
   ArrowIcon,
   GitHubIcon,
+  LinkedinIcon,
   TwitterIcon,
   YoutubeIcon,
 } from "components/icons";
@@ -81,6 +82,11 @@ export default function AboutPage() {
         </ul>
       </div>
       <div className="flex flex-col gap-2 md:flex-row md:gap-2">
+        <Button href="https://www.linkedin.com/in/thomasconroy/">
+          <LinkedinIcon />
+          <div className="ml-3">LinkedIn</div>
+        </Button>
+
         <Button href="https://twitter.com/tconroy">
           <TwitterIcon />
           <div className="ml-3">Twitter</div>
