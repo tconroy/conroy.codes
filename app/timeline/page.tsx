@@ -116,13 +116,12 @@ export default function AboutPage() {
                   .
                 </strong>
                 <p>
-                  <strong>Breaker was acquired by Twitter in 2021</strong>. It
-                  was a podcast publishing, listening and discovery application
-                  with an emphasis on social integration. I Worked with the
-                  founding team as the sole frontend engineer, building the
-                  Breaker web product. Built back-of-house tools for podcast
-                  creators, front-of-house podcast player, account profile
-                  pages, discovery dashboard, and landing page.
+                  <em>Breaker was acquired by Twitter in 2021</em>. <br />{" "}
+                  Breaker was a podcast publishing, listening and discovery
+                  application with an emphasis on social features. I Worked with
+                  the founding team as the sole frontend engineer on the Breaker
+                  web product. Helped build tools for podcast creators, podcast
+                  player, profile pages, discovery dashboard, and landing page.
                 </p>
               </>
             ),
@@ -139,13 +138,11 @@ export default function AboutPage() {
                   .
                 </strong>
                 <p>
-                  <strong>Reserve was acquired by Resy in 2018</strong>. It was
-                  a restaurant management and reservations platform, vertically
-                  integrated to manage requirements for back-of-house,
-                  front-of-house and customer acquisitions. As one of three
-                  frontend engineers, I was responsible for owning the frontend
-                  for all our applications including floor/table management,
-                  customer CRM, customer web product and more.
+                  <em>Reserve was acquired by Resy in 2018</em>. <br /> Reserve
+                  was a restaurant management, reservations and client CRM
+                  platform. As one of three frontend engineers, I was
+                  responsible for all web frontends, including floor/table
+                  management, customer CRM, and discovery features.
                 </p>
               </>
             ),
@@ -164,13 +161,7 @@ export default function AboutPage() {
                 <p>
                   Led greenfield initiative for ground-up rewrite of our mobile
                   web article experience inspired by Snapchat discovery and
-                  Instagram stories. It was a restaurant management and
-                  reservations platform, vertically integrated to manage
-                  requirements for back-of-house, front-of-house and customer
-                  acquisitions. As one of three frontend engineers, I was
-                  responsible for owning the frontend for all our applications
-                  including floor/table management, customer CRM, customer web
-                  product and more.
+                  Instagram stories.
                 </p>
               </>
             ),
