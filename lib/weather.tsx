@@ -24,7 +24,9 @@ const fetchCurrentWeather = async (): Promise<Weather["data"]> => {
   weatherApiUrl.searchParams.set("lon", "-74.04315769918419");
   weatherApiUrl.searchParams.set("appid", WEATHER_TOKEN);
 
-  const res = await fetch(weatherApiUrl);
+  const res = await fetch(weatherApiUrl, {
+    cache: "no-cache",
+  });
   const weather = (await res.json()).weather[0];
   return weather;
 };
