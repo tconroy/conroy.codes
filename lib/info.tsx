@@ -21,7 +21,7 @@ export const bio = () => {
       <br />
       <br />
       In my free time you'll find me exploring the city with my{" "}
-      <Components.a href="https://mollykeane.rocks/">partner</Components.a>,
+      <Components.a href="https://mollykeane.net/">partner</Components.a>,
       diving into a new video game, snuggling with my cat, or dialing in a new
       bag of espresso beans. <Coffee />
     </>
