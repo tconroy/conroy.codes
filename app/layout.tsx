@@ -85,7 +85,7 @@ export default function RootLayout({
           montserrat.variable
         )}
       >
-        <body className="antialiased max-w-4xl pb-28 flex flex-col px-4 mt-16 md:mt-32 mx-auto scrollbar-thin scrollbar-thumb-neutral-600 scrollbar-track-[#212330]">
+        <body className="antialiased max-w-4xl pb-28 flex flex-col px-4 mt-16 md:mt-28 mx-auto scrollbar-thin scrollbar-thumb-neutral-600 scrollbar-track-[#212330]">
           <Navbar />
           <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 m-auto w-full max-w-[700px]">
             {children}

@@ -3,27 +3,23 @@ import { components as Components } from "components/mdx";
 
 export const name = "Tom Conroy";
 export const avatar = me;
-export const about = () => {
-  return (
-    <>
-      I'm a NYC-based <strong>Engineering Team Manager</strong> working at{" "}
-      <Components.a href="https://www.squarespace.com">
-        Squarespace
-      </Components.a>
-      , where I help millions of people build a beautiful online presence.
-    </>
-  );
-};
+export const about = () => (
+  <>
+    <strong>Engineering Team Manager</strong> at{" "}
+    <Components.a href="https://www.squarespace.com">Squarespace</Components.a>.
+  </>
+);
+
 export const bio = () => {
   return (
     <>
-      Here you can find my thoughts on technology, software and startups.
-      <br />
-      <br />
-      In my free time you'll find me exploring the city with my{" "}
-      <Components.a href="https://mollykeane.net/">partner</Components.a>,
-      diving into a new video game, snuggling with my cat, or dialing in a new
-      bag of espresso beans. <Coffee />
+      Welcome to my{" "}
+      <Components.a href="https://maggieappleton.com/garden-history">
+        digital garden
+      </Components.a>
+      {", "}
+      where I store thoughts on software, technology, startups and the web.{" "}
+      <Coffee />
     </>
   );
 };

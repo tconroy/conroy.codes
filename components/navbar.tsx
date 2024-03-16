@@ -14,9 +14,15 @@ const navItems = {
     y: 0,
     w: "60px",
   },
+  "/work": {
+    name: "work",
+    x: 72,
+    y: 0,
+    w: "55px",
+  },
   "/blog": {
     name: "blog",
-    x: 72,
+    x: 130,
     y: 0,
     w: "50px",
   },
