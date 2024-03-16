@@ -79,5 +79,5 @@ export const getTweetCount = async () => {
   );
 
   const { data } = await response.json();
-  return Number(data.public_metrics.tweet_count);
+  return Number(data?.public_metrics?.tweet_count);
 };

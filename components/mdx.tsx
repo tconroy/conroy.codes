@@ -1,25 +1,34 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useMDXComponent } from "next-contentlayer/hooks";
-import Tweet from "./tweet";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { TweetComponent } from "./tweet";
+import clsx from "clsx";
 
 const CustomLink = (props) => {
   const href = props.href;
+  const classes = clsx("hover:opacity-50 focus:opacity-50", props.className);
 
   if (href.startsWith("/")) {
     return (
-      <Link href={href} {...props}>
+      <Link href={href} {...props} className={classes}>
         {props.children}
       </Link>
     );
   }
 
   if (href.startsWith("#")) {
-    return <a {...props} />;
+    return <a {...props} className={classes} />;
   }
 
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  return (
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      {...props}
+      className={classes}
+    />
+  );
 };
 
 function RoundedImage(props) {
@@ -122,6 +131,12 @@ function ConsCard({ title, cons }) {
   );
 }
 
+function Rule() {
+  return (
+    <hr className="w-full h-[1px] mx-auto my-5 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+  );
+}
+
 export const components = {
   Image: RoundedImage,
   a: CustomLink,
@@ -129,23 +144,15 @@ export const components = {
   ProsCard,
   ConsCard,
   Quote,
+  StaticTweet: TweetComponent,
+  hr: Rule,
 };
 
-interface MdxProps {
-  code: string;
-  tweets: Record<string, any>;
-}
-
-export function Mdx({ code, tweets }: MdxProps) {
-  const Component = useMDXComponent(code);
-  const StaticTweet = ({ id }) => {
-    const tweet = tweets.find((tweet) => tweet.id === id);
-    return <Tweet {...tweet} />;
-  };
-
+export function CustomMDX(props) {
   return (
-    <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-      <Component components={{ ...components, StaticTweet }} />
-    </article>
+    <MDXRemote
+      {...props}
+      components={{ ...components, ...(props.components || {}) }}
+    />
   );
 }

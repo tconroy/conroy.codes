@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { allBlogs } from "contentlayer/generated";
-import ViewCounter from "./view-counter";
 import PublishDate from "./publish-date";
+import { getBlogPosts } from "app/db/blog";
+import { components } from "components/mdx";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -13,12 +13,15 @@ export default async function BlogPage() {
   return (
     <section>
       <h1 className="font-bold text-5xl font-serif mb-5">Blog</h1>
-      <p className="pb-8 text-2xl leading-normal">
+      <p className="pb-0 text-xl leading-normal">
         Occasionally I write down my thoughts. You can find them below.
       </p>
-      {allBlogs
+      <components.hr />
+      {getBlogPosts()
         .sort((a, b) => {
-          if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
+          if (
+            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
+          ) {
             return -1;
           }
           return 1;
@@ -30,8 +33,8 @@ export default async function BlogPage() {
             href={`/blog/${post.slug}`}
           >
             <div className="w-full flex flex-col">
-              <p>{post.title}</p>
-              <PublishDate publishedAt={post.publishedAt} />
+              <p>{post.metadata.title}</p>
+              <PublishDate publishedAt={post.metadata.publishedAt} />
               {/* <ViewCounter slug={post.slug} trackView={false} /> */}
             </div>
           </Link>

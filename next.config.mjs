@@ -1,8 +1,6 @@
-const { get } = require("@vercel/edge-config");
-const { withContentlayer } = require("next-contentlayer");
-const { withPlausibleProxy } = require("next-plausible");
+import { get } from "@vercel/edge-config";
+import { withPlausibleProxy } from "next-plausible";
 
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
@@ -84,6 +82,4 @@ const securityHeaders = [
   },
 ];
 
-const configWithPlausible = withPlausibleProxy()(nextConfig);
-module.exports = withContentlayer(configWithPlausible);
-// module.exports = withContentlayer(nextConfig);
+export default withPlausibleProxy()(nextConfig);
