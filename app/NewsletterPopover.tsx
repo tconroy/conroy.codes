@@ -37,9 +37,9 @@ export default function NewsletterPopover() {
           });
         }}
       >
-        <button className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all">
+        <button className="flex items-center hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-neutral-200 dark:focus:text-neutral-200 transition-all">
+          <p className="h-7 mr-2">get notified for new posts</p>
           <ArrowIcon />
-          <p className="h-7">get notified for new posts</p>
         </button>
       </Popover.Trigger>
       <Popover.Portal>

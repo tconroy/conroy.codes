@@ -53,6 +53,14 @@ const Subheading = (props) => (
   />
 );
 
+const List = (props) => {
+  return (
+    <div className="text-neutral-800 dark:text-neutral-200 prose prose-quoteless prose-neutral dark:prose-invert my-[1.25rem]">
+      <ul>{props.children}</ul>
+    </div>
+  );
+};
+
 const Section = ({
   heading,
   subheading,
@@ -94,8 +102,9 @@ export default function WorkPage() {
       <Section withRule={true}>
         <p className="text-xl leading-normal">
           I am on a mission to build world class software that delights users
-          and solves meaningful business problems. Below is a recap of my
-          journey so far.
+          and solves meaningful business problems. I've worked in a variety of
+          industries, from tiny scrappy startups to large legacy media
+          companies.
         </p>
       </Section>
       <Section
@@ -114,13 +123,13 @@ export default function WorkPage() {
           roles focused around growth, customer acquisition, and early customer
           success:
         </Paragraph>
-        <ul className="list-disc ml-6">
+        <List>
           <li>Team Lead, Custom Starting Points</li>
           <li>Team Lead, Conversion</li>
           <li>Senior Software Engineer II, Conversion</li>
           <li>Senior Software Engineer I, Trial Experience</li>
           <li>Software Engineer, Trial Experience</li>
-        </ul>
+        </List>
       </Section>
       <Section
         logo={breakerLogo}
@@ -177,9 +186,9 @@ export default function WorkPage() {
         <Paragraph>
           Prior to my role as Mobile Web Team Lead, I held the following roles
         </Paragraph>
-        <ul className="list-disc ml-6">
+        <List>
           <li>Frontend Engineer, Product Team</li>
-        </ul>
+        </List>
       </Section>
       <Section
         logo={ritLogo}

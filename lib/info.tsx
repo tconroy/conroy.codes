@@ -16,9 +16,8 @@ export const bio = () => {
       Welcome to my{" "}
       <Components.a href="https://maggieappleton.com/garden-history">
         digital garden
-      </Components.a>
-      {", "}
-      where I store thoughts on software, technology, startups and the web.{" "}
+      </Components.a>{" "}
+      where I catalog my thoughts on software, technology, startups and the web.{" "}
       <Coffee />
     </>
   );

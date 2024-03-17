@@ -30,15 +30,18 @@ const navItems = {
 
 function Logo() {
   let pathname = usePathname() || "/";
-  const isCurrentRoute = (usePathname() || "/") === "/";
+  const isCurrentRoute = pathname === "/";
 
   return (
-    <Link key={"/"} href={"/"} className="ml-[5px]">
+    <Link key={"/"} href={"/"} className="ml-[5px] group">
       <Image
         alt="Home"
-        className={clsx("rounded-full dark:opacity-75 dark:hover:opacity-100", {
-          "opacity-100": isCurrentRoute,
-        })}
+        className={clsx(
+          "rounded-full opacity-75 group-hover:opacity-100 group-focus:opacity-100",
+          {
+            "!opacity-100": isCurrentRoute,
+          }
+        )}
         src={sticker}
         width={48}
       />
@@ -87,7 +90,7 @@ export default function Navbar() {
               key={path}
               href={path}
               className={clsx(
-                "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-[5px] px-[10px]",
+                "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 focus:text-neutral-800 dark:focus:text-neutral-200 py-[5px] px-[10px]",
                 {
                   "text-neutral-500": !isActive,
                   "font-bold": isActive,

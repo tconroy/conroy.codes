@@ -5,9 +5,6 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@next/font':
-    specifier: 14.1.3
-    version: 14.1.3(next@14.1.3)
   '@octokit/rest':
     specifier: ^20.0.2
     version: 20.0.2
@@ -77,6 +74,9 @@ dependencies:
   server-only:
     specifier: ^0.0.1
     version: 0.0.1
+  sugar-high:
+    specifier: ^0.6.0
+    version: 0.6.0
   swr:
     specifier: ^2.2.5
     version: 2.2.5(react@18.2.0)
@@ -237,14 +237,6 @@ packages:
 
   /@next/env@14.1.3:
     resolution: {integrity: sha512-VhgXTvrgeBRxNPjyfBsDIMvgsKDxjlpw4IAUsHCX8Gjl1vtHUYRT3+xfQ/wwvLPDd/6kqfLqk9Pt4+7gysuCKQ==}
-    dev: false
-
-  /@next/font@14.1.3(next@14.1.3):
-    resolution: {integrity: sha512-YjdwNKdjR0FMAmH24sNjBfZs9+dVp3pN/zQi8lZxDo2YeOVf9cbB3qk95KARB1r0WxmpSYLlFTgaEPA7DlmYww==}
-    peerDependencies:
-      next: '*'
-    dependencies:
-      next: 14.1.3(react-dom@18.2.0)(react@18.2.0)
     dev: false
 
   /@next/swc-darwin-arm64@14.1.3:
@@ -2858,6 +2850,10 @@ packages:
       pirates: 4.0.6
       ts-interface-checker: 0.1.13
     dev: true
+
+  /sugar-high@0.6.0:
+    resolution: {integrity: sha512-SBE1FI2NTVgLDo9E9yLO2rBT56HZAi3ONGeoTqJsHIN9cEAATrrKjZfIrSc5H5AoZ/mQd8OI7j27rvVXT9IxoA==}
+    dev: false
 
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
