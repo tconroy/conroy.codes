@@ -91,15 +91,16 @@ export default function AboutPage() {
   return (
     <section>
       <Title>About</Title>
-      <Heading>Hey! I'm Tom.</Heading>
-      <Paragraph>
-        but you probably already knew that, since you're on my website.
-      </Paragraph>
+      <Heading>
+        Hey! I'm Tom. but you probably already know that, since you somehow
+        found your way to my corner of the web.
+      </Heading>
       <Image
         className="rounded-lg"
         height={550}
         src={leafPicture}
         alt="It's me! Or is it? 🤔"
+        placeholder="blur"
       />
       <Paragraph>
         I'm an Engineering Leader with over a decade of experience shipping
@@ -108,9 +109,15 @@ export default function AboutPage() {
       </Paragraph>
       <Paragraph>
         I'm always interested in working with talented people and teams, solving
-        problems and building products to improve the lives and livelihoods of
-        everyday people. If that sounds like you, I'm always open to hearing
-        about new opportunities.
+        complex problems and building products that improve the lives and
+        livelihoods of everyday people. If that sounds like you, I'd love to
+        connect.
+      </Paragraph>
+      <Paragraph>
+        When I'm not building things, you can find me exploring NYC with{" "}
+        <components.a href="https://mollykeane.net">my partner</components.a>,
+        playing Indie PC games, exploring New York City, or reading a good book
+        on the couch with my cat.
       </Paragraph>
       <Paragraph as="div">
         <ul>

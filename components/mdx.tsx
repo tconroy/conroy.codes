@@ -4,6 +4,37 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { TweetComponent } from "./tweet";
 import clsx from "clsx";
+import { highlight } from "sugar-high";
+
+function slugify(str) {
+  return str
+    .toString()
+    .toLowerCase()
+    .trim() // Remove whitespace from both ends of a string
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/&/g, "-and-") // Replace & with 'and'
+    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
+    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+}
+
+// This replaces rehype-autolink-headings
+function createHeading(level) {
+  return ({ children }) => {
+    let slug = slugify(children);
+    return React.createElement(
+      `h${level}`,
+      { id: slug },
+      [
+        React.createElement("a", {
+          href: `#${slug}`,
+          key: `link-${slug}`,
+          className: "anchor",
+        }),
+      ],
+      children
+    );
+  };
+}
 
 const CustomLink = (props) => {
   const href = props.href;
@@ -133,11 +164,22 @@ function ConsCard({ title, cons }) {
 
 function Rule() {
   return (
-    <hr className="w-full h-[1px] mx-auto my-5 bg-gray-100 border-0 rounded md:my-10 dark:bg-gray-700" />
+    <hr className="w-full h-[3px] mx-auto my-5 border-none bg-gray-100 rounded md:my-10 dark:bg-[#212330]" />
   );
 }
 
+function Code({ children, ...props }) {
+  let codeHTML = highlight(children);
+  return <code dangerouslySetInnerHTML={{ __html: codeHTML }} {...props} />;
+}
+
 export const components = {
+  h1: createHeading(1),
+  h2: createHeading(2),
+  h3: createHeading(3),
+  h4: createHeading(4),
+  h5: createHeading(5),
+  h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
   Callout,
@@ -146,6 +188,7 @@ export const components = {
   Quote,
   StaticTweet: TweetComponent,
   hr: Rule,
+  code: Code,
 };
 
 export function CustomMDX(props) {

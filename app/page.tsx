@@ -1,4 +1,4 @@
-import { getTweetCount } from "lib/metrics";
+// import { getTweetCount } from "lib/metrics";
 // import { getWeather } from "lib/weather";
 import { about, bio } from "lib/info";
 import ArticleCard from "components/article-card";
@@ -40,12 +40,12 @@ const Paragraph = (props) => (
 );
 
 export default async function HomePage() {
-  let tweetCount;
-  try {
-    tweetCount = await getTweetCount();
-  } catch (error) {
-    console.error(error);
-  }
+  // let tweetCount;
+  // try {
+  //   tweetCount = await getTweetCount();
+  // } catch (error) {
+  //   console.error(error);
+  // }
 
   return (
     <>
@@ -57,7 +57,7 @@ export default async function HomePage() {
         {/* </Balancer> */}
         <ul className="flex flex-col md:flex-row mt-8 space-x-0 md:space-x-4 space-y-2 md:space-y-0 font-sm text-neutral-500 dark:text-neutral-400">
           <li>
-            <TwitterLink count={tweetCount} />
+            <TwitterLink />
           </li>
           <li>
             <NewsletterPopover />

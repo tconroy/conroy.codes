@@ -90,7 +90,7 @@ export default function Navbar() {
               key={path}
               href={path}
               className={clsx(
-                "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-[5px] px-[10px]",
+                "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 focus:text-neutral-800 dark:focus:text-neutral-200 py-[5px] px-[10px]",
                 {
                   "text-neutral-500": !isActive,
                   "font-bold": isActive,
