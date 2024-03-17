@@ -2,7 +2,7 @@ import "./global.css";
 import clsx from "clsx";
 import type { Metadata } from "next";
 // import AnalyticsWrapper from "../components/analytics";
-import { Montserrat, Merriweather } from "@next/font/google";
+import { Montserrat, Merriweather } from "next/font/google";
 import Navbar from "components/navbar";
 import PlausibleProvider from "next-plausible";
 
