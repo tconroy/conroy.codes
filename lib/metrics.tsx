@@ -21,6 +21,8 @@ export async function getTweetCount() {
     return 0;
   }
 
+  console.log("Have API key, Fetching tweet count...");
+
   const response = await fetch(
     `https://api.twitter.com/2/users/by/username/tconroy?user.fields=public_metrics`,
     {
@@ -31,5 +33,6 @@ export async function getTweetCount() {
   );
 
   const { data } = await response.json();
+  console.log("data: ", data);
   return Number(data?.public_metrics?.tweet_count);
 }
