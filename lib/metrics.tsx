@@ -17,6 +17,7 @@ export const getBlogViews = cache(async () => {
 
 export async function getTweetCount() {
   if (!process.env.TWITTER_API_TOKEN) {
+    console.warn("TWITTER_API_TOKEN not set!");
     return 0;
   }
 
