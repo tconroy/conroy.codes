@@ -112,20 +112,6 @@ export default function AboutPage() {
         everyday people. If that sounds like you, I'm always open to hearing
         about new opportunities.
       </Paragraph>
-      <Paragraph>
-        I'm currently an Engineering Team Manager on the Activation team at{" "}
-        <components.a href="https://www.squarespace.com">
-          Squarespace
-        </components.a>{" "}
-        helping to onboard users and set them up for success.
-      </Paragraph>
-      <Paragraph>
-        I've worked as a software engineer across a handful of unique
-        industries, including large legacy media companies and tiny scrappy
-        startups. I've been fortunate enough to be part of successful startup
-        exits, most recently having had the pleasure of helping to bring
-        Squarespace public in 2021.
-      </Paragraph>
       <Paragraph as="div">
         <ul>
           <li>

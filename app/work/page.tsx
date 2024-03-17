@@ -94,8 +94,9 @@ export default function WorkPage() {
       <Section withRule={true}>
         <p className="text-xl leading-normal">
           I am on a mission to build world class software that delights users
-          and solves meaningful business problems. Below is a recap of my
-          journey so far.
+          and solves meaningful business problems. I've worked in a variety of
+          industries, from tiny scrappy startups to large legacy media
+          companies.
         </p>
       </Section>
       <Section

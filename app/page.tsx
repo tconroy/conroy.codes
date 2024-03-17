@@ -15,7 +15,7 @@ const Heading = (props) => (
   <h1
     {...props}
     className={clsx(
-      "font-bold font-serif text-5xl md:text-7xl flex items-center",
+      "font-bold font-serif text-4xl md:text-7xl flex items-center",
       props.className
     )}
   />

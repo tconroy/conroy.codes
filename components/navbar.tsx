@@ -30,15 +30,18 @@ const navItems = {
 
 function Logo() {
   let pathname = usePathname() || "/";
-  const isCurrentRoute = (usePathname() || "/") === "/";
+  const isCurrentRoute = pathname === "/";
 
   return (
-    <Link key={"/"} href={"/"} className="ml-[5px]">
+    <Link key={"/"} href={"/"} className="ml-[5px] group">
       <Image
         alt="Home"
-        className={clsx("rounded-full dark:opacity-75 dark:hover:opacity-100", {
-          "opacity-100": isCurrentRoute,
-        })}
+        className={clsx(
+          "rounded-full opacity-75 group-hover:opacity-100 group-focus:opacity-100",
+          {
+            "!opacity-100": isCurrentRoute,
+          }
+        )}
         src={sticker}
         width={48}
       />

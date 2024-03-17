@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getBlogPosts } from "app/db/blog";
-import { getTweets } from "lib/twitter";
 import Balancer from "react-wrap-balancer";
 import ViewCounter from "../view-counter";
 import { CustomMDX } from "components/mdx";
@@ -64,13 +63,8 @@ export default async function Blog({ params }) {
     notFound();
   }
 
-  const tweets = await getTweets(post.tweetIds);
-
   return (
     <section>
-      {/* <script type="application/ld+json">
-        {JSON.stringify(post.structuredData)}
-      </script> */}
       <script
         type="application/ld+json"
         suppressHydrationWarning
