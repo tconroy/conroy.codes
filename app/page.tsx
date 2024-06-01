@@ -79,7 +79,7 @@ export default async function HomePage() {
             })
             .slice(0, 3)
             .map((post) => (
-              <li key={post.slug}>
+              <li className="mb-4" key={post.slug}>
                 <ArticleCard
                   title={post.metadata.title}
                   slug={post.slug}
