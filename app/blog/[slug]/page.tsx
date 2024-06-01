@@ -87,8 +87,13 @@ export default async function Blog({ params }) {
           }),
         }}
       />
-      <h1 className="font-bold text-7xl font-serif max-w-[700px]">
+      <h1 className="font-bold text-6xl font-serif max-w-[700px]">
         <Balancer>{post.metadata.title}</Balancer>
+        {post.metadata.subtitle && (
+          <Balancer className="text-3xl mt-4">
+            {post.metadata.subtitle}
+          </Balancer>
+        )}
       </h1>
       <div className="grid grid-cols-[auto_1fr_auto] items-center font-mono text-sm max-w-[700px]">
         <time className="bg-neutral-100 dark:bg-[#212330] rounded-md px-2 py-1 tracking-tighter font-serif">
