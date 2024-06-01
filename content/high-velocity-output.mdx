@@ -5,256 +5,182 @@ publishedAt: "2024-06-01"
 summary: "Low hanging fruit for getting more done, faster."
 ---
 
-_The following is an adaptation of a recent talk I presented to the Growth organization at Squarespace. I wanted to share it here as well, since I think it's a topic that's relevant to a lot of different teams and organizations in the industry._
+*The following is an adaptation of a recent talk I presented to the Growth organization at Squarespace. I wanted to share it here as well, since I think it's a topic that's relevant to many teams and organizations in the industry.*
 
-I've been in product engineering for a while now, and I've seen a lot of different teams and approaches to improving engineering velocity. Some of them work, some of them don't. But one thing that's always struck me is how much time is wasted on things that don't matter. I'm not talking about the big stuff - the big decisions, the big features, the big bugs. I'm talking about the little things that add up over time and slow you and your team down.
+I've been in product engineering for a while now and have seen various teams and approaches to improving engineering velocity. Some methods work; others don't. But one thing that's always struck me is how much time is wasted on things that don't matter. I'm not talking about the big stuff—the big decisions, features, or bugs. I'm talking about the little things that add up over time and slow you and your team down.
 
-At some point in time, most product engineering teams end up asking themselves some variation of the following questions:
+Most product engineering teams eventually ask themselves some variation of the following questions:
 
 - Why is it taking so long to get this feature out the door?
 - How can we get this in front of users sooner?
-- How do we move up our test launch so we can start collecting learnings faster?
+- How do we move up our test launch to start collecting learnings faster?
 
-These are all good questions to ask, and they're all questions that can be answered by looking at how you're spending your time. 
+These are all good questions, and they can be answered by examining how you're spending your time. Are you spending it on the right things? Are you focusing on things that matter and will move the needle in getting the project out the door?
 
-Are you spending it on the right things? Are you spending it on things that matter? Are you spending it on things that are going to move the needle in getting the project out the door?
+Broadly speaking, these questions boil down into a single one: **How can we ship faster?** What changes, big or small, will help accelerate our timeline?
 
-Broadly speaking, these questions boil down into a single one: **How can we ship faster?** What changes can we make, big or small, that will help accelerate our timeline?
+## How Can We Ship Faster?
 
-## How can we ship faster?
-
-Luckily, there is some low hanging fruit with extremely high ROI that many teams are not taking advantage of.
+Fortunately, there is some low-hanging fruit with extremely high ROI that many teams are not taking advantage of.
 
 The answer is simple: **Code reviews**.
 
-## But we already do code reviews..
-Sure. Most organizations already have some sort of code review practice in place, and that is great. 
+## But We Already Do Code Reviews...
 
-But the question is: are you doing them right? Are you doing them in a way that maximizes their value to the team and the business?
+Sure, most organizations have some code review practice in place, and that's great. But the question is: are you doing them right? Are you maximizing their value to the team and the business? And more specifically: are you doing them in a timely fashion? 
 
-And more specifically: Are you doing them in a timely fashion?
+Is your team breaking down their work to optimize for code review? Are your PRs a joy to review? If not, you're leaving a lot of value on the table and slowing down your team.
 
-Is your team breaking down their work in a way to optimize for code review? Are you making sure that your PR's are a joy to review?
+## TL;DR for Shipping Faster
 
-If you're not, you're leaving a lot of value on the table. And you're slowing down your team in the process.
-
-## TL;DR for shipping faster:
-It's really simple, but it's worth repeating. If you want to ship faster, you need to:
+It's simple but worth repeating. If you want to ship faster, you need to:
 
 1. Make code review your top priority, every single day.
-2. Make your PR's a joy to review.
+2. Make your PRs a joy to review.
 
-Honestly. That's it! For many (if not most) product teams, It's truly that simple. And I'll tell you why that is true, and how you can make both these goals easier to achieve for you and your team.
+Honestly, that's it! For many (if not most) product teams, it's truly that simple. And I'll tell you why this is true and how you can make both these goals easier to achieve for you and your team.
 
-At this point, some of you might be shaking your heads, wondering aloud: "But Tom, I'm a software engineer! Isn't my top priority _writing code_, not _reading_ it? I have this huge backlog of work to do, and it keeps growing and growing… Shouldn't I focus on writing code as my top priority, and reviewing code second?"
+At this point, some of you might be shaking your heads, wondering aloud: "But Tom, I'm a software engineer! Isn't my top priority *writing code*, not *reading* it? I have this huge backlog of work to do, and it keeps growing and growing… Shouldn't I focus on writing code as my top priority and reviewing code second?"
 
-And my answer to that is a resounding: **No**. Reviewing PR's are actually more important to the team and the business. 
+My answer to that is a resounding: **No**. Reviewing PRs is more important to the team and the business. 
 
-And this is because code waiting on reviews represents blocked threads of execution. 
+## Pending Code Reviews Represent Blocked Threads of Execution
 
-## Pending code reviews represent blocked threads of execution.
+As engineers, we know that blocked threads are bad. A blocked thread is a task that is pending but not complete. When a thread is blocked, things lock up, stop moving, and don't get done.
 
-As engineers, we know that blocked threads are bad. A blocked thread is a task that is pending, but not complete.
+Applying this metaphor to engineering teams: often, a team's "thread" of feature delivery is "blocked" by a PR waiting for review. Features are not released if they are not done, and they are not done if they have not been carefully reviewed. Pending reviews impact not only the engineer waiting for reviews but the entire team. Sometimes work waiting for review blocks another engineer from starting. In the worst case, a single review bottleneck can prevent *any other task* from being started. Yikes!
 
-And when a thread is blocked, things lock up! They stop moving! They don't get done!
+## The Two Options for Blocked Engineers
 
-To apply the metaphor to engineering teams: Often, a teams "thread" of feature delivery is "blocked" by a PR that is waiting on review. Features are not released if they are not done, and they are not done if they have not been carefully reviewed. 
+When an engineer is blocked waiting for reviews, they have two options: the best case and worst case scenarios.
 
-Pending reviews don't only impact the engineer waiting for reviews. They impact the entire team. Obviously, the feature cannot be launched. But Sometimes that work waiting for review is blocking another engineer from starting. In the worst case, a single review bottleneck can prevent _any other task_ from being started. Yikes!
+### Best Case Scenario
 
-## The two options for blocked engineers
-When an engineer is blocked waiting for reviews, they have two options available to them. Lets call them the best case and worst case scenarios.
+In the best case scenario, the blocked engineer can put their blocked work on pause and switch to an unrelated task. But this is not a good outcome, as it incurs the expensive cost of *memory reallocation* and *context switching*. We'll touch on that in more detail in a minute.
 
-### Best case scenario:
-In the best case scenario, the blocked engineer can put their blocked work on pause, and switch over to some other unrelated task. But this is not a good outcome for the engineer or the team, as they must incur the expensive cost of *memory reallocation* and *context switching*. We'll touch on that in more detail in a minute.
+### Worst Case Scenario
 
-### Worst case scenario:
-In the worst case scenario, there are no other pending threads to pull on. If the remaining work is entirely serialized on the blocked review, then the engineer can't make _any progress at all_. They're entirely blocked, waiting.
+In the worst case scenario, there are no other pending threads to pull on. If the remaining work is entirely serialized on the blocked review, the engineer can't make *any progress at all*. They're entirely blocked, waiting.
 
-# Best case scenario: Incurring the cost of context switching
+## Best Case Scenario: Incurring the Cost of Context Switching
+
 > "Multitasking is a myth. You cannot do two things at once." - Earl Miller, MIT neuroscientist
 
-The cost of context switching is a well known concept in software engineering. It's the cost of moving your brain from one task to another. It's the cost of remembering where you left off, and what you were working on. It's the cost of getting back into the flow of things.
-
-And many of us think quietly to ourselves: "Not me! I know _other people_ struggle with context switching, but I am a pro at handling it. I can switch between tasks with ease!"
-
-But the truth is, context switching is a real cost, and it's a cost that we all pay. Science has all but proved it; humans are, across the board, terrible at multitasking. I'm sorry to break this news to you (it was a shock for me, too!). Don't believe me? Here are some quotes from some studies:
+The cost of context switching is well-known in software engineering. It's the cost of moving your brain from one task to another, remembering where you left off, and getting back into the flow of things. Many of us think, "Not me! I know *other people* struggle with context switching, but I handle it with ease!" But the truth is, context switching is a real cost we all pay. Science has proved that humans are terrible at multitasking. Don't believe me? Here are some quotes from studies:
 
 > __“Our data suggests that people compensate for interruptions by working faster, but this comes at a price: experiencing more stress, higher frustration, time pressure and effort.”__ 
 > _- [The Cost of Interrupted Work: More Speed and Stress"](https://ics.uci.edu/~gmark/chi08-mark.pdf)_
 
-> __“task switching results in increased error rates.”__ 
+> __“Task switching results in increased error rates.”__ 
 > _- ["Task Switching" by Monsell (2003)](https://pubmed.ncbi.nlm.nih.gov/12825643/)_
 
-> __“multitasking impairs executive functions in the brain, which are responsible for managing cognitive processes. [...] leading to slower overall performance”__ - _["Multitasking Slows You Down" by Verywell Mind (2023)](https://www.verywellmind.com/multitasking-2795003)_
+> __“Multitasking impairs executive functions in the brain, which are responsible for managing cognitive processes. [...] leading to slower overall performance”__ - _["Multitasking Slows You Down" by Verywell Mind (2023)](https://www.verywellmind.com/multitasking-2795003)_
 
 These studies conclude the same things: multitasking and context switching lead to more stress, slower work, and ultimately lower quality of work than focusing on a single task to completion.
 
-This is because switching eats our finite memory bandwidth. You have PR A open, and now you're switching to B. You need to keep context about both in your memory in case you need to bounce back to A. The more tasks you have in the air at the same time, the more precious bandwidth is required. 
+Switching eats our finite memory bandwidth. You have PR A open, and now you're switching to B. You need to keep context about both in your memory in case you need to bounce back to A. The more tasks you have in the air simultaneously, the more precious bandwidth is required. Humans have very finite amounts of memory, unlike computers. That memory can get paged out, forcing us to “ramp up” on the new thing, which is slow. Thus the expensive cost of context switching.
 
-Unfortunately, unlike computers, Humans have very finite amounts of memory. That memory can get paged out, forcing us to “ramp up” on the new thing, which is slow. Thus the expensive cost of context switching.
+It's better for the business to minimize context switching and better for your personal health and well-being. So avoid it when you can!
 
-So look at it this way; It's not only better for the business to minimize context switching, but it's also better for your personal health and well being. So avoid it when you can!
+### Isn't Going from Code Writing to Code Reviewing a Form of Context Switching?
 
-### Isn't going from code writing to code reviewing a form of context switching, though? 🤔
+Yes! It is! You caught me. Switching from code writing to code reviewing *is* context switching and *can* be expensive. However, this is good context switching: we're using that expensive cost to buy something more valuable: **team velocity**.
 
-Yes! It is! You caught me. Switching from code writing to code reviewing _is_ context switching, and _can_ be expensive.
+The team as a whole is better off by prioritizing reviews. Reviews represent tracks of work closer to the finish line than your work in progress. Moving work from the “in review” to “done” column is far more valuable for the team’s net velocity than moving a single task from your todo to in progress. The team's velocity is the aggregate of everyone on the team, not your individual velocity.
 
-However, this is good context switching: we're using that expensive cost of the switch in order to buy something more valuable: **team velocity**.
+Said another way: **it is far more valuable to focus the team's energy on moving items from "IN PROGRESS" to "DONE" than it is to move items from "TODO" to "IN PROGRESS".**
 
-The team as a whole is better off by prioritizing reviews. That's because reviews represent tracks of work that are closer to the finish line than your work in progress.
+Some agile methods represent this by reviewing the sprint board right-to-left, from closest-to-done to not yet started. This puts the team's focus on “how do we get this over the finish line,” which is the right attitude for high-velocity teams.
 
-Moving work from the “in review” to “done” column is far more valuable for the teams net velocity than moving a single task from your todo to in progress.
+## Worst Case Scenario: Serialized Work Blocks All Progress
 
-The teams velocity is the aggregate of everyone on the team, not your individual velocity.
+Serialized work is the idea that we need to finish Task A before starting Task B. When work is overly serialized, pending reviews can block all progress. We try to ensure everyone on the team has a few threads available to avoid this, but sometimes that's not possible or realistic. In this scenario, code review becomes a synchronous barrier preventing other work from getting done.
 
-Said another way: **it is far more valuable to focus the team's energy on moving items from "IN PROGRESS" to "DONE", than it is to move items from "TODO" to "IN PROGRESS".**
+As a team, we depend on one another to meet our goals. Unfortunately, this work often cannot be completely parallelized. Maybe we're blocked on infrastructure issues or waiting on work from other teams to wrap before we can integrate. Working in a serialized way means the entire team moves at the speed of the slowest common denominator, which is not good if you're trying to ship quickly.
 
-This is even represented in some agile methods, where the sprint board is reviewed right-to-left, from closest-to-done to not yet started. This puts the team's focus and emphasis on __“how do we get this over the finish line”__, which is the right attitude for high velocity teams.
+Often, when we are blocked from progressing, it's not due to external factors but internal ones: someone writing code or someone reviewing it. So, the best way to unblock the team and yourself is to ensure everyone is reviewing and getting reviewed as quickly as possible.
 
-OK - so we're on the same page that context switching isn't great. If that is the best case scenario, what is the worst?
+## Tips for Code Reviewers and Code Authors
 
-## Worst case scenario: Serialized work blocks all progress.
-
-Serialized work is the idea that we need to finish Task A before we can start on Task B. And when work is overly serialized, pending reviews can block all progress.
-
-Obviously, we always try to ensure everyone on the team has a few threads available to them to avoid this. But sometimes that just isn't possible or realistic. In this scenario, the act of code review becomes a synchronous barrier that prevents other work from getting done.
-
-As a team, we all depend on one another to get work done so we can meet our goals, and unfortunately, this work often cannot be completely parallelized. 
-
-Maybe we're blocked on infrastructure issues, or waiting on work from other teams to wrap before we can integrate. Working in a serialized way means the entire team moves at the speed of the slowest common denominator, whatever that may be. Which is not good if you're trying to ship quickly.
-
-But many times these constraints may be outside of our direct control, and that's OK. We don't live in a perfect world. But if we focus on what we can control, most of the time, when we are blocked from progressing, we're not blocked on factors external to the team, but rather internal: we're blocked on someone writing code, or on someone reviewing it.
-
-So, the best way to unblock the team and yourself is to ensure everyone is reviewing and getting reviewed as quickly as possible.
-
-# Tips for Code Reviewers and Code Authors
-OK! I'm going to assume / hope that I've sold you on the premise of prioritizing code review above other work, since it helps the team get closer to its goals, faster.
-
-Now, how do we make this happen?
-
-I believe there are a few low-hanging things we can do both as reviewers and authors to optimize for efficiency.
+Assuming I've sold you on the premise of prioritizing code review above other work, let's discuss how to make this happen. Here are a few low-hanging things we can do as reviewers and authors to optimize for efficiency.
 
 ### Tips for Reviewers
-Here's five ways to become a rock star code reviewer and help your team close work out faster:
 
-#### Reviewer Tip 1: Always know what reviews you're on the hook for.
-The first tip for code reviewers is to always know what reviews you're on the hook for.
+Here are five ways to become a rock-star code reviewer and help your team close work out faster:
 
-Think quickly right now: do you immediately know all the tracks of work your coworkers are working on, and of those tracks of work, which most need your input?
+#### Reviewer Tip 1: Always Know What Reviews You're on the Hook For
 
-How about the reverse? Do you know which tracks of work don't need your input? Do you know who is waiting for your feedback right now?
+Always know the tracks of work your coworkers are working on and which need your input. Do you know who is waiting for your feedback right now? Prioritize having a quick way to see all the pending review requests attached to your name.
 
-You need to prioritize having a simple and quick way to instantly see all the pending review requests that someone (or some automated tool) went through the trouble to attach your name to.
+Some code review systems do this better than others. GitHub offers great controls for monitoring notifications. I like using the GitHub Slack integration, which pushes notifications in Slack whenever I'm added to a PR as a reviewer or someone replies to my comment.
 
- Some code review systems do this better than others; Luckily, we have GitHub, which offers some great controls for monitoring notifications.
+#### Reviewer Tip 2: Shorten Your Event Loop; Be
 
-I personally like to use the GitHub Slack integration, and whenever I am added to a PR as a reviewer or someone replies to my comment, I get a push notification in slack.
+ Interrupt Driven
 
-I won't try to tell you how to filter your alerts or what tools to use, because that is largely just personal preference. But it's critical that you have a way to quickly find reviews for which you, specifically, owe time.
+Integrate your review monitoring method into your event loop. The platonic ideal is handling code review requests in real-time. Some teams have a sub-15-minute time-to-review loop and are some of the highest output teams in the industry.
 
-#### Reviewer Tip 2: Shorten your event loop; be interrupt driven.
-Armed with a method to quickly find out what code you need to review, the next tip is to shorten your event loop.
+Heads-down focus time is essential, but weigh the cost of context switches against the larger switch when blocked on others for code review. It's OK to put off a review for a few minutes to finish a thought. Get to a safe checkpoint, then turn your focus to reviewing.
 
-Your event loop is the cycle of activities and tasks you go through in your day-to-day workflow.
+Don't put reviewing off for a day or even more than a few hours. If you have time for a break, you probably have time to run through your code review requests before pushing up your diff.
 
-Start to integrate your review monitoring method into your event loop, with the platonic ideal being able to handle code review requests as they arrive in real time. Believe it or not, there are teams out there with a sub-15-minute time-to-review loop, and these are some of the highest output teams in the industry. 
+#### Reviewer Tip 3: Prioritize Reviews Over All Other Work (Within Reason)
 
-And of course, as I mentioned earlier, Everybody needs heads-down focus time to get their work done, and switching from a tight code/compile/test eval loop into a code review cycle is not free; weigh the cost of these context switches against the larger switch you have to make when you're blocked on others for code review. 
+Reviewing code is more important than writing new code! If you let code go unreviewed, you're prioritizing your productivity over the team's. Everyone operating at 75% efficiency because they spend 25% of their time in code review is better than some members operating at 95% and others idling.
 
-It's OK to put off a code review for a few minutes while you finish a thought in your own work. Get to a safe check point, then turn your focus to reviewing.
+If you have nothing to say on the review, at least acknowledge it. Minimize the time between outgoing and incoming activity on the review to avoid blocking anyone longer than necessary.
 
-Don't put reviewing off for a day, or even for more than a few hours; If you have time to get up to eat, chat, or go to the bathroom, you probably have time to run through your code review requests before pushing up your diff. 
+#### Reviewer Tip 4: Expect to Spend Time Reviewing Code Every Day, Multiple Times a Day
 
-Try to Allow yourself to be interrupted by reviews. When I tell people this, they are often confused: “But how will I get my work done if I am stopping all the time to help others?” It's important to remember that your personal disruption is less expensive for the team than delaying overall team progress. And in turn, your own PR's will benefit in kind from that same responsiveness from your teammates. 
+Review code every day, ideally multiple times. Your day should begin and end with clearing your code-review backlog. Try to clear the backlog at least once or twice in between.
 
-#### Reviewer Tip 3: Prioritize reviews over all other work (within reason).
+Inbox zero is the goal here, and spending one or two total hours a day on this isn't unreasonable. Don't do it all at once, though! Reviewing too much code or too many PRs in one go can reduce your effectiveness.
 
-Yes, you heard that right: Reviewing code is a more important part of your job than writing new code!
+#### Reviewer Tip 5: Be Kind, Be Specific, Be Thorough, and Be Actionable
 
-This is sort of a combination of my previous two points, but I think it bears specific attention: threads of execution are blocked and unproductive while code review requests are pending. If you let code go unreviewed, you are explicitly prioritizing your personal productivity over the productivity of the team. 
+The only things worse than no code review at all are rubber-stamp “LGTM” PRs or a single good review broken into many smaller, less-thorough reviews over multiple days.
 
-If everyone on the team is operating at 75% efficiency because they are spending 25% of their time in code review, that is a better outcome than some members of the team operating at 95% and other members idling or thrashing.
+It's the code author's job to open PRs that are well-formed and carefully crafted. It's the reviewer's job to be as thorough as possible in each pass rather than metering out feedback in a series of partial reviews over multiple revisions. Try your best to be exhaustive in your first pass. If you catch something late in a review cycle, own up to it and apologize. We're only human.
 
-If you have nothing to say on the review, then say that! If your name is on a review, you should at least acknowledge it with something like “LGTM, but I don't really know this code well.” The key point is to minimize the time between outgoing and incoming activity on the review, so nobody's ever blocked for more time than is strictly necessary.
+## Tips for Authors
 
-I want to immediately say, “rubber stamping” a PR is an antigoal. If you don't understand the PR or the code, that is OK, but encourage the PR author to find someone who is knowledgeable of it. It's unreasonable to expect you to know everything, but it's important to surface that knowledge gap so the appropriate parties can be included. Our Staff engineers are a huge help here at helping us find the right people to include!
+Here's how to author code that your coworkers will love:
 
-#### Reviewer Tip 4: Expect to spend time reviewing code every day, multiple times a day.
-Tip 4 is that you need to be reviewing code every day, and ideally multiple times throughout the day.
+### Author Tip 1: Dot Your I's and Cross Your T's
 
-At a minimum, your day should begin and end with clearing your code-review backlog. 
-Ideally you find time to clear the backlog at least once or twice in between.
+Make your PR as good as you can. Take the time to dot your i's and cross your t's before anyone sees your code. Be thorough and put your best foot forward. Your teammates prioritize reviewing your code over their important work, so don't waste their time.
 
-Inbox zero is the goal here, and I don't think it's unreasonable to spend one or two total hours a day on getting there. 
-Don't spend it all at once, though! Reviewing too much code or too many PR's in one go is a recipe for brain drain and can reduce your effectiveness.
-If you've reviewed more than 500 lines of code in an given hour, take a break for a bit. 
+Push your code to GitHub as a Draft PR. Then, self-review your PR as if it belongs to someone else. Make sure nothing is missing or unnecessary. Review your own code in one sitting and ensure you only make necessary changes. Put unrelated improvements in the backlog and cherry-pick them to a new branch.
 
-#### Reviewer Tip 5: Be kind, be specific, be thorough, and be actionable.
+Make sure your code conforms to the style guidelines (or local examples) of the project you're working on. Don't submit a review request and immediately push multiple revisions as you find problems. If you don't like what you see, discard the draft review, fix your branch, push it, and start over. Make sure your code is ready to be looked at once you ask others to review it.
 
-The only things worse than no code review at all are rubber-stamp “LGTM” PR's, or a single good review broken into many smaller less-thorough reviews over multiple days. 
+### Author Tip 2: Keep Review Requests as Small as Humanly Possible
 
-It's the code author's job to open PR's that are well-formed and and carefully crafted. 
+Bias heavily towards small, digestible, bite-sized pull requests. Large PRs should be broken down into smaller, easier-to-reason-about changes, reviewed in sequence or parallel if possible.
 
-It's the reviewer's job to be as thorough as possible in each pass, rather than metering out their feedback in a series of partial reviews over multiple revisions of a review request.
+Avoid PRs over 400-500 lines of code. Studies show a correlation between lines of code and bug detection density. As lines of code exceed 400, the detection rate plummets. Don't make it easy to ship bugs. Open small pull requests.
 
-Remember the goal here is not to finish your reviews as fast as possible, but to decrease the delta between “code is ready for feedback” and the code starting to receive that feedback.
+Small PRs get reviewed faster, bugs are more likely to be caught, and approvals are more likely to land sooner. So do it!
 
- If a review drags out into many revisions, it's sometimes because it started out sloppy, and this is a growth area for many. But it can also be because reviewers didn't pay enough attention the first, second, or third time and missed things. This is something many of us, including myself, continue to work on, and it's hard to be consistent about. Try your best to be as exhaustive in your first pass as possible. But If you catch something late in a review cycle, own up to it, and apologize. We're only human.
+### Author Tip 3: Write Good Titles and Descriptions
 
-OK! Now that we're rock-star code reviewers, how do we become equally-amazing code authors?
+Write good titles and descriptions in your PRs. The title should distinguish it clearly in a list of other review requests in someone's inbox. If the title is just the most recent commit message or a copy/paste of the JIRA ticket, that's not providing additional value.
 
-### Tips for Authors
-Here's 4 tips for authoring code that your coworkers will love:
+Your description should tell the story of your change. Explain why you're making the change, what problem you're solving, what code you changed, what classes you introduced, and how you tested it. Reviewers should be able to tell which parts to focus on more and which are less important by reading the description. 
 
-#### Author Tip 1: Dot your i's and cross your t's. 
-In exchange for your reviewers having code review as their top priority, you need to in kind make your PR as good as you can. 
+Consider leaving inline comments on your own PR to help guide the reviewer and provide additional context.
 
-Always take the time to dot your i's and cross your t's before anyone even sees your code. Be thorough, and put your best foot forward. Your teammates are prioritizing reviewing your code over all their other important work, so it is our responsibility to not waste their time.
+### Author Tip 4: Acknowledge Comments Quickly
 
-I recommend pushing your code to GitHub as a Draft PR. Then, sit down and self-review your PR as if it belongs to someone else. Make sure nothing is missing, and nothing is unnecessary. You might be shocked at how many small things you catch just by reviewing your own code in one sitting! You can also take this time to make sure you're only making changes that you need to make, and not dragging along a bunch of other unrelated improvements. put those in the backlog and cherry pick to a new branch, instead!
+A tight event loop is crucial when your code is out for review. Acknowledge comments quickly, ask for clarification if needed, and push back on comments if necessary. The ball is back in your court once a reviewer submits their comments. If the changes requested are straightforward and small, push a new version quickly and flag the PR for re-review to keep the ball rolling. The faster you respond to comments and push fixes, the more likely the reviewer will remember your PR and the quicker you'll reach a consensus.
 
-Make sure you have, to the best of your ability, written code you like and which conforms to the style guidelines (or local examples) of the project you're working in. 
+## Wrapping Up
 
-Don't submit a review request and then immediately push multiple revisions as you find problems; this will confuse and bewilder your reviewers. If you don't like what you see, discard the draft review before opening for comments, fix your branch, push it, and start over. But make sure once you ask others to look at it, it's ready to be looked at.
+If you take anything away from this article, remember these points:
 
-#### Author Tip 2:  Keep review requests as small as humanly possible. 
-
-Tip 2 for code authors is to Bias heavily towards small, digestible, bite-sized pull requests.
-
-Large PR's should be broken down into smaller, easier to reason about changes, which can be reviewed in sequence, or better still, in parallel, if the work can be sliced in a way that makes that doable.
-
-As a rule of thumb, avoid PR's over 400-500 lines of code. This is actually backed up by studies where researchers found a correlation between lines of code and how density of bug detection. As lines of code exceeds 400, the detection rate plummets, probably because your coworkers eyes glaze over as they start thinking about their weekend plans or the novel they want to write. Don't make it easy to ship bugs. open small pull requests.
-
-And besides: If everyone agrees to review code as it is authored, there's no advantage to batching multiple small changes together in one PR, and there are distinct disadvantages to it. The most dangerous outcome of a large review request is that reviewers are unable to sustain focus and the code isn't reviewed well or at all.
-
-Small PR's mean they get reviewed faster, bugs are more likely to be caught, and approvals are more likely to land sooner rather than later. So do it!
-
-#### Author Tip 3: Write _actually good_ titles and descriptions.
-
-A super important tip, and one that doesn't get the attention it needs: Write good titles and descriptions in your PRs!
-The title of your review request should distinguish it clearly in a list of other review requests in someone's inbox. If the title of your PR is the most recent commit message on your branch, you've failed your team. If the title of your PR is just a copy/paste of the JIRA ticket, that's not providing any additional value. Try to capture the scope and intent of the changes in a single sentence.
-
-Your description should tell the story of your change. 
-The emphasis here is _the story_, not a regurgitation of the code itself. The description should not be a list of commit details, or copy/pasted from the JIRA ticket. Instead, you should talk about why you're making the change, what problem you're solving, what code you changed, what classes you introduced, how you tested it. 
-
-By reading the description, reviewers should be able to tell specifically what parts should be focused on more, and which parts are less important. Your reviewers will thank you for making their job easier by explaining to them what they should be looking at, and their reviews will be correspondingly more thorough.​
-
-As a bonus, you can consider leaving inline comments on your own PR to help guide the reviewer and provide additional context.
-
-#### Author Tip 4: Acknowledge comments quickly
-
-A tight event loop is even more important when your code is out for review; Do your best to acknowledge comments as quickly as you can, and particularly to ask for clarification if you don't understand the comment or want to push back on it. 
-
-As soon as a reviewer submits their comments, the action is back on you. The ball is back in your court.
-If the changes requested are straightforward and small, push a new version quickly and flag the PR for re-review to keep the ball rolling. The more quickly you're able to respond to comments and push fixes, the more likely the reviewer is to still have your PR in their memory, and the more quickly you'll arrive at a consensus.
-
-# Wrapping up 
-So if you take anything away from this ~~talk~~ article, take these points:
-
-* Code Review is a common bottleneck for teams to deliver work.
-* Prioritizing code review is a force multiplier for you and for your team.
+* Code review is a common bottleneck for teams to deliver work.
+* Prioritizing code review is a force multiplier for you and your team.
 * Context switching is expensive, causes stress, and damages work quality. Avoid it!
-* Do your part to be a good teammate: Make code review your top priority, and make your PR's a joy to review.
+* Be a good teammate: Make code review your top priority and make your PRs a joy to review.
 
 Happy hacking!
