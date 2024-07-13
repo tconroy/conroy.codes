@@ -57,15 +57,7 @@ const clothing: Category = {
 
 const dailyCarry: Category = {
   title: "Everyday Carry",
-  items: [
-    {
-      name: "TomToc Compact EDC cross-body Sling Bag",
-      link: "https://www.amazon.com/tomtoc-Minimalist-Crossbody-Water-resistant-Lightweight/dp/B0BBZBD7XW/ref=sr_1_3",
-      description: "Black, 'S' Size for 13 inch MacBook Pro",
-      cost: 60,
-      quantity: 1,
-    },
-  ],
+  items: [],
 };
 
 const hardware: Category = {
@@ -76,13 +68,6 @@ const hardware: Category = {
       link: "https://www.anker.com/products/a2340?ref=naviMenu&variant=41974288777366",
       description: "Black",
       cost: 110,
-      quantity: 1,
-    },
-    {
-      name: "Anker Wireless PowerWave magnetic charger",
-      link: "https://www.amazon.com/Anker-Wireless-Charging-PowerWave-Magnetic/dp/B094FQSGMM/ref=asc_df_B094FQSGMM/?tag=hyprod-20&linkCode=df0&hvadid=693712892323&hvpos=&hvnetw=g&hvrand=15029507645228307627&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9003562&hvtargid=pla-1411874227421&psc=1&mcid=a70d065c9cae3a5e8622757e3ffe1212&gad_source=1",
-      description: "White",
-      cost: 40,
       quantity: 1,
     },
     {
@@ -97,13 +82,6 @@ const hardware: Category = {
       link: "https://ouraring.com/product/rings/horizon/stealth",
       description: "Stealth",
       cost: 449,
-      quantity: 1,
-    },
-    {
-      name: "ULANZI flexible Camera Tripod",
-      link: "https://www.amazon.com/gp/product/B083QYHX3K/ref=ox_sc_act_title_6?smid=A209UUQT8O7JCV&psc=1",
-      description: "Black",
-      cost: 23,
       quantity: 1,
     },
     {
@@ -131,13 +109,6 @@ const hardware: Category = {
       link: "https://jsaux.com/products/flipgo-portable-dual-monitor?variant=44711962706140&gad_source=1",
       description: "16 inch Pro",
       cost: 599,
-      quantity: 1,
-    },
-    {
-      name: "TIDBYT",
-      link: "https://tidbyt.com/products/tidbyt?variant=44380323414249",
-      description: "Walnut",
-      cost: 199,
       quantity: 1,
     },
   ],
@@ -176,12 +147,6 @@ const home: Category = {
       name: "Bread Maker Machine",
       link: "https://www.amazon.com/dp/B0924GVJTS/?coliid=I15AKD8OX5LA88&colid=2KMQGUCF39S7D&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it",
       cost: 112,
-      quantity: 1,
-    },
-    {
-      name: "Cast Iron Skillet",
-      link: "https://www.amazon.com/dp/B00X4WQMAS?linkCode=ogi&tag=ghk-lift-20&ascsubtag=%5Bartid%7C10055.g.29993894%5Bsrc%7Carb_ga_ghk_b1_md_dsa_comm_mix_us_19785892528%5Bch%7C%5Blt%7Cpsv%5Bpid%7C01809717-209e-460a-b9f0-1fe39a936002%5Baxid%7C2d197410-f6b8-485b-9486-91008d7d3cc6&th=1",
-      cost: 25,
       quantity: 1,
     },
     {
