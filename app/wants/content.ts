@@ -64,6 +64,13 @@ const hardware: Category = {
   title: "Hardware",
   items: [
     {
+      name: "Apple Airpods Pro 2",
+      link: "https://www.amazon.com/Apple-Cancellation-Transparency-Personalized-High-Fidelity/dp/B0D1XD1ZV3?crid=1PM3JHRGC4Q1C&dib=eyJ2IjoiMSJ9.OSB3Pn_WkVCEZBrqLWgT30q1XGuycdUIKGp9NWF-Qp2zn4mdhgMavqYIkCRuA9kAC01RHi4z8XGpiIbq4nLlbil8kSjizb3788nKU-0Si31xdGtn5XzJQSTqhihHdTDpjFmwWcDQgCBiF7IK9pBIGMAOTP8Qc-XZUnNu4E7pQ_WIUZjs3rrOnvF4H-qF2XejXyeQXy23nuGhfqmNO0-qHaCRJmYki04HkUX-yrL1voQ.TPCTa1awTZ5yX5OhmAnqF8rmwlJAl0P-MxcTlOBiN2U&dib_tag=se&keywords=apple+airpods+pro+2&qid=1733426913&sprefix=apple+airpods+pro+2%2Caps%2C139&sr=8-3",
+      description: "cyber monday sale, $169",
+      cost: 249,
+      quantity: 1,
+    },
+    {
       name: "Anker 747 Charger (GaNPrime 150W)",
       link: "https://www.anker.com/products/a2340?ref=naviMenu&variant=41974288777366",
       description: "Black",
