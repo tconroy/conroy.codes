@@ -116,7 +116,15 @@ const hardware: Category = {
 
 const software: Category = {
   title: "Software",
-  items: [],
+  items: [
+    {
+      name: "Steam Gift Card",
+      link: "https://store.steampowered.com/digitalgiftcards/",
+      description: "Any amount",
+      cost: 50,
+      quantity: "any",
+    }
+  ],
 };
 
 const home: Category = {
@@ -178,7 +186,37 @@ const home: Category = {
 
 const books: Category = {
   title: "Books & Entertainment",
-  items: [],
+  items: [
+    {
+      name: "The Pragmatic Programmer (2nd Edition)",
+      link: "https://www.amazon.com/dp/0135957052/?coliid=I1V09ZMZOZY1B9&colid=25DEOWFCVGNFK&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it",
+      cost: 52,
+      quantity: 1,
+    },
+    {
+      name: "The Complete Calvin and Hobbes",
+      link: "https://www.amazon.com/dp/0740748475/?coliid=I3D9XQ2Y12SJ9N&colid=25DEOWFCVGNFK&psc=1&ref_=list_c_wl_lv_ov_lig_dp_it",
+      cost: 130,
+      quantity: 1,
+    },
+    {
+      name: "More books on my amazon wishlist",
+      link: "https://www.amazon.com/hz/wishlist/ls/25DEOWFCVGNFK?ref_=wl_share",
+      cost: 0,
+    }
+  ],
+};
+
+const fitness: Category = {
+  title: "Health & Fitness",
+  items: [
+    {
+      name: "Grip Strengthener",
+      link: "https://www.amazon.com/Strengthener-FitBeast-Adjustable-Resistance-Exerciser/dp/B07G824Z3V?ref_=ast_sto_dp&th=1",
+      cost: 16,
+      quantity: 1,
+    },
+  ],
 };
 
 const someDay: Category = {
@@ -194,4 +232,4 @@ const someDay: Category = {
   ],
 };
 
-export default [clothing, dailyCarry, books, hardware, software, home, someDay];
+export default [clothing, fitness, dailyCarry, books, hardware, software, home, someDay];
